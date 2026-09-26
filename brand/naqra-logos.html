@@ -1,0 +1,253 @@
+<title>naqra Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0F172A; --blue:#2563EB; --cyan:#22D3EE; --mist:#F1F5F9;
+  --bg:#F6F8FB; --surface:#FFFFFF; --text:#0F172A; --muted:#55627A; --line:#E2E8F0; --chip:#E8EEFB; --chipText:#1E40AF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0B1120; --surface:#111A2E; --text:#E6ECF5; --muted:#94A3B8; --line:#1F2A44; --chip:#1A2750; --chipText:#A9C1FF;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0B1120; --surface:#111A2E; --text:#E6ECF5; --muted:#94A3B8; --line:#1F2A44; --chip:#1A2750; --chipText:#A9C1FF;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:"IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  font-size:16px; line-height:1.7;
+  padding-inline:16px; padding-block:32px 64px;
+}
+.wrap{max-width:1040px; margin-inline:auto; display:flex; flex-direction:column; gap:48px}
+header{display:flex; flex-direction:column; gap:10px}
+.eyebrow{font-family:Sora, sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); font-weight:600}
+h1{font-size:clamp(28px,5vw,40px); line-height:1.25; margin:0; text-wrap:balance}
+h1 span{font-family:Sora, sans-serif}
+.lead{color:var(--muted); margin:0; max-width:62ch}
+.palette{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+.sw{display:flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px 12px 4px 4px; font-size:13px}
+.sw i{width:22px; height:22px; border-radius:50%; display:block; border:1px solid rgba(0,0,0,.08)}
+.sw code{font-family:Sora, monospace; font-size:12px; color:var(--muted)}
+
+section.concept{display:flex; flex-direction:column; gap:18px}
+.chead{display:flex; flex-direction:column; gap:4px; border-top:1px solid var(--line); padding-top:24px}
+.chead h2{margin:0; font-size:24px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.letter{font-family:Sora, sans-serif; background:var(--blue); color:#fff; width:34px; height:34px; border-radius:10px; display:inline-grid; place-items:center; font-size:17px}
+.chead p{margin:0; color:var(--muted); max-width:70ch}
+
+.variants{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.variant{background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column}
+.tile{display:grid; place-items:center; padding:28px 20px; min-height:170px}
+.tile svg{width:100%; max-width:300px; height:auto; direction:ltr}
+.tile.light{background:#FFFFFF; --ink:#0F172A; --brand:#2563EB; --sig:#06B6D4; --plate:#2563EB; --plateInk:#FFFFFF}
+.tile.dark{background:#0F172A; --ink:#FFFFFF; --brand:#3B82F6; --sig:#22D3EE; --plate:#2563EB; --plateInk:#FFFFFF}
+.vfoot{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 16px; border-top:1px solid var(--line)}
+.code{font-family:Sora, sans-serif; font-weight:700; background:var(--chip); color:var(--chipText); border-radius:8px; padding:2px 10px; font-size:14px}
+.vfoot span.d{color:var(--muted); font-size:14px}
+
+.apps{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.app{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:14px}
+.app h3{margin:0; font-size:16px}
+.card{
+  aspect-ratio:85.6/54; max-width:100%; width:100%; border-radius:14px; padding:6%;
+  background:linear-gradient(145deg,#0F172A 0%,#16244A 100%);
+  --ink:#FFFFFF; --brand:#3B82F6; --sig:#22D3EE; --plate:#2563EB; --plateInk:#FFFFFF;
+  color:#fff; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;
+  box-shadow:0 10px 30px rgba(15,23,42,.25);
+}
+.card .top{display:flex; justify-content:space-between; align-items:flex-start; direction:ltr}
+.card .top svg.logo{height:26px; width:auto}
+.card .top svg.nfc{height:24px; width:auto}
+.card .cta{display:flex; flex-direction:column; gap:2px}
+.card .cta b{font-size:clamp(15px,4.2vw,20px); line-height:1.3}
+.card .cta small{font-family:Sora, sans-serif; font-size:11px; letter-spacing:.08em; color:#A5B4CF; direction:ltr; text-align:right}
+.stars{color:#FBBF24; letter-spacing:2px; font-size:14px}
+.row{display:flex; align-items:center; gap:14px}
+.avatar{width:72px; height:72px; border-radius:50%; background:#0F172A; display:grid; place-items:center; flex:none; --ink:#FFFFFF; --brand:#3B82F6; --sig:#22D3EE; --plate:#2563EB; --plateInk:#FFFFFF}
+.avatar.lt{background:#FFFFFF; border:1px solid var(--line); --ink:#0F172A; --brand:#2563EB; --sig:#06B6D4}
+.avatar svg{width:44px; height:44px}
+.handle{font-family:Sora, sans-serif; font-size:14px; direction:ltr}
+.handle small{display:block; color:var(--muted); font-family:"IBM Plex Sans Arabic", sans-serif; font-size:12px}
+
+.how{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.how h2{margin:0 0 6px; font-size:20px}
+.how p{margin:0; color:var(--muted)}
+</style>
+
+<!-- Symbol library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- A: Arabic noon bowl with a tap dot that emits NFC waves -->
+    <symbol id="mA" viewBox="0 0 64 64">
+      <path d="M11 33 A21 21 0 0 0 53 33" fill="none" style="stroke:var(--brand)" stroke-width="7.5" stroke-linecap="round"/>
+      <circle cx="32" cy="23" r="5" style="fill:var(--sig)"/>
+      <path d="M25.6 16.6 A9 9 0 0 1 38.4 16.6" fill="none" style="stroke:var(--sig)" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M21.4 12.4 A15 15 0 0 1 42.6 12.4" fill="none" style="stroke:var(--sig)" stroke-width="3.6" stroke-linecap="round" opacity=".55"/>
+    </symbol>
+    <!-- B: fingertip tapping, ripples spreading -->
+    <symbol id="mB" viewBox="0 0 64 64">
+      <path d="M49.3 30 A20 20 0 1 1 14.7 30" fill="none" style="stroke:var(--brand)" stroke-width="3.6" stroke-linecap="round" opacity=".45"/>
+      <path d="M42.4 34 A12 12 0 1 1 21.6 34" fill="none" style="stroke:var(--brand)" stroke-width="3.6" stroke-linecap="round"/>
+      <circle cx="32" cy="40.5" r="4.6" style="fill:var(--sig)"/>
+      <rect x="26.5" y="3" width="11" height="31" rx="5.5" style="fill:var(--ink)"/>
+      <rect x="29" y="6" width="6" height="7" rx="3" style="fill:var(--sig)" opacity=".9"/>
+    </symbol>
+    <!-- C: N monogram whose last stroke sends a signal -->
+    <symbol id="mC" viewBox="0 0 64 64">
+      <rect x="0" y="0" width="64" height="64" rx="16" style="fill:var(--plate)"/>
+      <path d="M18 47 V19 L40 47 V27" fill="none" style="stroke:var(--plateInk)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="40" cy="17.5" r="3.8" style="fill:var(--sig)"/>
+      <path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" style="stroke:var(--sig)" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M42.1 5.7 A12 12 0 0 1 51.8 19.6" fill="none" style="stroke:var(--sig)" stroke-width="3.2" stroke-linecap="round" opacity=".6"/>
+    </symbol>
+    <!-- NFC glyph for card mockups -->
+    <symbol id="nfc" viewBox="0 0 24 24">
+      <path d="M8 6 A8 8 0 0 1 8 18" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      <path d="M12 3 A12 12 0 0 1 12 21" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+      <path d="M16 1 A15 15 0 0 1 16 23" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap" dir="rtl">
+  <header>
+    <div class="eyebrow">naqra · brand identity · v1</div>
+    <h1>أفكار لوغو <span>naqra</span> | نقرة</h1>
+    <p class="lead">ثلاث أفكار، ولكل فكرة نسختين: <b>1</b> إنجليزي بس، و<b>2</b> إنجليزي وتحته نقرة بالعربي. كل نسخة معروضة على خلفية فاتحة وخلفية غامقة. تحت بتلاقي شكل كل فكرة على بطاقة التقييم وعلى صورة البروفايل.</p>
+    <div class="palette" aria-label="ألوان الهوية">
+      <span class="sw"><i style="background:#0F172A"></i>كحلي <code>#0F172A</code></span>
+      <span class="sw"><i style="background:#2563EB"></i>أزرق <code>#2563EB</code></span>
+      <span class="sw"><i style="background:#22D3EE"></i>سماوي <code>#22D3EE</code></span>
+      <span class="sw"><i style="background:#F1F5F9"></i>سكني فاتح <code>#F1F5F9</code></span>
+    </div>
+  </header>
+
+  <!-- Concept A -->
+  <section class="concept">
+    <div class="chead">
+      <h2><span class="letter">A</span>نقطة النون</h2>
+      <p>حرف <b>ن</b>، ونقطته هي مكان النقرة وبتطلع منها موجات الـNFC. العربي بيقرأه نون، وغير العربي بيشوفه إشارة لاسلكية. بيجمع الهوية العربية مع التكنولوجيا.</p>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <div class="tile light">
+          <svg viewBox="0 0 250 80" role="img" aria-label="naqra A1"><use href="#mA" x="0" y="8" width="64" height="64"/><text x="76" y="55" font-family="Sora, sans-serif" font-weight="600" font-size="44" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text></svg>
+        </div>
+        <div class="tile dark">
+          <svg viewBox="0 0 250 80" role="img" aria-label="naqra A1 dark"><use href="#mA" x="0" y="8" width="64" height="64"/><text x="76" y="55" font-family="Sora, sans-serif" font-weight="600" font-size="44" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text></svg>
+        </div>
+        <div class="vfoot"><span class="code">A1</span><span class="d">إنجليزي بس</span></div>
+      </div>
+      <div class="variant">
+        <div class="tile light">
+          <svg viewBox="0 0 200 170" role="img" aria-label="naqra A2"><use href="#mA" x="68" y="0" width="64" height="64"/><text x="100" y="116" text-anchor="middle" font-family="Sora, sans-serif" font-weight="600" font-size="42" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text><text x="100" y="156" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="600" font-size="26" style="fill:var(--brand)">نقرة</text></svg>
+        </div>
+        <div class="tile dark">
+          <svg viewBox="0 0 200 170" role="img" aria-label="naqra A2 dark"><use href="#mA" x="68" y="0" width="64" height="64"/><text x="100" y="116" text-anchor="middle" font-family="Sora, sans-serif" font-weight="600" font-size="42" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text><text x="100" y="156" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="600" font-size="26" style="fill:var(--sig)">نقرة</text></svg>
+        </div>
+        <div class="vfoot"><span class="code">A2</span><span class="d">إنجليزي وعربي</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concept B -->
+  <section class="concept">
+    <div class="chead">
+      <h2><span class="letter">B</span>إصبع بيعمل Tap</h2>
+      <p>رأس إصبع نازل على نقطة، وحولها تموجات. بتشرح طريقة الاستعمال من غير كلام: قرّب، انقر، خلص. الأوضح للزبون اللي أول مرة بيشوف NFC.</p>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <div class="tile light">
+          <svg viewBox="0 0 250 80" role="img" aria-label="naqra B1"><use href="#mB" x="0" y="8" width="64" height="64"/><text x="76" y="55" font-family="Sora, sans-serif" font-weight="600" font-size="44" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text></svg>
+        </div>
+        <div class="tile dark">
+          <svg viewBox="0 0 250 80" role="img" aria-label="naqra B1 dark"><use href="#mB" x="0" y="8" width="64" height="64"/><text x="76" y="55" font-family="Sora, sans-serif" font-weight="600" font-size="44" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text></svg>
+        </div>
+        <div class="vfoot"><span class="code">B1</span><span class="d">إنجليزي بس</span></div>
+      </div>
+      <div class="variant">
+        <div class="tile light">
+          <svg viewBox="0 0 200 170" role="img" aria-label="naqra B2"><use href="#mB" x="68" y="0" width="64" height="64"/><text x="100" y="116" text-anchor="middle" font-family="Sora, sans-serif" font-weight="600" font-size="42" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text><text x="100" y="156" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="600" font-size="26" style="fill:var(--brand)">نقرة</text></svg>
+        </div>
+        <div class="tile dark">
+          <svg viewBox="0 0 200 170" role="img" aria-label="naqra B2 dark"><use href="#mB" x="68" y="0" width="64" height="64"/><text x="100" y="116" text-anchor="middle" font-family="Sora, sans-serif" font-weight="600" font-size="42" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text><text x="100" y="156" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="600" font-size="26" style="fill:var(--sig)">نقرة</text></svg>
+        </div>
+        <div class="vfoot"><span class="code">B2</span><span class="d">إنجليزي وعربي</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concept C -->
+  <section class="concept">
+    <div class="chead">
+      <h2><span class="letter">C</span>حرف N بإشارة</h2>
+      <p>حرف N داخل مربع أزرق، وآخر خط فيه بيطلع إشارة NFC. شكله أيقونة تطبيق، وبيبين قوي على البروفايل وعلى المنتجات الصغيرة زي الستيكرات والتاغات.</p>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <div class="tile light">
+          <svg viewBox="0 0 250 80" role="img" aria-label="naqra C1"><use href="#mC" x="0" y="8" width="64" height="64"/><text x="78" y="55" font-family="Sora, sans-serif" font-weight="600" font-size="44" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text></svg>
+        </div>
+        <div class="tile dark">
+          <svg viewBox="0 0 250 80" role="img" aria-label="naqra C1 dark"><use href="#mC" x="0" y="8" width="64" height="64"/><text x="78" y="55" font-family="Sora, sans-serif" font-weight="600" font-size="44" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text></svg>
+        </div>
+        <div class="vfoot"><span class="code">C1</span><span class="d">إنجليزي بس</span></div>
+      </div>
+      <div class="variant">
+        <div class="tile light">
+          <svg viewBox="0 0 200 170" role="img" aria-label="naqra C2"><use href="#mC" x="68" y="0" width="64" height="64"/><text x="100" y="116" text-anchor="middle" font-family="Sora, sans-serif" font-weight="600" font-size="42" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text><text x="100" y="156" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="600" font-size="26" style="fill:var(--brand)">نقرة</text></svg>
+        </div>
+        <div class="tile dark">
+          <svg viewBox="0 0 200 170" role="img" aria-label="naqra C2 dark"><use href="#mC" x="68" y="0" width="64" height="64"/><text x="100" y="116" text-anchor="middle" font-family="Sora, sans-serif" font-weight="600" font-size="42" letter-spacing="-1.5" style="fill:var(--ink)">naqra</text><text x="100" y="156" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="600" font-size="26" style="fill:var(--sig)">نقرة</text></svg>
+        </div>
+        <div class="vfoot"><span class="code">C2</span><span class="d">إنجليزي وعربي</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications -->
+  <section class="concept">
+    <div class="chead">
+      <h2>على المنتج والبروفايل</h2>
+      <p>كل فكرة على بطاقة تقييم جوجل (بالمقاس الحقيقي 85.6 × 54 ملم) وعلى صورة البروفايل بانستغرام.</p>
+    </div>
+    <div class="apps">
+      <div class="app">
+        <h3>A · نقطة النون</h3>
+        <div class="card">
+          <div class="top"><svg class="logo" viewBox="0 0 196 64" aria-hidden="true"><use href="#mA" x="0" y="0" width="64" height="64"/><text x="72" y="46" font-family="Sora, sans-serif" font-weight="600" font-size="40" letter-spacing="-1.5" fill="#FFFFFF">naqra</text></svg><svg class="nfc" viewBox="0 0 24 24" aria-hidden="true"><use href="#nfc"/></svg></div>
+          <div class="cta"><span class="stars">★★★★★</span><b>قرّب تلفونك وقيّمنا على Google</b><small>TAP TO REVIEW US</small></div>
+        </div>
+        <div class="row"><div class="avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mA"/></svg></div><div class="avatar lt"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mA"/></svg></div><div class="handle">@naqra.jo<small>صورة البروفايل</small></div></div>
+      </div>
+      <div class="app">
+        <h3>B · إصبع بيعمل Tap</h3>
+        <div class="card">
+          <div class="top"><svg class="logo" viewBox="0 0 196 64" aria-hidden="true"><use href="#mB" x="0" y="0" width="64" height="64"/><text x="72" y="46" font-family="Sora, sans-serif" font-weight="600" font-size="40" letter-spacing="-1.5" fill="#FFFFFF">naqra</text></svg><svg class="nfc" viewBox="0 0 24 24" aria-hidden="true"><use href="#nfc"/></svg></div>
+          <div class="cta"><span class="stars">★★★★★</span><b>قرّب تلفونك وقيّمنا على Google</b><small>TAP TO REVIEW US</small></div>
+        </div>
+        <div class="row"><div class="avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mB"/></svg></div><div class="avatar lt"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mB"/></svg></div><div class="handle">@naqra.jo<small>صورة البروفايل</small></div></div>
+      </div>
+      <div class="app">
+        <h3>C · حرف N بإشارة</h3>
+        <div class="card">
+          <div class="top"><svg class="logo" viewBox="0 0 196 64" aria-hidden="true"><use href="#mC" x="0" y="0" width="64" height="64"/><text x="74" y="46" font-family="Sora, sans-serif" font-weight="600" font-size="40" letter-spacing="-1.5" fill="#FFFFFF">naqra</text></svg><svg class="nfc" viewBox="0 0 24 24" aria-hidden="true"><use href="#nfc"/></svg></div>
+          <div class="cta"><span class="stars">★★★★★</span><b>قرّب تلفونك وقيّمنا على Google</b><small>TAP TO REVIEW US</small></div>
+        </div>
+        <div class="row"><div class="avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mC"/></svg></div><div class="avatar lt"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mC"/></svg></div><div class="handle">@naqra.jo<small>صورة البروفايل</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="how">
+    <h2>كيف تختار</h2>
+    <p>ابعت الكود اللي عجبك، مثلاً <b>A2</b>. وإذا عجبك شي من فكرة وشي من ثانية، احكيلي، بقدر أدمجهم. بعد ما تختار بجهزلك الملفات النهائية: PNG وSVG، ونسخة للطباعة، وصورة البروفايل.</p>
+  </div>
+</div>
