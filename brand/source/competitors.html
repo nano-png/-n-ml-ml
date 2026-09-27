@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>naqra – تحليل المنافسين</title>
+<style>
+@font-face{font-family:"PlexAr";src:url("plexar400.ttf");font-weight:400}
+@font-face{font-family:"PlexAr";src:url("plexar600.ttf");font-weight:600}
+@font-face{font-family:"PlexAr";src:url("plexar700.ttf");font-weight:700}
+@font-face{font-family:"Sora";src:url("sora400.ttf");font-weight:400}
+@font-face{font-family:"Sora";src:url("sora600.ttf");font-weight:600}
+@font-face{font-family:"Sora";src:url("sora700.ttf");font-weight:700}
+:root{--navy:#0F172A;--blue:#2563EB;--cyan:#22D3EE;--mist:#F1F5F9;--line:#E2E8F0;--muted:#55627A;--green:#15803D;--red:#B91C1C}
+@page{size:A4;margin:16mm 15mm 18mm 15mm}
+*{box-sizing:border-box}
+body{margin:0;font-family:"PlexAr","Sora",sans-serif;color:var(--navy);font-size:10.5pt;line-height:1.75}
+.en{font-family:"Sora",sans-serif;direction:ltr;unicode-bidi:isolate}
+h1,h2,h3{margin:0;line-height:1.35}
+h2{font-size:17pt;font-weight:700;margin-bottom:4mm;display:flex;align-items:center;gap:3mm}
+h2 .n{font-family:Sora;background:var(--blue);color:#fff;width:9mm;height:9mm;border-radius:2.5mm;display:inline-grid;place-items:center;font-size:12pt}
+h3{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+p{margin:0 0 3mm}
+.muted{color:var(--muted)}
+.page{page-break-after:always}
+.page:last-child{page-break-after:auto}
+section{margin-bottom:6mm}
+
+/* cover */
+.cover{height:257mm;background:var(--navy);color:#fff;border-radius:5mm;padding:22mm 18mm;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.cover .rings{position:absolute;left:-60mm;bottom:-40mm;width:200mm;height:200mm}
+.cover .brand{display:flex;align-items:center;gap:5mm;direction:ltr;justify-content:flex-end}
+.cover .brand svg{width:20mm;height:20mm}
+.cover .brand .wm{font-family:Sora;font-weight:600;font-size:30pt;letter-spacing:-.5pt}
+.cover .brand .ar{font-weight:600;font-size:16pt;color:var(--cyan);display:block;text-align:right;margin-top:-2mm}
+.cover h1{font-size:36pt;font-weight:700;line-height:1.25;position:relative}
+.cover .sub{font-size:13pt;color:#A5B4CF;margin-top:4mm;position:relative}
+.cover .meta{display:flex;gap:8mm;font-size:10pt;color:#A5B4CF;position:relative}
+.cover .meta b{display:block;color:#fff;font-size:11pt}
+
+/* summary */
+.summary{background:var(--mist);border-radius:4mm;padding:6mm 7mm}
+.summary ul{margin:0;padding-inline-start:5mm}
+.summary li{margin-bottom:.8mm}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:4mm}
+.kpi{border:1px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:#fff}
+.kpi b{display:block;font-size:17pt;color:var(--blue);font-family:Sora}
+.kpi span{font-size:9.5pt;color:var(--muted)}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th{background:var(--blue);color:#fff;font-weight:600;padding:2.5mm 3mm;text-align:right}
+td{border-bottom:1px solid var(--line);padding:1.8mm 3mm;vertical-align:top}
+tr:nth-child(even) td{background:#FAFBFD}
+td b{font-weight:700}
+.tag{display:inline-block;font-size:8.5pt;border-radius:10mm;padding:0 2.5mm;font-weight:600}
+.t-high{background:#FEE2E2;color:var(--red)}
+.t-mid{background:#FEF3C7;color:#92400E}
+.t-low{background:#DCFCE7;color:var(--green)}
+
+/* competitor cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.card{border:1px solid var(--line);border-radius:3mm;padding:4mm 5mm;break-inside:avoid}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;gap:2mm;margin-bottom:1.5mm}
+.card .kind{font-size:8.5pt;color:var(--muted)}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:1mm 3mm;font-size:9.5pt}
+.card dt{font-weight:700}
+.card dt.plus{color:var(--green)}
+.card dt.minus{color:var(--red)}
+.card dt.op{color:var(--blue)}
+.card dd{margin:0}
+
+/* weapons */
+.weapons{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.weapon{border-inline-start:1.2mm solid var(--blue);background:var(--mist);border-radius:2mm;padding:3.5mm 5mm;break-inside:avoid}
+.weapon h3{display:flex;gap:2mm;align-items:center}
+.weapon h3 .i{font-family:Sora;color:var(--blue)}
+.weapon p{margin:0;font-size:9.8pt}
+
+.position{background:var(--navy);color:#fff;border-radius:4mm;padding:6mm 7mm;font-size:12pt;line-height:1.8}
+.position b{color:var(--cyan)}
+
+.fill td{height:11mm}
+.fill td:first-child{font-weight:600;width:32mm}
+.check{list-style:none;padding:0;margin:0}
+.check li{padding-inline-start:7mm;position:relative;margin-bottom:2mm}
+.check li:before{content:"";position:absolute;right:0;top:1.6mm;width:3.6mm;height:3.6mm;border:1.4px solid var(--blue);border-radius:1mm}
+.note{font-size:9pt;color:var(--muted);border-top:1px solid var(--line);padding-top:3mm;margin-top:5mm}
+.src{font-size:8.5pt;color:var(--muted);direction:ltr;text-align:left;word-break:break-all}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="page">
+  <div class="cover">
+    <svg class="rings" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#2563EB" stroke-width=".6" opacity=".35"/>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#2563EB" stroke-width=".6" opacity=".55"/>
+      <circle cx="100" cy="100" r="45" fill="none" stroke="#22D3EE" stroke-width=".6" opacity=".7"/>
+    </svg>
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#2563EB"/>
+        <path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/>
+        <path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M42.1 5.7 A12 12 0 0 1 51.8 19.6" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <div><span class="wm">naqra</span><span class="ar">نقرة</span></div>
+    </div>
+    <div>
+      <h1>تحليل المنافسين<br>وخطة التفوّق عليهم</h1>
+      <p class="sub">سوق ستاندات وبطاقات تقييم Google بتقنية NFC في الأردن</p>
+    </div>
+    <div class="meta">
+      <div><b>التاريخ</b>أيلول 2026</div>
+      <div><b>المنتج الأول</b>ستاند تقييم Google (PVC مغناطيسي)</div>
+      <div><b>السوق</b>عمّان أولاً، ثم المحافظات</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY + TABLE -->
+<div class="page">
+  <section>
+    <h2><span class="n">1</span>الخلاصة بسطور</h2>
+    <div class="summary">
+      <ul>
+        <li>السوق الأردني فيه لاعبين قلال، و<b>أغلبهم عامّين</b>: بيبيعوا "NFC" كتقنية، مش كحل لمشكلة صاحب المحل.</li>
+        <li><b>ولا منافس واضح متخصص</b> بتقييمات Google للمطاعم والكافيهات والصالونات والعيادات، وهاد هو مكانك.</li>
+        <li>المنتجات المستوردة (Ubuy، والمتاجر الخليجية) <b>غالية وبطيئة، وما فيها برمجة ولا دعم محلي</b>.</li>
+        <li>البياعين الصغار على انستغرام أرخص، بس <b>ما عندهم هوية ولا ضمان ولا خدمة بعد البيع</b>.</li>
+        <li>طريقك للفوز: <b>تخصص + خدمة جاهزة من أول يوم + ضمانات + محتوى تعليمي</b>، مش سعر أرخص.</li>
+      </ul>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><b>6</b><span>أنواع منافسين بالسوق</span></div>
+      <div class="kpi"><b>0</b><span>منافس متخصص بتقييمات Google للمحلات</span></div>
+      <div class="kpi"><b>~1.4 د.أ</b><span>تكلفة الستاند واصل (تقدير)</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>خريطة المنافسين</h2>
+    <table>
+      <thead><tr><th style="width:24%">المنافس</th><th style="width:22%">شو بيقدم</th><th>نقطة ضعفه = فرصتك</th><th style="width:13%">الخطورة</th></tr></thead>
+      <tbody>
+        <tr><td><b class="en">NFC JO</b><br><span class="muted">مادبا وعمّان</span></td><td>تاغات وستيكرات وبطاقات NFC، مع طباعة وبرمجة حسب الطلب</td><td>عام ورسالته تقنية. ما بيحكي عن النتيجة (تقييمات وزباين)</td><td><span class="tag t-high">عالية</span></td></tr>
+        <tr><td><b class="en">Panda NFC Smart Card</b><br><span class="muted">عمّان</span></td><td>بطاقات أعمال ذكية للأفراد</td><td>مش مركّز على المطاعم والمحلات ولا على تقييمات Google</td><td><span class="tag t-mid">متوسطة</span></td></tr>
+        <tr><td><b>بياعين صغار على انستغرام</b></td><td>ستاندات من علي بابا بسعر رخيص</td><td>ما في هوية ولا ضمان ولا دعم. بيتنافسوا بالسعر بس</td><td><span class="tag t-mid">متوسطة</span></td></tr>
+        <tr><td><b>مطابع ومكاتب دعاية وإعلان</b></td><td>NFC كخدمة جانبية مع الطباعة</td><td>مش خبراء بالتقييمات، والسعر غالباً عالي، والتسليم بطيء</td><td><span class="tag t-mid">متوسطة</span></td></tr>
+        <tr><td><b class="en">Ubuy Jordan</b><br><span class="muted">مستورد (TAPro)</span></td><td>ستاندات أمريكية بماركة معروفة</td><td>غالي، والتوصيل بطيء، وما في برمجة ولا دعم محلي</td><td><span class="tag t-low">منخفضة</span></td></tr>
+        <tr><td><b>متاجر خليجية</b><br><span class="muted en">SmarTap…</span></td><td>بطاقات وستاندات، وبعضهم بيقبل الدينار</td><td>شحن دولي، وما في برمجة بنفس اليوم ولا زيارة</td><td><span class="tag t-low">منخفضة</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note">ملاحظة: صفحات انستغرام وأسعار المنافسين ما كانت متاحة للفحص وقت التحليل. عبّي جدول "التسوّق الخفي" بالصفحة 5 عشان تكمل الصورة بالأسعار الحقيقية.</p>
+  </section>
+</div>
+
+<!-- PROFILES -->
+<div class="page">
+  <section>
+    <h2><span class="n">3</span>بطاقة كل منافس</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="top"><h3 class="en">NFC JO</h3><span class="kind">محلي · عام</span></div>
+        <dl>
+          <dt class="plus">قوته</dt><dd>موجود من زمان، وعنده طباعة حسب الطلب ومنتجات متنوعة</dd>
+          <dt class="minus">ضعفه</dt><dd>بيبيع التقنية مش النتيجة، وما عنده رسالة موجهة للمطاعم والصالونات</dd>
+          <dt class="op">فرصتك</dt><dd>احكِ عن "زباين أكثر ونجوم أكثر"، وخلّيه هو يحكي عن الشرائح</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <div class="top"><h3 class="en">Panda NFC</h3><span class="kind">محلي · أفراد</span></div>
+        <dl>
+          <dt class="plus">قوته</dt><dd>مركّز على البزنس كارد الذكي والأفراد</dd>
+          <dt class="minus">ضعفه</dt><dd>مش متخصص بتقييمات Google ولا بالمحلات</dd>
+          <dt class="op">فرصتك</dt><dd>خذ سوق المحلات بالكامل قبل ما يتوسع لإله</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <div class="top"><h3>بياعين انستغرام</h3><span class="kind">محلي · سعر</span></div>
+        <dl>
+          <dt class="plus">قوته</dt><dd>أرخص سعر بالسوق</dd>
+          <dt class="minus">ضعفه</dt><dd>ما في ضمان ولا برمجة ولا متابعة، وشكلهم مش موثوق</dd>
+          <dt class="op">فرصتك</dt><dd>لا تنزل لسعرهم. بيّن الفرق: ضمان سنة وبرمجة مدى الحياة</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <div class="top"><h3>المطابع والدعاية</h3><span class="kind">محلي · جانبي</span></div>
+        <dl>
+          <dt class="plus">قوتهم</dt><dd>عندهم علاقات مع المحلات أصلاً</dd>
+          <dt class="minus">ضعفهم</dt><dd>مش خبراء، وسعرهم عالي، والتسليم بطيء</dd>
+          <dt class="op">فرصتك</dt><dd>لاحقاً ممكن تصير <b>مورّد إلهم</b> بسعر الجملة</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <div class="top"><h3 class="en">Ubuy (TAPro)</h3><span class="kind">مستورد · ماركة</span></div>
+        <dl>
+          <dt class="plus">قوته</dt><dd>ماركة عالمية ومنتج مرتب</dd>
+          <dt class="minus">ضعفه</dt><dd>غالي، وبياخذ أسابيع، وما في حدا يبرمجلك أو يساعدك</dd>
+          <dt class="op">فرصتك</dt><dd>"نفس الفكرة، بسعر أردني، وبتوصلك بكرة مبرمجة"</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <div class="top"><h3>المتاجر الخليجية</h3><span class="kind">إقليمي · أونلاين</span></div>
+        <dl>
+          <dt class="plus">قوتهم</dt><dd>متاجر احترافية ومحتوى جيد</dd>
+          <dt class="minus">ضعفهم</dt><dd>الشحن الدولي والجمرك، وما في دعم محلي</dd>
+          <dt class="op">فرصتك</dt><dd>تعلّم من محتواهم، وبيع الخدمة المحلية اللي ما بيقدروا يعطوها</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>مكانك بالسوق</h2>
+    <div class="position">
+      <b>نقرة</b> هي الشركة الأردنية المتخصصة بزيادة تقييمات Google للمطاعم والكافيهات والصالونات والعيادات.
+      منوصلّك الستاند <b>مبرمج وجاهز</b>، مع <b>ضمان سنة</b> و<b>إعادة برمجة مجانية مدى الحياة</b>.
+    </div>
+    <p class="muted" style="margin-top:3mm">هاي الجملة هي بوصلتك. كل إعلان وكل بوست وكل رد على واتساب لازم يخدمها.</p>
+  </section>
+</div>
+
+<!-- WEAPONS -->
+<div class="page">
+  <section>
+    <h2><span class="n">5</span>خطة التفوّق: 6 أسلحة</h2>
+    <div class="weapons">
+      <div class="weapon"><h3><span class="i">01</span>التخصص</h3><p>بيع "تقييمات أكثر لمحلك" مش "NFC". الإعلانات بتحكي عن النجوم والزباين الجداد، مش عن الشريحة.</p></div>
+      <div class="weapon"><h3><span class="i">02</span>جاهز من أول يوم</h3><p>إنت بتلاقي رابط التقييم، وبتبرمج الستاند، وبتجربه على آيفون وأندرويد، وبتوصله. وبعمّان بنفس اليوم أو ثاني يوم.</p></div>
+      <div class="weapon"><h3><span class="i">03</span>ضمانات بتشيل الخوف</h3><p>إعادة برمجة مجانية مدى الحياة، وضمان سنة ضد الأعطال، واسترجاع خلال 7 أيام.</p></div>
+      <div class="weapon"><h3><span class="i">04</span>الباقات</h3><p>"ستاند للكاشير وستاند للطاولات". بتكبّر قيمة الطلب، وتكلفة الإعلان بتتوزع على أكثر من قطعة.</p></div>
+      <div class="weapon"><h3><span class="i">05</span>الخبرة والمحتوى</h3><p>نصايح زيادة التقييمات والرد على السلبي، والتنبيه لسياسة Google. بتصير المرجع مش مجرد بياع.</p></div>
+      <div class="weapon"><h3><span class="i">06</span>الرابط الذكي والتقارير</h3><p>برمجة على <span class="en">naqrajo.com/r/…</span> بتخليك تغيّر الرابط من عندك وتبعت تقرير نقرات شهري. ولا منافس بيعمله.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>التسعير مقابل المنافسين</h2>
+    <table>
+      <thead><tr><th>الفئة</th><th>مين فيها</th><th>السعر التقريبي</th><th>نقرة وين؟</th></tr></thead>
+      <tbody>
+        <tr><td><b>رخيص</b></td><td>بياعين انستغرام</td><td>أقل من 7 د.أ</td><td rowspan="3" style="vertical-align:middle;background:#EFF6FF"><b>بالنص: 10 د.أ للستاند و17 للباقة</b><br>بس مع خدمة وضمان الفئة الغالية</td></tr>
+        <tr><td><b>متوسط</b></td><td>مطابع، NFC JO</td><td>بين 8 و 15 د.أ (تقدير)</td></tr>
+        <tr><td><b>غالي</b></td><td>المستورد والخليجي</td><td>أكثر من 15 د.أ مع الشحن</td></tr>
+      </tbody>
+    </table>
+    <p class="note">الأسعار تقديرية. حدّثها بعد التسوّق الخفي، وعدّل أسعارك بصفحة "حاسبة التسعير" بملف الإدارة.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>تحذير بتستعمله كميزة</h2>
+    <p><b>سياسة Google بتمنع</b> إنك تعطي خصم أو هدية مقابل تقييم، أو تطلب التقييم من الزباين المبسوطين بس. وممكن تنحذف تقييمات المحل بسببها. نبّه كل زبون بهاد الشي: بتحميه، وبتبين إنك خبير، وبتفرق عن المنافس اللي بيبيع وبيختفي.</p>
+  </section>
+</div>
+
+<!-- MYSTERY SHOPPER -->
+<div class="page">
+  <section>
+    <h2><span class="n">8</span>التسوّق الخفي (عبّيه بنفسك)</h2>
+    <p class="muted">ابعت لكل منافس رسالة كأنك صاحب كافيه: "مرحبا، بدي ستاند تقييم جوجل لكافيه بعمّان، قديش السعر وكم يوم التوصيل؟". سجّل الأجوبة هون.</p>
+    <table class="fill">
+      <thead><tr><th>المنافس</th><th>سعر الستاند</th><th>سعر الباقة</th><th>مدة التوصيل</th><th>بيبرمجوه؟</th><th>ضمان؟</th><th>سرعة الرد</th></tr></thead>
+      <tbody>
+        <tr><td class="en">NFC JO</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="en">Panda NFC</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>بياع انستغرام 1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>بياع انستغرام 2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>مطبعة قريبة</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="en">Ubuy</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="n">9</span>شو تراقب عند المنافسين (كل شهر)</h2>
+    <ul class="check">
+      <li>في منافس جديد بيعلن عن ستاندات تقييم؟ (افتح مكتبة إعلانات ميتا <span class="en">Meta Ad Library</span> واكتب "NFC" و"تقييم جوجل" واختار الأردن)</li>
+      <li>في حدا نزّل سعره أو عمل عرض؟ لا تلحقه بالسعر، زيد قيمة عرضك (ضمان، توصيل، باقة)</li>
+      <li>شو المحتوى اللي جاب تفاعل عندهم؟ اعمل نسخة أحسن منه بهوية نقرة</li>
+      <li>شو بيشتكوا زباينهم بالتعليقات؟ هاي نقاط بيعك الجاية</li>
+      <li>في منتج جديد بيطلبوه الناس وما حدا بيبيعه؟ (ستاند منيو، واي فاي، سوشال…) هاد توسعك الجاي</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">10</span>أول 3 خطوات بعد ما تقرأ</h2>
+    <ul class="check">
+      <li>اعمل التسوّق الخفي خلال هالأسبوع وعبّي الجدول فوق</li>
+      <li>ثبّت جملة "مكانك بالسوق" بالبايو وبأول بوست</li>
+      <li>أعلن الضمانات الثلاثة بكل إعلان وبكل رد واتساب</li>
+    </ul>
+  </section>
+
+  <div class="note">
+    <b>مصادر التحليل:</b>
+    <div class="src">facebook.com/NFC.JORDAN · facebook.com/NFCPanda · ubuy.com.jo (TAPro Review Stand) · esmartap.com · alibaba.com (NFC PVC table stands, $0.50–0.79 @ MOQ 100)</div>
+  </div>
+</div>
+
+</body>
+</html>
