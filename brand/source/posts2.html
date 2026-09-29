@@ -1,0 +1,91 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>
+@font-face{font-family:PlexAr;src:url(plexar400.ttf);font-weight:400}
+@font-face{font-family:PlexAr;src:url(plexar600.ttf);font-weight:600}
+@font-face{font-family:PlexAr;src:url(plexar700.ttf);font-weight:700}
+@font-face{font-family:Sora;src:url(sora600.ttf);font-weight:600}
+@font-face{font-family:Sora;src:url(sora700.ttf);font-weight:700}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:4050px;overflow:hidden}
+body{font-family:PlexAr,Sora,sans-serif}
+.post{width:1080px;height:1350px;position:relative;overflow:hidden;padding:80px 84px;display:flex;flex-direction:column}
+.dark{background:radial-gradient(110% 70% at 70% 20%,#16264F 0%,#0F172A 60%,#0B1226 100%);color:#fff}
+.light{background:#F1F5F9;color:#0F172A}
+.head{display:flex;justify-content:space-between;align-items:center}
+.head img{height:60px}
+.eyebrow{font-size:26px;font-weight:600;border-radius:40px;padding:6px 20px}
+.dark .eyebrow{color:#22D3EE;border:2px solid rgba(34,211,238,.6)}
+.light .eyebrow{color:#1E40AF;background:#DBEAFE}
+h1{font-size:84px;font-weight:700;line-height:1.2;margin-top:56px}
+.c{color:#22D3EE}.b{color:#2563EB}
+.sub{font-size:32px;margin-top:18px;line-height:1.6}
+.dark .sub{color:#A5B4CF}.light .sub{color:#55627A}
+/* post 4 */
+.reasons{margin-top:56px;display:flex;flex-direction:column;gap:26px}
+.reason{display:flex;gap:28px;align-items:center;background:rgba(37,99,235,.14);border:1.5px solid rgba(37,99,235,.5);border-radius:30px;padding:30px 34px}
+.reason .ic{flex:none;width:100px;height:100px;border-radius:26px;background:#2563EB;display:grid;place-items:center;font-size:52px}
+.reason b{display:block;font-size:40px}
+.reason span{font-size:28px;color:#A5B4CF}
+/* post 5 */
+.faq{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1}
+.qa{background:#fff;border-radius:30px;padding:34px 34px;box-shadow:0 10px 30px rgba(15,23,42,.06);display:flex;flex-direction:column;gap:14px}
+.qa b{font-size:36px;line-height:1.35}
+.qa b:before{content:"؟";display:inline-grid;place-items:center;width:52px;height:52px;border-radius:14px;background:#2563EB;color:#fff;font-size:32px;margin-left:14px;vertical-align:middle}
+.qa span{font-size:28px;color:#55627A;line-height:1.55}
+/* post 6 */
+.badges{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.badge{background:#fff;color:#0F172A;border-radius:30px;padding:24px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.badge .ic{width:92px;height:92px;border-radius:50%;background:#EFF6FF;border:4px solid #2563EB;display:grid;place-items:center;font-size:46px}
+.badge b{font-size:38px;line-height:1.3}
+.badge span{font-size:26px;color:#55627A}
+.badge.hero{grid-column:1/-1;background:#2563EB;color:#fff;flex-direction:row;justify-content:center;gap:26px;padding:26px}
+.badge.hero .ic{background:#fff;border-color:#fff}
+.badge.hero b{font-size:46px}
+.badge.hero span{color:#DBEAFE}
+.cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-radius:26px;padding:24px 32px}
+.dark .cta{background:#2563EB}
+.light .cta{background:#0F172A;color:#fff}
+.cta b{font-size:36px}
+.cta span{font-family:Sora;font-size:30px;direction:ltr}
+</style></head><body>
+
+<!-- POST 4: why reviews matter -->
+<section class="post dark">
+  <div class="head"><img src="logo-white.svg" alt=""><span class="eyebrow">ليش التقييمات مهمة؟</span></div>
+  <h1>التقييم مش رقم…<br><span class="c">هو زبون جديد</span> 👀</h1>
+  <p class="sub">قبل ما حدا يجرب مطعم أو صالون جديد، أول إشي بيعمله: بيفتح Google وبيقرأ.</p>
+  <div class="reasons">
+    <div class="reason"><div class="ic">📍</div><div><b>بتطلع أعلى على Google Maps</b><span>التقييمات الكثيرة والحديثة بتقوّي ظهور محلك بالبحث</span></div></div>
+    <div class="reason"><div class="ic">🤝</div><div><b>بتعطي ثقة للزبون الجديد</b><span>الناس بتصدّق كلام الزباين أكثر من الإعلانات</span></div></div>
+    <div class="reason"><div class="ic">📈</div><div><b>زباينك المبسوطين بيسوقولك</b><span>كل زبون مبسوط ما قيّم = فرصة ضايعة</span></div></div>
+  </div>
+  <div class="cta"><b>📩 ابعتلنا «ستاند»</b><span>@naqra.jo</span></div>
+</section>
+
+<!-- POST 5: FAQ -->
+<section class="post light">
+  <div class="head"><img src="logo-color.svg" alt=""><span class="eyebrow">أسئلة بتوصلنا كثير</span></div>
+  <h1>سألتونا… <span class="b">وجاوبنا</span> 💬</h1>
+  <div class="faq">
+    <div class="qa"><b>بيحتاج كهربا أو إنترنت؟</b><span>لا. الستاند ما فيه بطارية ولا شحن. بس تلفون الزبون بيحتاج إنترنت عشان تفتح صفحة التقييم.</span></div>
+    <div class="qa"><b>بيشتغل على كل التلفونات؟</b><span>على الآيفون والأندرويد اللي فيهم خاصية NFC، وهي موجودة بأغلب التلفونات الحديثة. ومن غير تطبيق.</span></div>
+    <div class="qa"><b>إذا تغيّر رابط محلي؟</b><span>منعيد برمجته مجاناً، ومدى الحياة.</span></div>
+    <div class="qa"><b>مين بيبرمجه؟</b><span>إحنا. منبرمجه على رابط تقييم محلك، ومنجرّبه قبل ما نسلّمك.</span></div>
+  </div>
+  <div class="cta"><b>عندك سؤال ثاني؟ ابعتلنا 📩</b><span>@naqra.jo</span></div>
+</section>
+
+<!-- POST 6: guarantees -->
+<section class="post dark">
+  <div class="head"><img src="logo-white.svg" alt=""><span class="eyebrow">ليش تختار نقرة؟</span></div>
+  <h1>جرّب وإنت <span class="c">مرتاح</span> 🛡️</h1>
+  <p class="sub">ما بدنا تخاطر بإشي. عشان هيك كل ستاند من نقرة معه:</p>
+  <div class="badges">
+    <div class="badge hero"><div class="ic">💯</div><div><b>ضمان استرجاع المال خلال شهر</b><br><span>ما عجبك؟ رجّعه ومصاريك بترجعلك</span></div></div>
+    <div class="badge"><div class="ic">🛠️</div><b>برمجة وتركيب علينا</b><span>إنت ما بتعمل إشي</span></div>
+    <div class="badge"><div class="ic">🔄</div><b>إعادة برمجة مجانية</b><span>مدى الحياة</span></div>
+    <div class="badge"><div class="ic">🛡️</div><b>ضمان سنة</b><span>ضد أي عطل</span></div>
+    <div class="badge"><div class="ic">📱</div><b>آيفون وأندرويد</b><span>من غير تطبيق</span></div>
+  </div>
+  <div class="cta"><b>📩 ابعتلنا «ستاند»</b><span>@naqra.jo</span></div>
+</section>
+</body></html>

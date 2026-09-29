@@ -1,0 +1,50 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link rel="stylesheet" href="reel-base.css"><style>
+#title{top:390px;font-size:120px}
+#title span{display:inline-block}
+.price{position:absolute;left:90px;right:90px;border-radius:40px;padding:40px 56px;display:flex;justify-content:space-between;align-items:center;opacity:0}
+#p1{top:640px;background:#fff;color:#0F172A}
+#p2{top:900px;background:#2563EB;box-shadow:0 30px 70px rgba(37,99,235,.45)}
+.price .q{font-size:60px;font-weight:700}
+.price .q small{display:block;font-size:36px;font-weight:600;opacity:.8}
+.price .v{font-family:Sora;font-size:130px;font-weight:700;direction:ltr;line-height:1}
+.price .v span{font-family:PlexAr;font-size:46px;margin-right:10px;unicode-bidi:isolate;direction:rtl;display:inline-block}
+#badge{top:860px;left:auto;right:70px;width:auto;background:#FBBF24;color:#0F172A;font-size:38px;font-weight:700;border-radius:30px;padding:8px 26px;transform-origin:center;opacity:0}
+#list{top:1200px;display:flex;flex-direction:column;align-items:center;gap:26px}
+#list div{font-size:52px;font-weight:700;opacity:0}
+#list div:before{content:"✓";color:#22D3EE;margin-left:18px}
+</style></head><body>
+<div id="logo" class="abs"><img src="logo-white.svg" alt=""></div>
+<div id="title" class="abs t">عرض <span class="c">نقرة</span> 🔥</div>
+<div class="price" id="p1"><div class="q">ستاند واحد</div><div class="v">15<span>د.أ</span></div></div>
+<div class="price" id="p2"><div class="q">10 ستاندات<small>12 د.أ للستاند</small></div><div class="v">120<span>د.أ</span></div></div>
+<div class="abs" id="badge">وفّر 30 د.أ</div>
+<div id="list" class="abs">
+  <div>برمجة وتركيب علينا</div>
+  <div>ضمان سنة</div>
+  <div>إعادة برمجة مجانية مدى الحياة</div>
+  <div>ضمان استرجاع المال خلال شهر 💯</div>
+</div>
+<div class="abs end">
+  <img src="logo-white.svg" alt="">
+  <div class="line">زبونك بيحبك…<br><span class="c">خلّي Google يعرف 😉</span></div>
+  <div class="cta">ابعتلنا «ستاند» 📩</div>
+</div>
+<script src="reel-lib.js"></script>
+<script>
+const items=[...document.querySelectorAll('#list div')];
+window.renderAt=function(t){
+  const tt=$('title'); const k=prog(t,0.2,0.55);
+  tt.style.opacity=Math.min(k>0?1:0,1-prog(t,8.2,8.5)); tt.style.transform=`scale(${k>0?back(k):.001})`;
+  // price 1 slide from right, price 2 from left
+  [['p1',1.2,120],['p2',2.2,-120]].forEach(([id,a,dx])=>{const el=$(id);const i=easeOut(prog(t,a,a+.45));
+    el.style.opacity=Math.min(i,1-prog(t,8.2,8.5)); el.style.transform=`translateX(${(1-i)*dx}px)`;});
+  // counter on 120
+  const v2=$('p2').querySelector('.v'); const n=Math.round(120*easeOut(prog(t,2.3,3.1)));
+  v2.firstChild.nodeValue=String(n);
+  const b=$('badge'); const bk=prog(t,3.2,3.5); b.style.opacity=Math.min(bk>0?1:0,1-prog(t,8.2,8.5));
+  b.style.transform=`rotate(-6deg) scale(${bk>0?back(bk):.001})`;
+  items.forEach((el,i)=>show(el,t,4.0+i*0.8,8.5,.35,.3,30));
+  endCard(t,8.6);
+};
+renderAt(0);
+</script></body></html>

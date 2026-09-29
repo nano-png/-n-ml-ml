@@ -1,0 +1,92 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link rel="stylesheet" href="reel-base.css"><style>
+#title{top:400px;font-size:112px}
+#stepLabel{top:560px;display:flex;justify-content:center}
+.lab{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:22px;font-size:64px;font-weight:700;opacity:0}
+.lab b{font-family:Sora;background:#2563EB;border-radius:50%;width:96px;height:96px;display:grid;place-items:center;font-size:54px}
+#scene{top:760px;height:820px}
+#dots{top:1640px;display:flex;justify-content:center;gap:22px;direction:ltr}
+#dots i{width:22px;height:22px;border-radius:50%;background:#334155;display:block}
+</style></head><body>
+<div id="logo" class="abs"><img src="logo-white.svg" alt=""></div>
+<div id="title" class="abs t">كيف بيشتغل؟ 🤔</div>
+<div id="stepLabel" class="abs">
+  <div class="lab" id="l1"><b>1</b>الزبون بيقرّب تلفونه</div>
+  <div class="lab" id="l2"><b>2</b>بيختار النجوم</div>
+  <div class="lab" id="l3"><b>3</b>خلصت ✨</div>
+</div>
+<svg id="scene" class="abs" viewBox="0 0 1080 820" style="overflow:visible" aria-hidden="true">
+  <g fill="none" stroke="#22D3EE">
+    <circle id="r1" cx="540" cy="400" r="0" stroke-width="6"/>
+    <circle id="r2" cx="540" cy="400" r="0" stroke-width="5"/>
+  </g>
+  <g id="stand">
+    <path d="M330 740 L750 740 L810 785 L270 785 Z" fill="#1E293B"/>
+    <g transform="translate(360 240) rotate(-4)">
+      <rect width="360" height="500" rx="30" fill="#fff"/>
+      <g transform="translate(142 40)"><rect width="76" height="76" rx="19" fill="#2563EB"/>
+        <g transform="scale(1.1875)"><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/></g></g>
+      <text x="180" y="190" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="42" fill="#0F172A">قرّب تلفونك</text>
+      <text x="180" y="244" text-anchor="middle" font-family="PlexAr" font-weight="600" font-size="31" fill="#2563EB">وقيّمنا على Google</text>
+      <g transform="translate(180 335)" fill="none" stroke="#0F172A" stroke-width="8" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-48 -34 A66 66 0 0 1 48 -34" opacity=".7"/><circle cx="0" cy="14" r="9" fill="#0F172A" stroke="none"/></g>
+    </g>
+  </g>
+  <!-- phone: grows into a big screen for steps 2 and 3 -->
+  <g id="phone">
+    <rect x="-110" y="-215" width="220" height="430" rx="34" fill="#0B1226" stroke="#22D3EE" stroke-width="6"/>
+    <rect x="-94" y="-180" width="188" height="360" rx="18" fill="#13224A"/>
+    <rect x="-32" y="-202" width="64" height="9" rx="4.5" fill="#334155"/>
+    <g id="screen" opacity="0">
+      <text x="0" y="-95" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="24" fill="#CBD5E1">قيّم تجربتك</text>
+      <g id="pstars" transform="translate(-80 -60)"></g>
+      <rect id="postBtn" x="-64" y="40" width="128" height="46" rx="23" fill="#2563EB"/>
+      <text x="0" y="71" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="22" fill="#fff">نشر</text>
+      <g id="done" opacity="0">
+        <rect x="-94" y="-180" width="188" height="360" rx="18" fill="#13224A"/>
+        <circle cx="0" cy="-20" r="54" fill="#16A34A"/>
+        <path d="M-24 -20 L-6 0 L28 -38" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="0" y="80" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="28" fill="#fff">شكراً! ⭐</text>
+      </g>
+    </g>
+  </g>
+</svg>
+<div id="dots" class="abs"><i></i><i></i><i></i></div>
+<div class="abs end">
+  <img src="logo-white.svg" alt="">
+  <div class="line">3 خطوات…<br><span class="c">وتقييماتك بتكبر 📈</span></div>
+  <div class="cta">ابعتلنا «ستاند» 📩</div>
+  <div class="g">💯 ضمان استرجاع المال خلال شهر</div>
+</div>
+<script src="reel-lib.js"></script>
+<script>
+const ps=$('pstars');
+for(let i=0;i<5;i++) ps.insertAdjacentHTML('beforeend',`<path d="${STAR_PATH}" transform="translate(${i*32} 0) scale(1.35)" fill="none" stroke="#64748B" stroke-width="1.3"/>`);
+const pstars=[...ps.querySelectorAll('path')];
+const dots=[...document.querySelectorAll('#dots i')];
+window.renderAt=function(t){
+  show($('title'),t,0.2,2.0,.4,.3,50);
+  show($('l1'),t,1.9,4.4,.35,.3,30);
+  show($('l2'),t,4.4,6.6,.35,.3,30);
+  show($('l3'),t,6.6,8.6,.35,.3,30);
+  const step = t<4.4?0:(t<6.6?1:2);
+  dots.forEach((d,i)=>{d.style.background = (t>1.9&&t<8.6&&i===step)?'#22D3EE':'#334155';});
+  $('dots').style.opacity = Math.min(prog(t,1.9,2.2),1-prog(t,8.3,8.6));
+  const sc=$('scene'); const inS=easeOut(prog(t,0.6,1.2)), outS=1-prog(t,8.3,8.6);
+  sc.style.opacity=Math.min(inS,outS); sc.style.transform=`translateY(${(1-inS)*100}px)`;
+  // stand fades while phone zooms for steps 2-3
+  $('stand').setAttribute('opacity', 1-prog(t,4.3,4.7));
+  // phone path
+  const a=easeInOut(prog(t,2.2,3.4));           // approach
+  const z=easeInOut(prog(t,4.3,4.9));           // zoom to center
+  let px=880-(880-640)*a, py=140+(330-140)*a, rot=22-(22-8)*a, s=1;
+  px=px+(540-px)*z; py=py+(380-py)*z; rot=rot*(1-z); s=1+0.45*z;
+  $('phone').setAttribute('transform',`translate(${px} ${py}) rotate(${rot}) scale(${s})`);
+  $('screen').setAttribute('opacity',prog(t,3.5,3.8));
+  [['r1',3.4],['r2',3.6]].forEach(([id,s0])=>{const k=prog(t,s0,s0+.9);const c=$(id);
+    c.setAttribute('r',40+400*easeOut(k)); c.setAttribute('opacity',k>0&&k<1?(1-k)*.9:0);});
+  pstars.forEach((p,i)=>{const on=t>=5.0+i*.22;p.setAttribute('fill',on?'#FBBF24':'none');p.setAttribute('stroke',on?'#FBBF24':'#64748B');});
+  $('postBtn').setAttribute('fill', t>6.3&&t<6.6?'#1D4ED8':'#2563EB');
+  $('done').setAttribute('opacity',prog(t,6.6,6.9));
+  endCard(t,8.7);
+};
+renderAt(0);
+</script></body></html>

@@ -1,0 +1,19 @@
+@font-face{font-family:PlexAr;src:url(plexar400.ttf);font-weight:400}
+@font-face{font-family:PlexAr;src:url(plexar600.ttf);font-weight:600}
+@font-face{font-family:PlexAr;src:url(plexar700.ttf);font-weight:700}
+@font-face{font-family:Sora;src:url(sora600.ttf);font-weight:600}
+@font-face{font-family:Sora;src:url(sora700.ttf);font-weight:700}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:radial-gradient(120% 80% at 50% 45%,#13224A 0%,#0F172A 55%,#0B1226 100%);color:#fff;font-family:PlexAr,Sora,sans-serif;position:relative}
+.abs{position:absolute;left:0;right:0}
+.t{text-align:center;font-weight:700;line-height:1.2}
+.c{color:#22D3EE}
+.muted{color:#A5B4CF}
+#logo{top:150px;display:flex;justify-content:center}
+#logo img{height:70px}
+.end{top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0}
+.end img{height:130px}
+.end .line{font-size:66px;font-weight:700;text-align:center;line-height:1.3}
+.end .cta{background:#2563EB;border-radius:36px;padding:28px 60px;font-size:60px;font-weight:700;box-shadow:0 24px 60px rgba(37,99,235,.45)}
+.end .g{font-size:40px;color:#A5B4CF;font-weight:600}
