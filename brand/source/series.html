@@ -1,0 +1,126 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>
+@font-face{font-family:PlexAr;src:url(plexar400.ttf);font-weight:400}
+@font-face{font-family:PlexAr;src:url(plexar600.ttf);font-weight:600}
+@font-face{font-family:PlexAr;src:url(plexar700.ttf);font-weight:700}
+@font-face{font-family:Sora;src:url(sora600.ttf);font-weight:600}
+@font-face{font-family:Sora;src:url(sora700.ttf);font-weight:700}
+*{box-sizing:border-box;margin:0}
+html,body{width:3240px;height:1350px;overflow:hidden}
+body{background:linear-gradient(90deg,#0B1226 0%,#0F172A 40%,#101B38 70%,#0F172A 100%);color:#fff;font-family:PlexAr,Sora,sans-serif;position:relative}
+svg.bg{position:absolute;inset:0;width:3240px;height:1350px}
+.panel{position:absolute;top:0;width:1080px;height:1350px;padding:84px 96px;display:flex;flex-direction:column}
+.p3{left:0}.p2{left:1080px}.p1{left:2160px}
+.head{display:flex;justify-content:space-between;align-items:center}
+.head img{height:58px}
+.idx{font-family:Sora;font-weight:600;font-size:24px;color:#22D3EE;border:2px solid rgba(34,211,238,.6);border-radius:40px;padding:4px 18px;direction:ltr}
+h1{font-size:98px;font-weight:700;line-height:1.18;margin-top:70px}
+h1 .c{color:#22D3EE}
+.sub{font-size:36px;color:#A5B4CF;margin-top:22px;line-height:1.55}
+.stars{display:flex;gap:18px;direction:ltr;margin-top:60px}
+.stars svg{width:104px;height:104px}
+.chip{align-self:flex-start;margin-top:36px;background:rgba(148,163,184,.14);border:1.5px solid rgba(148,163,184,.35);border-radius:40px;padding:10px 26px;font-size:28px;color:#CBD5E1}
+.list{display:flex;flex-direction:column;gap:14px;margin-top:44px;font-size:32px;font-weight:600}
+.list div:before{content:"✓";color:#22D3EE;margin-left:14px;font-weight:700}
+.cta{margin-top:auto;background:#2563EB;border-radius:28px;padding:26px 34px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 20px 50px rgba(37,99,235,.35)}
+.cta b{font-size:40px;font-weight:700}
+.cta span{font-size:26px;color:#DBEAFE}
+.foot{margin-top:auto;font-size:28px;color:#94A3B8}
+.foot b{color:#fff}
+</style></head><body>
+
+<svg class="bg" viewBox="0 0 3240 1350" aria-hidden="true">
+  <defs>
+    <linearGradient id="wg" x1="1" x2="0" y1="0" y2="0">
+      <stop offset="0" stop-color="#475569" stop-opacity=".5"/>
+      <stop offset=".45" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- tap ripples around the stand in panel 2 -->
+  <g fill="none" stroke="#2563EB">
+    <circle cx="1620" cy="930" r="250" stroke-width="3" opacity=".45"/>
+    <circle cx="1620" cy="930" r="380" stroke-width="3" opacity=".28"/>
+    <circle cx="1620" cy="930" r="520" stroke-width="3" opacity=".15"/>
+  </g>
+  <!-- the signal line that runs through all three posts, right to left -->
+  <path d="M3240 1210 C 2900 1210, 2700 1080, 2420 1120 S 1950 1250, 1760 1080 S 1500 900, 1300 1040 S 900 1230, 640 1120 S 250 1000, 0 1060"
+        fill="none" stroke="url(#wg)" stroke-width="7" stroke-linecap="round" filter="url(#glow)" opacity=".95"/>
+</svg>
+
+<!-- PART 1 (right third): the problem -->
+<section class="panel p1">
+  <div class="head"><img src="logo-white.svg" alt=""><span class="idx">1/3</span></div>
+  <h1>زبونك<br>بيحبك…</h1>
+  <p class="sub">بس ولا مرة كتب عنك تقييم 😅<br>مش لأنه مش مبسوط، لأنه التقييم بدو وقت وخطوات.</p>
+  <div class="stars">
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round"/></svg>
+  </div>
+  <span class="chip">وGoogle ما بيعرف قديش هو مبسوط 🤷‍♂️</span>
+  <p class="foot">كمّل ← <b>الحل بالبوست الجاي</b></p>
+</section>
+
+<!-- PART 2 (middle): the solution -->
+<section class="panel p2">
+  <div class="head"><img src="logo-white.svg" alt=""><span class="idx">2/3</span></div>
+  <h1>قرّب<br><span class="c">تلفونه…</span></h1>
+  <p class="sub">ستاند نقرة على الكاشير: صفحة تقييم محلك<br>بتفتح لحالها بـ3 ثواني، من غير أي تطبيق.</p>
+  <svg viewBox="0 0 700 620" style="width:640px;align-self:center;margin-top:30px" aria-hidden="true">
+    <!-- stand base -->
+    <path d="M60 565 L440 565 L500 605 L0 605 Z" fill="#1E293B"/>
+    <!-- stand face -->
+    <g transform="translate(90 160) rotate(-5)">
+      <rect x="0" y="0" width="300" height="420" rx="26" fill="#FFFFFF"/>
+      <g transform="translate(118 34) scale(1)">
+        <rect width="64" height="64" rx="16" fill="#2563EB"/>
+        <path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/>
+        <path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M42.1 5.7 A12 12 0 0 1 51.8 19.6" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round" opacity=".6"/>
+      </g>
+      <text x="150" y="160" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="34" fill="#0F172A">قرّب تلفونك</text>
+      <text x="150" y="204" text-anchor="middle" font-family="PlexAr" font-weight="600" font-size="26" fill="#2563EB">وقيّمنا على Google</text>
+      <g transform="translate(150 280)" fill="none" stroke="#0F172A" stroke-width="7" stroke-linecap="round">
+        <path d="M-22 -10 A30 30 0 0 1 22 -10" opacity=".45"/>
+        <path d="M-40 -28 A56 56 0 0 1 40 -28" opacity=".7"/>
+        <circle cx="0" cy="12" r="8" fill="#0F172A" stroke="none"/>
+      </g>
+      <text x="150" y="375" text-anchor="middle" font-size="34" fill="#F59E0B" style="letter-spacing:6px">★★★★★</text>
+    </g>
+    <!-- phone approaching -->
+    <g transform="translate(470 60) rotate(16) scale(.9)">
+      <rect x="0" y="0" width="170" height="330" rx="28" fill="#0B1226" stroke="#22D3EE" stroke-width="5"/>
+      <rect x="14" y="30" width="142" height="270" rx="14" fill="#13224A"/>
+      <rect x="60" y="12" width="50" height="8" rx="4" fill="#334155"/>
+      <text x="85" y="140" text-anchor="middle" font-size="26" fill="#FBBF24" style="letter-spacing:3px">★★★★★</text>
+      <rect x="34" y="180" width="102" height="36" rx="18" fill="#2563EB"/>
+      <text x="85" y="205" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="20" fill="#fff">قيّم</text>
+    </g>
+  </svg>
+  <p class="foot">كمّل ← <b>النتيجة بالبوست الجاي</b></p>
+</section>
+
+<!-- PART 3 (left third): the result + CTA -->
+<section class="panel p3">
+  <div class="head"><img src="logo-white.svg" alt=""><span class="idx">3/3</span></div>
+  <h1>…وخلّي Google<br><span class="c">يعرف ⭐</span></h1>
+  <p class="sub">تقييمات أكثر، ظهور أعلى على Google Maps،<br>وزباين جداد بيدخلوا من الباب.</p>
+  <div class="stars">
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="#FBBF24"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="#FBBF24"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="#FBBF24"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="#FBBF24"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" fill="#FBBF24"/></svg>
+  </div>
+  <div class="list">
+    <div>آيفون وأندرويد، من غير تطبيق</div>
+    <div>برمجة وتركيب علينا</div>
+    <div>ضمان استرجاع المال خلال شهر</div>
+  </div>
+  <div class="cta"><b>ابعتلنا «ستاند» 📩</b><span>على الواتساب أو بالرسائل</span></div>
+</section>
+</body></html>
