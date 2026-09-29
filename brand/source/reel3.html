@@ -21,7 +21,6 @@
 <div id="list" class="abs">
   <div>برمجة وتركيب علينا</div>
   <div>ضمان سنة</div>
-  <div>إعادة برمجة مجانية مدى الحياة</div>
   <div>ضمان استرجاع المال خلال شهر 💯</div>
 </div>
 <div class="abs end">
@@ -43,7 +42,7 @@ window.renderAt=function(t){
   v2.firstChild.nodeValue=String(n);
   const b=$('badge'); const bk=prog(t,3.2,3.5); b.style.opacity=Math.min(bk>0?1:0,1-prog(t,8.2,8.5));
   b.style.transform=`rotate(-6deg) scale(${bk>0?back(bk):.001})`;
-  items.forEach((el,i)=>show(el,t,4.0+i*0.8,8.5,.35,.3,30));
+  items.forEach((el,i)=>show(el,t,4.0+i*1.0,8.5,.35,.3,30));
   endCard(t,8.6);
 };
 renderAt(0);
