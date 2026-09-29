@@ -1,0 +1,152 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>
+@font-face{font-family:PlexAr;src:url(plexar400.ttf);font-weight:400}
+@font-face{font-family:PlexAr;src:url(plexar600.ttf);font-weight:600}
+@font-face{font-family:PlexAr;src:url(plexar700.ttf);font-weight:700}
+@font-face{font-family:Sora;src:url(sora600.ttf);font-weight:600}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:radial-gradient(120% 80% at 50% 45%,#13224A 0%,#0F172A 55%,#0B1226 100%);color:#fff;font-family:PlexAr,Sora,sans-serif;position:relative}
+.abs{position:absolute;left:0;right:0}
+.t{text-align:center;font-weight:700;line-height:1.2}
+#logo{top:150px;display:flex;justify-content:center}
+#logo img{height:70px}
+#s1a{top:430px;font-size:118px}
+#s1b{top:600px;font-size:62px;color:#A5B4CF;font-weight:600}
+#stars{top:760px;display:flex;justify-content:center;gap:26px;direction:ltr}
+#stars svg{width:130px;height:130px}
+#s2{top:420px;font-size:110px}
+#s2 span{color:#22D3EE}
+#s2b{top:585px;font-size:50px;color:#A5B4CF;font-weight:600}
+#scene{top:720px;height:760px}
+#s3{top:420px;font-size:108px}
+#s3 span{color:#22D3EE}
+#end{top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px}
+#end img{height:130px}
+#end .line{font-size:66px;font-weight:700;text-align:center;line-height:1.3}
+#end .line span{color:#22D3EE}
+#end .cta{background:#2563EB;border-radius:36px;padding:28px 60px;font-size:60px;font-weight:700;box-shadow:0 24px 60px rgba(37,99,235,.45)}
+#end .g{font-size:40px;color:#A5B4CF;font-weight:600}
+</style></head><body>
+<div id="logo" class="abs"><img src="logo-white.svg" alt=""></div>
+
+<div id="s1a" class="abs t">زبونك بيحبك…</div>
+<div id="s1b" class="abs t">بس ما بيكتب تقييم 😅</div>
+
+<div id="s2" class="abs t">قرّب <span>تلفونه…</span></div>
+<div id="s2b" class="abs t">3 ثواني · من غير تطبيق</div>
+
+<div id="s3" class="abs t">…خلّي Google<br><span>يعرف ⭐</span></div>
+
+<div id="stars" class="abs"></div>
+
+<svg id="scene" class="abs" viewBox="0 0 1080 760" style="overflow:visible" aria-hidden="true">
+  <g id="ripples" fill="none" stroke="#22D3EE">
+    <circle id="r1" cx="540" cy="360" r="0" stroke-width="6"/>
+    <circle id="r2" cx="540" cy="360" r="0" stroke-width="5"/>
+    <circle id="r3" cx="540" cy="360" r="0" stroke-width="4"/>
+  </g>
+  <g id="stand">
+    <path d="M330 690 L750 690 L810 735 L270 735 Z" fill="#1E293B"/>
+    <g transform="translate(360 190) rotate(-4)">
+      <rect width="360" height="500" rx="30" fill="#fff"/>
+      <g transform="translate(142 40)">
+        <rect width="76" height="76" rx="19" fill="#2563EB"/>
+        <g transform="scale(1.1875)">
+          <path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/>
+          <path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/>
+        </g>
+      </g>
+      <text x="180" y="190" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="42" fill="#0F172A">قرّب تلفونك</text>
+      <text x="180" y="244" text-anchor="middle" font-family="PlexAr" font-weight="600" font-size="31" fill="#2563EB">وقيّمنا على Google</text>
+      <g transform="translate(180 335)" fill="none" stroke="#0F172A" stroke-width="8" stroke-linecap="round">
+        <path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/>
+        <path d="M-48 -34 A66 66 0 0 1 48 -34" opacity=".7"/>
+        <circle cx="0" cy="14" r="9" fill="#0F172A" stroke="none"/>
+      </g>
+      <text x="180" y="450" text-anchor="middle" font-size="42" fill="#F59E0B" style="letter-spacing:8px">★★★★★</text>
+    </g>
+  </g>
+  <g id="phone">
+    <rect x="-100" y="-195" width="200" height="390" rx="32" fill="#0B1226" stroke="#22D3EE" stroke-width="6"/>
+    <rect x="-84" y="-160" width="168" height="320" rx="16" fill="#13224A"/>
+    <rect x="-30" y="-182" width="60" height="9" rx="4.5" fill="#334155"/>
+    <g id="pscreen" opacity="0">
+      <text x="0" y="-30" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="24" fill="#CBD5E1">قيّم تجربتك</text>
+      <text x="0" y="20" text-anchor="middle" font-size="34" fill="#FBBF24" style="letter-spacing:4px">★★★★★</text>
+      <rect x="-60" y="60" width="120" height="44" rx="22" fill="#2563EB"/>
+      <text x="0" y="90" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="22" fill="#fff">نشر</text>
+    </g>
+  </g>
+</svg>
+
+<div id="end" class="abs">
+  <img src="logo-white.svg" alt="">
+  <div class="line">زبونك بيحبك…<br><span>خلّي Google يعرف 😉</span></div>
+  <div class="cta">ابعتلنا «ستاند» 📩</div>
+  <div class="g">💯 ضمان استرجاع المال خلال شهر</div>
+</div>
+
+<script>
+const STAR='<svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z" stroke-width="1.3" stroke-linejoin="round"/></svg>';
+const starsEl=document.getElementById('stars');
+for(let i=0;i<5;i++) starsEl.insertAdjacentHTML('beforeend',STAR);
+const starPaths=[...starsEl.querySelectorAll('path')], starSvgs=[...starsEl.querySelectorAll('svg')];
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const prog=(t,a,b)=>clamp((t-a)/(b-a));
+const easeOut=x=>1-Math.pow(1-x,3);
+const easeInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+ (c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function show(el,t,a,b,fadeIn=.35,fadeOut=.3,dy=40){
+  const i=easeOut(prog(t,a,a+fadeIn)), o=1-prog(t,b-fadeOut,b);
+  const op=Math.min(i,o); el.style.opacity=op;
+  el.style.transform=`translateY(${(1-i)*dy}px)`;
+}
+window.renderAt=function(t){
+  // scene 1: 0 - 4.0
+  show($('s1a'),t,0.2,4.0,.45,.35,60);
+  show($('s1b'),t,1.3,4.0,.4,.35,40);
+  // stars: gray pop in 0.6-1.4, hide 3.7-4.0 ; gold fill in scene 3 7.6-8.8 ; hide 10.1-10.4
+  const starsVisible = Math.min(prog(t,0.55,0.8), 1-prog(t,3.7,4.0)) || 0;
+  const stars3 = Math.min(prog(t,7.3,7.5), 1-prog(t,10.1,10.4));
+  starsEl.style.opacity=Math.max(starsVisible,stars3);
+  starsEl.style.top = t<5 ? '760px' : '720px';
+  starSvgs.forEach((s,i)=>{
+    let sc;
+    if(t<5){ sc=back(prog(t,0.6+i*0.12,0.6+i*0.12+0.3)); }
+    else { sc=1+0.25*Math.sin(Math.PI*prog(t,7.6+i*0.24,7.6+i*0.24+0.3)); }
+    s.style.transform=`scale(${sc})`;
+    const filled = t>=7.6+i*0.24 && t<11;
+    starPaths[i].setAttribute('fill', filled ? '#FBBF24' : 'none');
+    starPaths[i].setAttribute('stroke', filled ? '#FBBF24' : '#64748B');
+  });
+  // scene 2: 4.0 - 7.3
+  show($('s2'),t,4.1,7.3,.4,.3,50);
+  show($('s2b'),t,4.5,7.3,.4,.3,30);
+  const sc=$('scene');
+  const inS=easeOut(prog(t,4.2,4.8)), outS=1-prog(t,7.0,7.3);
+  sc.style.opacity=Math.min(inS,outS);
+  sc.style.transform=`translateY(${(1-inS)*120}px)`;
+  // phone path: from upper-right to over the stand's NFC area
+  const pp=easeInOut(prog(t,4.8,6.0));
+  const px=880-(880-640)*pp, py=110+(300-110)*pp, rot=22-(22-8)*pp;
+  const bump = t>6.0 && t<6.25 ? -10*Math.sin(Math.PI*prog(t,6.0,6.25)) : 0;
+  $('phone').setAttribute('transform',`translate(${px} ${py+bump}) rotate(${rot})`);
+  $('pscreen').setAttribute('opacity', prog(t,6.1,6.35));
+  // ripples at tap 6.0
+  [['r1',6.0],['r2',6.15],['r3',6.3]].forEach(([id,s0])=>{
+    const k=prog(t,s0,s0+0.9); const c=$(id);
+    c.setAttribute('r', 40+420*easeOut(k)); c.setAttribute('opacity', k>0&&k<1 ? (1-k)*0.9 : 0);
+  });
+  // scene 3: 7.3 - 10.4
+  show($('s3'),t,7.3,10.4,.4,.3,50);
+  // end: 10.4 - 13
+  const e=$('end'); const ei=easeOut(prog(t,10.4,10.9));
+  e.style.opacity=ei; e.style.transform=`scale(${0.94+0.06*ei})`;
+  // top logo hidden on end card
+  $('logo').style.opacity = 1-prog(t,10.2,10.4);
+};
+renderAt(0);
+</script>
+</body></html>
