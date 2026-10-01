@@ -1,0 +1,284 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link rel="stylesheet" href="reel-base.css"><style>
+body{background:#060A16}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.h{position:absolute;left:70px;right:70px;text-align:center;font-weight:700;line-height:1.28;text-shadow:0 6px 24px rgba(0,0,0,.55)}
+.sub{color:#CBD5E1;font-weight:600}
+.cap{position:absolute;left:0;right:0;bottom:250px;text-align:center}
+.cap span{display:inline-block;background:rgba(6,10,22,.78);border:1.5px solid rgba(148,163,184,.25);border-radius:26px;padding:16px 34px;font-size:52px;font-weight:700}
+.note{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-size:26px;color:#64748B}
+/* overlays */
+#bars:before,#bars:after{content:"";position:absolute;left:0;right:0;height:0;background:#000;z-index:50}
+#bars:before{top:0;height:var(--bar,0px)}#bars:after{bottom:0;height:var(--bar,0px)}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 85% at 50% 45%,transparent 55%,rgba(0,0,0,.55) 100%);z-index:40}
+#grain{position:absolute;inset:-50px;z-index:41;opacity:.07;pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:45}
+/* A */
+#A{background:#000}
+#Atitle{top:760px;font-size:96px}
+#Atitle .c{color:#FBBF24}
+#Asub{top:920px;font-size:52px}
+/* B: street */
+#Bcam{position:absolute;left:0;top:0;width:2160px;height:1920px}
+#Bsky{position:absolute;inset:0;background:linear-gradient(#0B1330,#1A1F45 55%,#2B2350)}
+/* C inside shop */
+#C{background:linear-gradient(#3B2414,#1F130B)}
+#Ccount{position:absolute;left:70px;right:70px;top:300px;display:flex;justify-content:space-between;gap:30px}
+.cbox{flex:1;background:rgba(6,10,22,.6);border-radius:28px;padding:22px;text-align:center}
+.cbox b{display:block;font-family:Sora;font-size:110px;line-height:1}
+.cbox span{font-size:36px;font-weight:600;color:#CBD5E1}
+#happyN{color:#4ADE80}#revN{color:#F87171}
+#bubble{position:absolute;top:640px;left:120px;background:#fff;color:#0F172A;border-radius:40px;padding:26px 40px;font-size:56px;font-weight:700;opacity:0}
+#bubble:after{content:"";position:absolute;bottom:-28px;left:120px;border:16px solid transparent;border-top:28px solid #fff}
+/* D phone */
+#D{background:radial-gradient(110% 80% at 50% 40%,#13224A,#0B1226)}
+#Dphone{position:absolute;left:130px;width:820px;top:420px;height:1060px;background:#0B1226;border:7px solid #334155;border-radius:80px;padding:70px 40px;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.search{background:#1E293B;border-radius:46px;padding:26px 34px;font-size:44px;color:#CBD5E1}
+.res{margin-top:40px;border-radius:34px;padding:34px 38px;background:#13224A;border:3px solid transparent}
+.res.win{border-color:#FBBF24;background:#1B2A55}
+.res b{display:block;font-size:52px}
+.res .st{font-size:42px;margin-top:6px}
+.res .n{font-family:Sora}
+.gold{color:#FBBF24}.dim{color:#475569}
+#Dtxt{top:1560px;font-size:62px}
+/* E */
+#E{background:#000}
+#Etxt{top:840px;font-size:92px}
+#Etxt .c{color:#22D3EE}
+/* F stand */
+#F{background:radial-gradient(90% 60% at 50% 55%,#1C3A7A 0%,#0F172A 60%,#080D1C 100%)}
+#Ftxt{top:300px;font-size:84px}
+#Ftxt .c{color:#22D3EE}
+#Fart{position:absolute;left:0;right:0;top:560px;height:900px}
+#sweep{position:absolute;top:560px;left:-400px;width:300px;height:900px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-15deg)}
+/* G montage */
+#G{background:linear-gradient(#FDE68A 0%,#F59E0B 55%,#B45309 100%)}
+#Gcam{position:absolute;inset:0}
+#cal{position:absolute;left:50%;top:330px;width:420px;margin-left:-210px;background:#fff;color:#0F172A;border-radius:30px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);text-align:center}
+#cal .top{background:#DC2626;color:#fff;font-size:40px;font-weight:700;padding:14px}
+#cal .bd{font-size:76px;font-weight:700;padding:26px 10px}
+#Grev{position:absolute;left:0;right:0;top:720px;text-align:center;color:#0F172A}
+#Grev .stars{font-size:80px;color:#fff;text-shadow:0 4px 0 #B45309}
+#Grev .n{font-family:Sora;font-size:170px;font-weight:700;line-height:1;color:#fff;text-shadow:0 8px 0 #92400E}
+#Grev .l{font-size:48px;font-weight:700;color:#451A03}
+#queue{position:absolute;left:0;right:0;bottom:250px;height:330px}
+/* H warning */
+#H{background:radial-gradient(100% 70% at 50% 40%,#4C0D12 0%,#1F0A0D 70%)}
+#Htag{top:300px;display:flex;justify-content:center}
+#Htag span{background:#DC2626;border-radius:30px;padding:10px 34px;font-size:46px;font-weight:700}
+#Ht{top:460px;font-size:84px}
+#Hcard{position:absolute;left:90px;right:90px;top:760px;background:#fff;color:#0F172A;border-radius:40px;padding:50px;text-align:center}
+#Hcard .x{width:130px;height:130px;margin:0 auto;border-radius:50%;background:#DC2626;color:#fff;display:grid;place-items:center;font-family:Sora;font-weight:700;font-size:80px;line-height:1}
+#Hcard b{display:block;font-size:62px;line-height:1.3;margin-top:16px}
+#Hb{top:1260px;font-size:48px;color:#FECACA;font-weight:600;line-height:1.5}
+.end .save{font-size:54px;font-weight:700;color:#FBBF24}
+.end .line{font-size:70px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="noise"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="1"/></filter></svg>
+
+<!-- A: title card -->
+<section class="scene" id="A">
+  <div class="h" id="Atitle">هاي قصة <span class="c">أبو خالد</span>…</div>
+  <div class="h sub" id="Asub">صاحب أطيب شاورما بالحارة 🌯</div>
+  <div class="note">* قصة تمثيلية</div>
+</section>
+
+<!-- B: the street at night -->
+<section class="scene" id="B">
+  <div id="Bsky"></div>
+  <svg id="Bcam" viewBox="0 0 2160 1920" aria-hidden="true">
+    <g fill="#fff" opacity=".7"><circle cx="200" cy="200" r="3"/><circle cx="640" cy="140" r="2"/><circle cx="980" cy="260" r="3"/><circle cx="1400" cy="180" r="2"/><circle cx="1800" cy="240" r="3"/><circle cx="2050" cy="120" r="2"/></g>
+    <circle cx="1650" cy="300" r="70" fill="#FEF3C7" opacity=".9"/>
+    <rect x="0" y="1480" width="2160" height="440" fill="#111827"/>
+    <rect x="0" y="1470" width="2160" height="14" fill="#374151"/>
+    <g fill="#FBBF24" opacity=".8"><rect x="80" y="1680" width="160" height="16"/><rect x="420" y="1680" width="160" height="16"/><rect x="760" y="1680" width="160" height="16"/><rect x="1100" y="1680" width="160" height="16"/><rect x="1440" y="1680" width="160" height="16"/><rect x="1780" y="1680" width="160" height="16"/></g>
+    <!-- Abu Khaled (x 0..1080) -->
+    <g transform="translate(140 560)">
+      <rect width="800" height="920" rx="18" fill="#3F2A1B"/>
+      <rect width="800" height="150" fill="#B45309"/>
+      <g fill="#F59E0B"><rect x="0" width="100" height="150"/><rect x="200" width="100" height="150"/><rect x="400" width="100" height="150"/><rect x="600" width="100" height="150"/></g>
+      <text x="400" y="100" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="70" fill="#fff">شاورما أبو خالد</text>
+      <rect x="60" y="220" width="680" height="420" rx="16" fill="#FCD34D" opacity=".85"/>
+      <g fill="#7C2D12" opacity=".75"><rect x="110" y="520" width="90" height="110" rx="10"/><rect x="250" y="520" width="90" height="110" rx="10"/><rect x="460" y="520" width="90" height="110" rx="10"/><rect x="600" y="520" width="90" height="110" rx="10"/></g>
+      <g transform="translate(400 420)"><circle r="44" fill="#1F2937"/><rect x="-50" y="44" width="100" height="120" rx="36" fill="#1F2937"/></g>
+      <rect x="320" y="690" width="160" height="230" rx="10" fill="#92400E"/>
+    </g>
+    <!-- neighbor (x 1080..2160) -->
+    <g transform="translate(1220 560)">
+      <rect width="800" height="920" rx="18" fill="#1E3A8A"/>
+      <rect width="800" height="150" fill="#2563EB"/>
+      <g fill="#60A5FA"><rect x="0" width="100" height="150"/><rect x="200" width="100" height="150"/><rect x="400" width="100" height="150"/><rect x="600" width="100" height="150"/></g>
+      <text x="400" y="100" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="70" fill="#fff">مطعم الجيران</text>
+      <rect x="60" y="220" width="680" height="420" rx="16" fill="#FEF9C3"/>
+      <g fill="#0F172A" opacity=".85" id="crowdIn">
+        <circle cx="130" cy="420" r="38"/><rect x="96" y="458" width="68" height="140" rx="28"/>
+        <circle cx="240" cy="400" r="38"/><rect x="206" y="438" width="68" height="160" rx="28"/>
+        <circle cx="350" cy="425" r="38"/><rect x="316" y="463" width="68" height="135" rx="28"/>
+        <circle cx="460" cy="405" r="38"/><rect x="426" y="443" width="68" height="155" rx="28"/>
+        <circle cx="570" cy="420" r="38"/><rect x="536" y="458" width="68" height="140" rx="28"/>
+        <circle cx="670" cy="410" r="38"/><rect x="636" y="448" width="68" height="150" rx="28"/>
+      </g>
+      <rect x="320" y="690" width="160" height="230" rx="10" fill="#FBBF24"/>
+      <g fill="#0F172A"><circle cx="-60" cy="800" r="36"/><rect x="-92" y="836" width="64" height="120" rx="26"/>
+        <circle cx="-150" cy="805" r="36"/><rect x="-182" y="841" width="64" height="115" rx="26"/>
+        <circle cx="-240" cy="800" r="36"/><rect x="-272" y="836" width="64" height="120" rx="26"/></g>
+    </g>
+  </svg>
+  <div class="cap" id="Bcap1"><span>أكله أطيب… بس محله فاضي 😔</span></div>
+  <div class="cap" id="Bcap2" style="opacity:0"><span>وعند الجيران… زحمة 🤯</span></div>
+</section>
+
+<!-- C: happy customers leave without reviewing -->
+<section class="scene" id="C">
+  <div id="Ccount">
+    <div class="cbox"><b id="happyN">0</b><span>زبون مبسوط 😋</span></div>
+    <div class="cbox"><b id="revN">0</b><span>تقييم جديد</span></div>
+  </div>
+  <svg style="position:absolute;left:0;right:0;top:560px;width:1080px;height:1000px" viewBox="0 0 1080 1000" aria-hidden="true">
+    <rect x="0" y="720" width="1080" height="280" fill="#78350F"/>
+    <rect x="0" y="700" width="1080" height="30" fill="#A16207"/>
+    <g id="cust"><circle cx="0" cy="430" r="80" fill="#FBBF24"/><circle cx="-26" cy="415" r="9" fill="#0F172A"/><circle cx="26" cy="415" r="9" fill="#0F172A"/>
+      <path d="M-34 452 Q0 485 34 452" fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"/>
+      <rect x="-90" y="520" width="180" height="300" rx="70" fill="#2563EB"/>
+      <text x="70" y="640" font-size="110">🌯</text></g>
+    <text x="900" y="640" font-size="150">🚪</text>
+  </svg>
+  <div id="bubble">يسلموا إيديك! 😋</div>
+  <div class="cap"><span>كل زبون بيطلع مبسوط… وما بيقيّم</span></div>
+</section>
+
+<!-- D: Google Maps comparison -->
+<section class="scene" id="D">
+  <div id="Dphone">
+    <div class="search">🔍 <span id="Dtyped"></span></div>
+    <div class="res win" id="Dra"><b>مطعم الجيران</b><div class="st"><span class="gold">★★★★</span><span class="dim">★</span> <span class="n">4.3</span> · <span class="n">412</span> تقييم</div></div>
+    <div class="res" id="Drb"><b>شاورما أبو خالد</b><div class="st"><span class="gold">★★★★★</span> <span class="n">4.9</span> · <span class="n">7</span> تقييم</div></div>
+  </div>
+  <div class="h" id="Dtxt">الناس بتختار… <span style="color:#FBBF24">حسب التقييمات</span></div>
+</section>
+
+<!-- E: turning point -->
+<section class="scene" id="E">
+  <div class="h" id="Etxt">لحد ما جرّب<br><span class="c">إشي صغير…</span></div>
+</section>
+
+<!-- F: the stand reveal -->
+<section class="scene" id="F">
+  <div class="h" id="Ftxt">ستاند <span class="c">نقرة</span> عالكاشير</div>
+  <svg id="Fart" viewBox="0 0 1080 900" style="overflow:visible" aria-hidden="true">
+    <ellipse cx="540" cy="830" rx="380" ry="40" fill="#000" opacity=".35"/>
+    <g fill="none" stroke="#22D3EE"><circle id="Fr1" cx="540" cy="430" r="0" stroke-width="6"/><circle id="Fr2" cx="540" cy="430" r="0" stroke-width="5"/><circle id="Fr3" cx="540" cy="430" r="0" stroke-width="4"/></g>
+    <path d="M330 780 L750 780 L810 825 L270 825 Z" fill="#1E293B"/>
+    <g id="Fstand" transform="translate(360 280) rotate(-4)">
+      <rect width="360" height="500" rx="30" fill="#fff"/>
+      <g transform="translate(142 40)"><rect width="76" height="76" rx="19" fill="#2563EB"/>
+        <g transform="scale(1.1875)"><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/></g></g>
+      <text x="180" y="190" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="42" fill="#0F172A">قرّب تلفونك</text>
+      <text x="180" y="244" text-anchor="middle" font-family="PlexAr" font-weight="600" font-size="31" fill="#2563EB">وقيّمنا على Google</text>
+      <g transform="translate(180 335)" fill="none" stroke="#0F172A" stroke-width="8" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-48 -34 A66 66 0 0 1 48 -34" opacity=".7"/><circle cx="0" cy="14" r="9" fill="#0F172A" stroke="none"/></g>
+      <text x="180" y="450" text-anchor="middle" font-size="42" fill="#F59E0B" style="letter-spacing:8px">★★★★★</text>
+    </g>
+    <g id="Fphone">
+      <rect x="-100" y="-195" width="200" height="390" rx="32" fill="#0B1226" stroke="#22D3EE" stroke-width="6"/>
+      <rect x="-84" y="-160" width="168" height="320" rx="16" fill="#13224A"/>
+      <g id="Fps" opacity="0"><text x="0" y="-20" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="24" fill="#CBD5E1">قيّم تجربتك</text>
+        <text x="0" y="30" text-anchor="middle" font-size="34" fill="#FBBF24" style="letter-spacing:4px">★★★★★</text></g>
+    </g>
+  </svg>
+  <div id="sweep"></div>
+  <div class="cap" id="Fcap"><span>الزبون بيقرّب تلفونه… وبيقيّم بـ3 ثواني ⭐</span></div>
+</section>
+
+<!-- G: time passes, reviews climb -->
+<section class="scene" id="G">
+  <div id="Gcam">
+    <div id="cal"><div class="top">بعد</div><div class="bd" id="calTxt">أسبوع</div></div>
+    <div id="Grev"><div class="stars">★★★★★</div><div class="n" id="Gn">7</div><div class="l">تقييم على Google</div></div>
+    <svg id="queue" viewBox="0 0 1080 330" aria-hidden="true"></svg>
+  </div>
+  <div class="note" style="color:#7C2D12">* أرقام تمثيلية</div>
+</section>
+
+<!-- H: the tip -->
+<section class="scene" id="H">
+  <div class="abs" id="Htag"><span>⚠️ وانتبه</span></div>
+  <div class="h" id="Ht">أبو خالد ما عمل<br>هالغلطة…</div>
+  <div id="Hcard"><div class="x">✕</div><b>ما عطى خصم أو هدية<br>مقابل تقييم</b></div>
+  <div class="h" id="Hb">لأنه ضد سياسة Google،<br>وممكن تنحذف التقييمات</div>
+</section>
+
+<div class="abs end">
+  <img src="logo-white.svg" alt="">
+  <div class="line">قصتك الجاية<br><span class="c">بتبلش بنقرة ⭐</span></div>
+  <div class="save">📌 احفظ الفيديو</div>
+  <div class="cta">ابعتلنا «ستاند» 📩</div>
+</div>
+
+<div id="flash"></div>
+<div id="vig"></div>
+<svg id="grain" width="1180" height="2020"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+<div id="bars" style="position:absolute;inset:0;pointer-events:none;z-index:50"></div>
+
+<script src="reel-lib.js"></script>
+<script>
+const SC={A:[0,3.6],B:[3.6,8.4],C:[8.4,13.4],D:[13.4,17.4],E:[17.4,19.0],F:[19.0,24.0],G:[24.0,29.2],H:[29.2,33.6]};
+const QUEUE=$('queue');
+for(let i=0;i<9;i++){const x=980-i*115;QUEUE.insertAdjacentHTML('beforeend',`<g class="qp" transform="translate(${x} 0)" opacity="0"><circle cx="0" cy="90" r="42" fill="#451A03"/><rect x="-40" y="135" width="80" height="170" rx="32" fill="#451A03"/></g>`);}
+const qps=[...QUEUE.querySelectorAll('.qp')];
+const TQ="مطعم شاورما قريب";
+function op(id,t){const [a,b]=SC[id];return Math.min(prog(t,a,a+.35),1-prog(t,b-.35,b));}
+window.renderAt=function(t){
+  for(const id in SC) $(id).style.opacity=op(id,t);
+  // cinematic bars in/out at start
+  document.getElementById('bars').style.setProperty('--bar', (140*(1-easeOut(prog(t,3.2,3.9))))+'px');
+  $('turb').setAttribute('seed', Math.floor(t*24)%50);
+  // A
+  show($('Atitle'),t,0.4,3.6,.6,.35,30); show($('Asub'),t,1.4,3.6,.5,.35,20);
+  // B: pan from Abu Khaled to neighbor
+  const pan=easeInOut(prog(t,5.6,7.0));
+  $('Bcam').style.transform=`translateX(${-pan*1080}px) scale(${1.04-0.04*prog(t,3.6,8.4)})`;
+  $('Bcam').style.transformOrigin='left center';
+  const c1=Math.min(prog(t,4.0,4.4),1-prog(t,5.5,5.8)), c2=Math.min(prog(t,6.9,7.2),1-prog(t,8.0,8.3));
+  $('Bcap1').style.opacity=c1; $('Bcap2').style.opacity=c2;
+  // C: three quick customers
+  const cycles=[[8.6,10.0],[10.0,11.4],[11.4,12.8]];
+  let happy=0; let cx=-200, bub=0;
+  cycles.forEach(([a,b],k)=>{ if(t>=a){ const p=prog(t,a,b); if(t<b){ cx = -150 + 1250*easeInOut(prog(t,a+0.55,b)); bub = Math.min(prog(t,a+0.1,a+0.25),1-prog(t,a+0.6,a+0.75)); } if(t>=a+0.6) happy=k+1; } });
+  $('cust').setAttribute('transform',`translate(${cx} ${Math.sin(t*16)*5})`);
+  $('bubble').style.opacity=bub; $('happyN').textContent=happy; $('revN').textContent='0';
+  // D
+  $('Dtyped').textContent=TQ.slice(0,Math.floor(TQ.length*prog(t,13.7,14.9)));
+  show($('Dra'),t,15.0,17.4,.3,.3,30); show($('Drb'),t,15.3,17.4,.3,.3,30);
+  show($('Dtxt'),t,15.8,17.4,.3,.3,30);
+  $('Dphone').style.transform=`scale(${1+0.05*prog(t,13.4,17.4)})`;
+  // E
+  const ke=prog(t,17.5,17.9); $('Etxt').style.opacity=Math.min(ke,1-prog(t,18.7,19.0));
+  $('Etxt').style.transform=`scale(${1+0.12*prog(t,17.5,19.0)})`;
+  $('flash').style.opacity = Math.max(0, 1-Math.abs(t-19.02)/0.25)*0.9;
+  // F
+  show($('Ftxt'),t,19.1,24.0,.35,.3,30);
+  const sw=prog(t,19.3,20.1); $('sweep').style.left=(-400+1700*easeInOut(sw))+'px'; $('sweep').style.opacity=sw>0&&sw<1?1:0;
+  $('Fstand').setAttribute('transform',`translate(360 ${280+40*(1-easeOut(prog(t,19.0,19.6)))}) rotate(-4)`);
+  const a=easeInOut(prog(t,20.4,21.5)); const px=880-(880-640)*a, py=170+(360-170)*a, rot=22-(22-8)*a;
+  $('Fphone').setAttribute('transform',`translate(${px} ${py}) rotate(${rot})`);
+  $('Fps').setAttribute('opacity',prog(t,21.6,21.9));
+  [['Fr1',21.5],['Fr2',21.65],['Fr3',21.8]].forEach(([id,s0])=>{const k=prog(t,s0,s0+1);const c=$(id);
+    c.setAttribute('r',40+460*easeOut(k)); c.setAttribute('opacity',k>0&&k<1?(1-k)*.9:0);});
+  show($('Fcap'),t,22.0,24.0,.3,.3,20);
+  // G: calendar + counter + queue
+  const steps=[[24.2,'أسبوع',23],[25.6,'أسبوعين',61],[27.0,'شهر',140]];
+  let label='أسبوع', target=7, from=7, s0=24.2;
+  for(let i=0;i<steps.length;i++){ if(t>=steps[i][0]){ label=steps[i][1]; from = i===0?7:steps[i-1][2]; target=steps[i][2]; s0=steps[i][0]; } }
+  $('calTxt').textContent=label;
+  const flip=prog(t,s0,s0+.25); $('cal').style.transform=`rotateX(${(1-flip)*80}deg)`;
+  $('Gn').textContent=String(Math.round(from+(target-from)*easeOut(prog(t,s0+.1,s0+1.1))));
+  $('Gcam').style.transform=`scale(${1+0.04*prog(t,24,29.2)})`;
+  qps.forEach((q,i)=>{const k=prog(t,24.6+i*0.42,24.9+i*0.42); q.setAttribute('opacity',k); q.setAttribute('transform',`translate(${980-i*115} ${(1-easeOut(k))*60})`);});
+  // H
+  const kh=prog(t,29.3,29.65); $('Htag').style.transform=`scale(${kh>0?back(kh):.001})`;
+  show($('Ht'),t,29.6,33.6,.3,.3,30);
+  const kc=prog(t,30.4,30.8); $('Hcard').style.transform=`scale(${kc>0?back(kc):.001})`; $('Hcard').style.opacity=kc>0?1:0;
+  show($('Hb'),t,31.4,33.6,.35,.3,30);
+  endCard(t,33.7);
+};
+renderAt(0);
+</script></body></html>
