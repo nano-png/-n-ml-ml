@@ -111,7 +111,7 @@ F(whoosh(0.9),20.4,0.3); F(tap(),21.5,1.0); F(ding(2093,.5),21.65,0.35)
 for k,m in enumerate(C5): F(ding(m),21.9+k*0.14,0.3)
 for t0 in (24.2,25.6,27.0):
     F(flip(),t0,0.7); F(cash(),t0+0.9,0.45)
-F(warn(),29.25,0.6); F(impact(),30.4,0.55)
+F(pop(900,500,.1),29.3,0.5); F(sparkle(),30.4,0.5); F(ding(1568,.8),30.45,0.35)
 F(whoosh(0.7),33.6,0.5); F(chime(),33.8,0.6)
 fx/=np.max(np.abs(fx))
 mix=music*0.32+amb*0.22+fx*0.85
