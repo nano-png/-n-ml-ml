@@ -95,7 +95,6 @@ C5=[1046.5,1174.7,1318.5,1568,2093]
 fx=np.zeros(N)
 def F(sig,t,g):
     i=int(t*SR); j=min(N,i+len(sig)); fx[i:j]+=sig[:j-i]*g
-for k in range(16): F(type_click(),0.45+k*0.07,0.5)         # title typing
 F(whoosh(0.7),3.4,0.5)
 F(whoosh(1.1),5.6,0.45)                                    # camera pan
 F(impact(),8.35,0.6)
