@@ -37,7 +37,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 /* S3 khans */
 #s3t{top:220px;font-size:70px}
 #khans{position:absolute;left:0;top:520px;width:1080px;height:900px}
-#s3cap{position:absolute;left:80px;right:80px;top:1460px;text-align:center;font-size:52px;font-weight:700;line-height:1.45}
+#s3cap{position:absolute;left:80px;right:80px;top:1440px;background:#FBF7EE;border:4px solid #1A1410;border-radius:16px;padding:24px 20px;text-align:center;font-size:52px;font-weight:700;line-height:1.45}
 .bub{position:absolute;background:#FBF7EE;border:4px solid var(--ink);border-radius:30px;padding:14px 26px;font-size:36px;font-weight:700;opacity:0;white-space:nowrap}
 /* S4 proverb */
 #s4card{position:absolute;left:110px;right:110px;top:640px;padding:70px 50px;text-align:center;transform:rotate(-2deg)}
@@ -60,9 +60,9 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 /* S6 problem */
 #s6t{top:250px;font-size:96px}
 #crowd{position:absolute;left:90px;right:90px;top:600px;display:grid;grid-template-columns:repeat(5,1fr);gap:30px 20px}
-.p{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0}
-.p .face{width:120px;height:120px;border-radius:50%;background:#F2C14E;border:5px solid var(--ink);display:grid;place-items:center;font-size:62px}
-.p .lbl{font-size:30px;font-weight:700;height:40px}
+.p{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;min-height:180px}
+.p .face{flex:none;width:120px;height:120px;border-radius:50%;background:#F2C14E;border:5px solid var(--ink);display:grid;place-items:center;font-size:62px}
+.p .lbl{font-size:30px;font-weight:700;height:40px;white-space:nowrap}
 #s6b{top:1180px;font-size:62px;line-height:1.45}
 #s6note{position:absolute;bottom:200px;left:0;right:0;text-align:center}
 /* S7 solution */
@@ -76,7 +76,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 .stWrap{position:absolute;transform-origin:50% 100%}
 .st3d{position:absolute;left:0;top:0;width:400px;height:640px;perspective:1600px}
 .rig{position:absolute;left:30px;bottom:40px;width:340px;height:520px;transform-style:preserve-3d;transform:rotateX(-24deg) rotateY(-32deg)}
-.face{position:absolute;inset:0;transform-origin:50% 100%;transform:rotateX(12deg);transform-style:preserve-3d}
+.sface{position:absolute;inset:0;transform-origin:50% 100%;transform:rotateX(12deg);transform-style:preserve-3d}
 .layer{position:absolute;inset:0;border-radius:26px}
 .print{background:#FFFFFF;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;align-items:center;box-shadow:inset 0 0 0 2px #E2E8F0}
 .print .ic{margin-top:44px}
@@ -134,7 +134,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
   <svg id="map" viewBox="0 0 1080 1920" aria-hidden="true">
     <!-- sea -->
     <path d="M0 380 C120 420 160 520 120 640 C90 740 60 820 0 860 Z" fill="#9DC3C9" opacity=".7"/>
-    <text x="40" y="560" font-family="PlexAr" font-weight="600" font-size="34" fill="#3E6A70" transform="rotate(-70 70 600)">البحر المتوسط</text>
+    <text x="70" y="700" font-family="PlexAr" font-weight="700" font-size="32" fill="#3E6A70" transform="rotate(-80 70 700)">البحر المتوسط</text>
     <!-- red sea -->
     <path d="M330 980 C380 1100 470 1260 560 1420 C620 1530 700 1640 760 1760 L700 1780 C640 1660 560 1550 500 1440 C420 1290 340 1130 300 1000 Z" fill="#9DC3C9" opacity=".7"/>
     <!-- dead sea -->
@@ -146,7 +146,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
     <text x="820" y="1260" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="44" fill="#8A7550">شبه الجزيرة العربية</text>
     <!-- route -->
     <path id="route" d="M900 1780 C860 1600 760 1420 680 1240 C620 1100 580 980 560 860 C545 780 500 700 420 640 C330 580 220 560 130 520"
-          fill="none" stroke="#D9412B" stroke-width="10" stroke-linecap="round" stroke-dasharray="26 22"/>
+          fill="none" stroke="#D9412B" stroke-width="10" stroke-linecap="round" />
     <!-- petra -->
     <g id="petra" transform="translate(560 860)">
       <circle r="34" fill="#D9412B"/><circle r="14" fill="#FBF7EE"/>
@@ -156,8 +156,8 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
       <rect x="0" y="-10" width="260" height="78" rx="8" fill="#1A1410"/>
       <text x="130" y="44" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="46" fill="#EFE5CF">البتراء</text>
     </g>
-    <g id="gazaLbl" transform="translate(150 470)"><circle r="16" fill="#1A1410"/><text x="30" y="-24" font-family="PlexAr" font-weight="700" font-size="36" fill="#1A1410">غزة</text></g>
-    <g id="routeLbl" transform="translate(700 1330) rotate(-62)"><text font-family="PlexAr" font-weight="700" font-size="40" fill="#D9412B">طريق البخور</text></g>
+    <g id="gazaLbl" transform="translate(150 470)"><circle r="16" fill="#1A1410"/><rect x="-10" y="-96" width="96" height="58" rx="8" fill="#1A1410"/><text x="38" y="-55" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="38" fill="#EFE5CF">غزة</text></g>
+    <g id="routeLbl" transform="translate(760 1420)"><rect x="0" y="-46" width="250" height="64" rx="8" fill="#D9412B"/><text x="125" y="0" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="38" fill="#FBF7EE">طريق البخور</text></g>
     <use id="cam1" href="#camel" width="96" height="72"/><use id="cam2" href="#camel" width="96" height="72"/><use id="cam3" href="#camel" width="96" height="72"/>
   </svg>
   <div class="h" id="s2t">البتراء… <span class="hl" id="hl3">قلب طريق التجارة</span></div>
@@ -167,8 +167,9 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 <!-- S3 KHANS -->
 <section class="scene" id="s3"><div class="cam" id="c3">
   <div class="h" id="s3t">بس القافلة… <span class="hl" id="hl4">وين بتنزل؟</span></div>
-  <svg id="khans" viewBox="0 0 1080 900" aria-hidden="true">
-    <rect x="0" y="760" width="1080" height="140" fill="#D9C7A0"/>
+  <svg id="khans" viewBox="0 0 1080 900" style="overflow:visible" aria-hidden="true">
+    <rect x="0" y="760" width="1080" height="700" fill="#D9C7A0"/>
+    <path d="M0 760 H1080" stroke="#1A1410" stroke-width="5"/>
     <!-- busy khan (right) -->
     <g transform="translate(580 260)">
       <path d="M0 500 L0 140 Q200 -20 400 140 L400 500 Z" fill="#C98B55" stroke="#1A1410" stroke-width="6"/>
@@ -186,6 +187,8 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
       <path d="M0 460 L0 140 Q170 0 340 140 L340 460 Z" fill="#B6A68A" stroke="#1A1410" stroke-width="6"/>
       <path d="M120 460 L120 310 Q170 250 220 310 L220 460 Z" fill="#5E5243"/>
     </g>
+    <g id="caravan"><use href="#camel" x="0" y="0" width="150" height="112"/><use href="#camel" x="170" y="6" width="140" height="104"/><use href="#camel" x="330" y="10" width="130" height="98"/>
+      <g fill="#1A1410"><circle cx="-30" cy="20" r="18"/><rect x="-46" y="38" width="32" height="70" rx="12"/></g></g>
   </svg>
   <div class="bub" id="b1">«أكلهم طيب»</div>
   <div class="bub" id="b2">«وناسهم كرام»</div>
@@ -229,7 +232,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 <!-- S7 SOLUTION -->
 <section class="scene" id="s7"><div class="cam" id="c7">
   <div class="h" id="s7t">عشان هيك عملنا<br><span class="c">ستاند نقرة</span></div>
-  <div class="stWrap" id="st7" style="left:340px;top:700px;width:400px;height:640px"><div class="st3d"><div class="shadow"></div><div class="rig"><div class="base"><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer top"></div></div><div class="face"><div class="layer edge" style="transform:translateZ(-16px)"></div><div class="layer edge" style="transform:translateZ(-14px)"></div><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer print"><svg class="ic" width="88" height="88" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2563EB"/><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/><path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></svg><div class="t1">قرّب تلفونك</div><div class="t2">وقيّمنا على Google</div><svg class="nfc" width="120" height="90" viewBox="-60 -50 120 90"><g fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/></g><circle cx="0" cy="16" r="10" fill="#0F172A"/></svg><div class="stars">★★★★★</div><div class="band">naqra</div><div class="gloss"></div></div></div></div></div></div>
+  <div class="stWrap" id="st7" style="left:340px;top:700px;width:400px;height:640px"><div class="st3d"><div class="shadow"></div><div class="rig"><div class="base"><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer top"></div></div><div class="sface"><div class="layer edge" style="transform:translateZ(-16px)"></div><div class="layer edge" style="transform:translateZ(-14px)"></div><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer print"><svg class="ic" width="88" height="88" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2563EB"/><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/><path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></svg><div class="t1">قرّب تلفونك</div><div class="t2">وقيّمنا على Google</div><svg class="nfc" width="120" height="90" viewBox="-60 -50 120 90"><g fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/></g><circle cx="0" cy="16" r="10" fill="#0F172A"/></svg><div class="stars">★★★★★</div><div class="band">naqra</div><div class="gloss"></div></div></div></div></div></div>
   <svg id="s7art" viewBox="0 0 1080 1000" style="overflow:visible" aria-hidden="true">
     
     <defs>
@@ -263,7 +266,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
       <rect width="340" height="600" rx="24" transform="matrix(1,0.147,0,1,360,60)" fill="none" stroke="#E2E8F0" stroke-width="3"/>
       </g>
     </defs>
-    <g fill="none" stroke="#D9412B"><circle id="r1" cx="560" cy="440" r="0" stroke-width="7"/><circle id="r2" cx="560" cy="440" r="0" stroke-width="6"/><circle id="r3" cx="560" cy="440" r="0" stroke-width="5"/></g>
+    <g fill="none" stroke="#D9412B"><circle id="r1" cx="790" cy="300" r="0" stroke-width="7"/><circle id="r2" cx="790" cy="300" r="0" stroke-width="6"/><circle id="r3" cx="790" cy="300" r="0" stroke-width="5"/></g>
     <g id="ph">
       <rect x="-100" y="-195" width="200" height="390" rx="32" fill="#1A1410"/>
       <rect x="-86" y="-165" width="172" height="330" rx="16" fill="#FBF7EE"/>
@@ -307,19 +310,19 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
       <g fill="#475569"><circle cx="30" cy="100" r="9"/><circle cx="60" cy="100" r="9"/><circle cx="90" cy="100" r="9"/><circle cx="30" cy="130" r="9"/><circle cx="60" cy="130" r="9"/><circle cx="90" cy="130" r="9"/><circle cx="60" cy="160" r="9"/></g>
     </g>
     <!-- coffee cup -->
-    <g transform="translate(270 430)"><path d="M0 0 L70 0 L62 90 L8 90 Z" fill="#FBF7EE" stroke="#1A1410" stroke-width="4"/><rect x="-4" y="-12" width="78" height="16" rx="6" fill="#8A5A2E" stroke="#1A1410" stroke-width="4"/></g>
+    <g id="cCup" transform="translate(270 430)"><path d="M0 0 L70 0 L62 90 L8 90 Z" fill="#FBF7EE" stroke="#1A1410" stroke-width="4"/><rect x="-4" y="-12" width="78" height="16" rx="6" fill="#8A5A2E" stroke="#1A1410" stroke-width="4"/></g>
     <!-- stand on counter -->
     <!-- marker circle -->
     <g id="cLabel" transform="translate(690 110)"><text x="120" y="10" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="50" fill="#D9412B">هون بالزبط</text><path d="M60 40 C20 70 -20 100 -70 150" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/><path d="M-80 124 L-72 152 L-46 144" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/></g>
   </svg>
-  <div class="stWrap" id="stC" style="left:400px;top:1088px;transform-origin:50% 100%"><div style="transform:scale(.52);transform-origin:0 100%;position:absolute;left:0;bottom:0;width:400px;height:640px"><div class="st3d"><div class="shadow"></div><div class="rig"><div class="base"><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer top"></div></div><div class="face"><div class="layer edge" style="transform:translateZ(-16px)"></div><div class="layer edge" style="transform:translateZ(-14px)"></div><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer print"><svg class="ic" width="88" height="88" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2563EB"/><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/><path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></svg><div class="t1">قرّب تلفونك</div><div class="t2">وقيّمنا على Google</div><svg class="nfc" width="120" height="90" viewBox="-60 -50 120 90"><g fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/></g><circle cx="0" cy="16" r="10" fill="#0F172A"/></svg><div class="stars">★★★★★</div><div class="band">naqra</div><div class="gloss"></div></div></div></div></div></div></div>
+  <div class="stWrap" id="stC" style="left:400px;top:1088px;transform-origin:50% 100%"><div style="transform:scale(.52);transform-origin:0 100%;position:absolute;left:0;bottom:0;width:400px;height:640px"><div class="st3d"><div class="shadow"></div><div class="rig"><div class="base"><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer top"></div></div><div class="sface"><div class="layer edge" style="transform:translateZ(-16px)"></div><div class="layer edge" style="transform:translateZ(-14px)"></div><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer print"><svg class="ic" width="88" height="88" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2563EB"/><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/><path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></svg><div class="t1">قرّب تلفونك</div><div class="t2">وقيّمنا على Google</div><svg class="nfc" width="120" height="90" viewBox="-60 -50 120 90"><g fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/></g><circle cx="0" cy="16" r="10" fill="#0F172A"/></svg><div class="stars">★★★★★</div><div class="band">naqra</div><div class="gloss"></div></div></div></div></div></div></div>
   <div class="h" id="s7cb" style="top:1690px;font-size:50px;line-height:1.45">الزبون بيدفع… وبيشوف الستاند <span class="hl" id="hlc2">قدّامه</span></div>
 </div></section>
 
 <!-- S8 IMPORTANT INFO -->
 <section class="scene" id="s8"><div class="cam" id="c8">
   <div class="h" id="s8t">ومعلومة <span class="hl hlr" id="hl13">مهمة</span>…</div>
-  <div class="h" id="s8big">الناس ما بتعدّ التقييمات بس…<br><span class="hl" id="hl9">بتشوف قديش جديدة</span></div>
+  <div class="h" id="s8big" style="font-size:64px;left:50px;right:50px">الناس ما بتعدّ التقييمات بس…<br><span class="hl" id="hl9">بتشوف قديش جديدة</span></div>
   <div class="rv" id="rvOld"><div class="top"><span class="st">★★★★★</span><span class="d">قبل 3 سنين</span></div><p>«أكلهم طيب»</p></div>
   <div class="rv" id="rvNew"><div class="top"><span class="st">★★★★★</span><span class="d">قبل ساعة</span></div><p>«أطيب مطعم جربته هالشهر!»</p></div>
   <div class="h" id="s8b">خلّي الكلمة الحلوة<br><span class="hl" id="hl10">تيجيك كل يوم</span></div>
@@ -347,8 +350,8 @@ const prog=(t,a,b)=>clamp((t-a)/(b-a));
 const easeOut=x=>1-Math.pow(1-x,3);
 const easeInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-function show(el,t,a,b,fi=.35,fo=.3,dy=40){const i=easeOut(prog(t,a,a+fi)),o=1-prog(t,b-fo,b);el.style.opacity=Math.min(i,o);el.style.transform=`translateY(${(1-i)*dy}px)`;}
-function popIn(el,t,a,b,fo=.3,rot=0){const k=prog(t,a,a+.35);el.style.opacity=Math.min(k>0?1:0,1-prog(t,b-fo,b));el.style.transform=`rotate(${rot}deg) scale(${k>0?back(k):.001})`;}
+function show(el,t,a,b,fi=.35,fo=.3,dy=40){fi=Math.min(fi,.25);fo=Math.min(fo,.1);const i=easeOut(prog(t,a,a+fi)),o=1-prog(t,b-fo,b);el.style.opacity=Math.min(i,o);el.style.transform=`translateY(${(1-i)*dy}px)`;}
+function popIn(el,t,a,b,fo=.3,rot=0){fo=Math.min(fo,.1);const k=prog(t,a,a+.3);el.style.opacity=Math.min(k>0?1:0,1-prog(t,b-fo,b));el.style.transform=`rotate(${rot}deg) scale(${k>0?back(k):.001})`;}
 function hl(id,t,a,d=.5){$(id).style.backgroundSize=`${100*easeOut(prog(t,a,a+d))}% 100%`;}
 const SC={s1:[0,4.4],s2:[4.4,10.6],s3:[10.6,17.4],s4:[17.4,22.0],s5:[22.6,28.4],s6:[28.4,33.6],s7:[33.6,40.4],s8:[40.4,47.2],end:[47.2,51.5]};
 // crowd
@@ -359,14 +362,14 @@ const people=[...crowd.children];
 const fs=$('flyStars');
 for(let i=0;i<6;i++) fs.insertAdjacentHTML('beforeend',`<text font-size="70" fill="#FBBF24" opacity="0">★</text>`);
 const flys=[...fs.children];
-const route=$('route'); const RL=route.getTotalLength(); route.style.strokeDasharray=`26 22`;
+const route=$('route'); const RL=route.getTotalLength();
 function routeReveal(p){ // reveal via mask: use dashoffset trick on a copy
   route.setAttribute('stroke-dasharray',`26 22`);
   route.style.clipPath='none';
 }
 const routeMaskLen=RL;
 window.renderBase=function(t){
-  for(const id in SC){const [a,b]=SC[id];$(id).style.opacity=Math.min(prog(t,a,a+.3),id==='end'?1:1-prog(t,b-.3,b));}
+  for(const id in SC){const [a,b]=SC[id];$(id).style.opacity=Math.min(prog(t,a,a+.08),id==='end'?1:1-prog(t,b-.08,b));}
   $('turb').setAttribute('seed',Math.floor(t*24)%60);
   // dark/navy scenes: lighten paper texture
   const dark=(t>22.4&&t<33.4)?(t<28.4?1:0):0;
@@ -383,42 +386,40 @@ window.renderBase=function(t){
   const rp=easeInOut(prog(t,5.0,8.4));
   // draw route: emulate by dash pattern that ends at reveal point
   const shown=RL*rp;
-  route.setAttribute('stroke-dasharray', shown<1?'0 99999':`26 22`);
-  route.style.clipPath='';
-  route.setAttribute('pathLength',RL);
   // use mask by setting a second dasharray: visible length then gap
   route.setAttribute('stroke-dasharray', `${dashSeq(shown)}`);
   svgPop('petra','translate(560 860)',t,6.6,10.6); svgPop('petraLbl','translate(600 900)',t,6.9,10.6); svgPop('gazaLbl','translate(150 470)',t,8.2,10.6);
   $('routeLbl').setAttribute('opacity',Math.min(prog(t,5.6,6.0),1-prog(t,10.3,10.6)));
   const pul=prog(t,7.0,8.2)%1; $('petraPulse').setAttribute('r',34+60*pul); $('petraPulse').setAttribute('opacity',(1-pul)*(t>7&&t<10.6?1:0));
-  [['cam1',0],['cam2',.12],['cam3',.24]].forEach(([id,off])=>{const q=clamp(rp-off); const pt=route.getPointAtLength(RL*q); const el=$(id);
+  [['cam1',0],['cam2',.1],['cam3',.2]].forEach(([id,off])=>{const q=clamp(rp*0.86-off); const pt=route.getPointAtLength(RL*q); const el=$(id);
     el.setAttribute('x',pt.x-48); el.setAttribute('y',pt.y-60); el.setAttribute('opacity', q>0.02 && rp>0 ? 1:0);});
-  show($('s2t'),t,4.6,10.6,.35,.3,30); hl('hl3',t,5.2,.5);
+  show($('s2t'),t,4.4,10.6,.3,.3,30); hl('hl3',t,5.2,.5);
   show($('s2cap'),t,8.6,10.6,.35,.3,30);
   // S3 khans
   $('c3').style.transform=`scale(${1+0.05*prog(t,10.6,17.4)})`;
-  show($('s3t'),t,10.8,17.4,.35,.3,30); hl('hl4',t,11.3,.45);
-  const bubs=[['b1',12.4,120,560],['b2',13.4,520,500],['b3',14.4,300,640]];
+  show($('s3t'),t,10.6,17.4,.3,.3,30); hl('hl4',t,11.3,.45);
+  const bubs=[['b1',12.4,600,560],['b2',13.4,520,650],['b3',14.4,640,740]];
   bubs.forEach(([id,a,x,y])=>{const el=$(id);const k=prog(t,a,a+.35);el.style.left=x+'px';el.style.top=y+'px';
     el.style.opacity=Math.min(k>0?1:0,1-prog(t,17.0,17.3));el.style.transform=`scale(${k>0?back(k):.001}) translateX(${-40*prog(t,a,a+2.5)}px)`;});
   show($('s3cap'),t,15.0,17.4,.35,.3,30); hl('hl5',t,15.5,.5);
+  const cw=easeInOut(prog(t,10.8,14.6)); $('caravan').setAttribute('transform',`translate(${1120-560*cw} ${880+Math.abs(Math.sin(t*7))*6})`); $('caravan').setAttribute('opacity',Math.min(1,1-prog(t,14.6,15.0)));
   // S4 proverb
   $('c4').style.transform=`scale(${1+0.06*prog(t,17.4,22)})`;
-  show($('s4t'),t,17.6,22,.35,.3,30);
-  popIn($('s4card'),t,18.1,22,.3,-2); hl('hl6',t,18.9,.5);
+  show($('s4t'),t,17.4,22,.3,.3,30);
+  popIn($('s4card'),t,17.6,22,.3,-2); hl('hl6',t,18.4,.5);
   show($('s4b'),t,19.8,22,.35,.3,30);
   // tear transition 22.0-22.6
-  const tp=prog(t,21.7,22.6); $('tear').style.top = (-2300 + 4300*easeInOut(tp))+'px';
+  const tp=prog(t,21.7,22.6); $('tear').style.top = (-2300 + 4300*easeInOut(tp))+'px'; $('tear').style.visibility=(tp>0&&tp<1)?'visible':'hidden';
   // S5
   $('c5').style.transform=`scale(${1+0.04*prog(t,22.6,28.4)})`;
-  show($('s5t'),t,22.8,28.4,.35,.3,30);
+  show($('s5t'),t,22.5,28.4,.3,.3,30);
   const ph=$('phone'); const pk=easeOut(prog(t,23.2,23.8)); ph.style.transform=`translateY(${(1-pk)*200}px)`; ph.style.opacity=Math.min(pk,1-prog(t,28.1,28.4));
   const pinK=prog(t,23.9,24.25); $('pin').style.transform=`translateY(${(1-easeOut(pinK))*-120}px)`; $('pin').style.opacity=pinK>0?1:0;
   show($('rc1'),t,24.5,28.4,.3,.3,30); show($('rc2'),t,24.9,28.4,.3,.3,30);
   show($('s5b'),t,25.8,28.4,.35,.3,30); hl('hl7',t,26.4,.45);
   // S6
   $('c6').style.transform=`scale(${1+0.04*prog(t,28.4,33.6)})`;
-  popIn($('s6t'),t,28.6,33.6,.3,0);
+  popIn($('s6t'),t,28.4,33.6,.3,0);
   people.forEach((p,i)=>{const a=29.0+i*0.12;const k=prog(t,a,a+.3);p.style.opacity=Math.min(k,1-prog(t,33.3,33.6));p.style.transform=`scale(${k>0?back(k):.001})`;
     const lbl=p.querySelector('.lbl'); const face=p.querySelector('.face');
     if(t>30.6+i*0.1){ if(i===3){lbl.textContent='★ قيّم';lbl.style.color='#16A34A';face.style.borderColor='#16A34A';} else {lbl.textContent='طلع ←'; lbl.style.color='#9A8B73'; face.style.opacity=.45;} } else {lbl.textContent='';face.style.opacity=1;face.style.borderColor='';}});
@@ -427,19 +428,19 @@ window.renderBase=function(t){
   show($('s6note'),t,29.2,33.6,.3,.3,0);
   // S7
   $('c7').style.transform=`scale(${1+0.04*prog(t,33.6,40.4)})`;
-  show($('s7t'),t,33.8,40.4,.35,.3,30);
+  show($('s7t'),t,33.6,40.4,.3,.3,30);
   const sk=prog(t,34.0,34.5); const sc=sk>0?back(sk):0.001; const W1=$('st7'); W1.style.transform=`scale(${sc*1.3}) translateY(${-8*Math.sin(t*1.6)}px)`; W1.style.opacity=sk>0?1:0;
   const a=easeInOut(prog(t,35.3,36.4)); const px=1000-(1000-790)*a, py=20+(250-20)*a, rot=22-(22-14)*a;
   $('ph').setAttribute('transform',`translate(${px+40} ${py-20}) rotate(${rot}) scale(.78)`); $('ph').setAttribute('opacity',prog(t,35.0,35.3));
   $('phs').setAttribute('opacity',prog(t,36.5,36.8));
-  [['r1',36.4],['r2',36.55],['r3',36.7]].forEach(([id,s0])=>{const k=prog(t,s0,s0+1);const c=$(id);c.setAttribute('r',40+460*easeOut(k));c.setAttribute('opacity',k>0&&k<1?(1-k)*.9:0);});
-  flys.forEach((s,i)=>{const s0=37.0+i*0.18,k=prog(t,s0,s0+1.1);const x=560+ (i%2?1:-1)*(220+i*45)*easeOut(k), y=470-260*easeOut(k);
+  [['r1',36.4],['r2',36.55],['r3',36.7]].forEach(([id,s0])=>{const k=prog(t,s0,s0+1);const c=$(id);c.setAttribute('r',40+400*easeOut(k));c.setAttribute('opacity',k>0.06&&k<1?(1-k)*.8:0);});
+  flys.forEach((s,i)=>{const s0=37.0+i*0.18,k=prog(t,s0,s0+1.1);const x=790+ (i%2?-1:1)*(120+i*40)*easeOut(k), y=300-220*easeOut(k);
     s.setAttribute('x',x);s.setAttribute('y',y);s.setAttribute('opacity',k>0&&k<1?1-k*0.6:0);});
   show($('s7b'),t,37.6,40.4,.35,.3,30); hl('hl12',t,38.2,.5);
   $('flash').style.opacity=Math.max(0,1-Math.abs(t-33.65)/0.22)*0.85;
   // S8
   $('c8').style.transform=`scale(${1+0.04*prog(t,40.4,47.2)})`;
-  popIn($('s8t'),t,40.6,47.2,.3,0); hl('hl13',t,40.9,.4);
+  popIn($('s8t'),t,40.4,47.2,.3,0); hl('hl13',t,40.9,.4);
   show($('s8big'),t,41.2,47.2,.35,.3,30); hl('hl9',t,41.9,.5);
   const o=prog(t,42.8,43.2); $('rvOld').style.opacity=Math.min(o,1-prog(t,46.9,47.2)); $('rvOld').style.transform=`rotate(-2deg) translateX(${(1-easeOut(o))*200}px)`;
   const n=prog(t,43.6,44.0); $('rvNew').style.opacity=Math.min(n,1-prog(t,46.9,47.2)); $('rvNew').style.transform=`rotate(1.5deg) translateX(${(1-easeOut(n))*-200}px) scale(${1+0.04*Math.sin(Math.PI*prog(t,44,44.6))})`;
@@ -464,12 +465,13 @@ window.renderAt=function(t){
   if(t>=CB){ renderBase(t-SHIFT); c.style.opacity=0; $('turb').setAttribute('seed',Math.floor(t*24)%60); return; }
   renderBase(CA-0.01); $('s7').style.opacity=0; $('s8').style.opacity=0;
   $('turb').setAttribute('seed',Math.floor(t*24)%60);
-  c.style.opacity=Math.min(prog(t,CA,CA+.3),1-prog(t,CB-.3,CB));
+  c.style.opacity=Math.min(prog(t,CA,CA+.08),1-prog(t,CB-.08,CB));
   $('c7c').style.transform=`scale(${1+0.05*prog(t,CA,CB)})`;
-  show($('s7ct'),t,CA+.15,CB,.35,.3,30); hl('hlc',t,CA+.7,.5);
-  const dk=easeOut(prog(t,CA+.3,CA+.9)); $('cDesk').setAttribute('transform',`translate(0 ${(1-dk)*500})`);
+  show($('s7ct'),t,CA,CB,.3,.3,30); hl('hlc',t,CA+.7,.5);
+  const dk=easeOut(prog(t,CA+.05,CA+.6)); $('cDesk').setAttribute('transform',`translate(0 ${(1-dk)*500})`);
   const rk=prog(t,CA+.8,CA+1.15); $('cReg').setAttribute('transform',`translate(690 ${300+(1-easeOut(rk))*-200})`); $('cReg').setAttribute('opacity',rk>0?1:0);
   const pk=prog(t,CA+.95,CA+1.3); $('cPos').setAttribute('transform',`translate(120 ${330+(1-easeOut(pk))*-200})`); $('cPos').setAttribute('opacity',pk>0?1:0);
+  const uk=prog(t,CA+1.05,CA+1.35); $('cCup').setAttribute('transform',`translate(270 ${430+(1-easeOut(uk))*-200})`); $('cCup').setAttribute('opacity',uk>0?1:0);
   const sk=prog(t,CA+1.3,CA+1.65); const W2=$('stC'); W2.style.transform=`translateY(${(1-easeOut(sk))*-500}px)`; W2.style.opacity=sk>0?1:0;
   const lk=prog(t,CA+2.5,CA+2.8); $('cLabel').setAttribute('opacity',lk);
   show($('s7cb'),t,CA+2.9,CB,.35,.3,30); hl('hlc2',t,CA+3.4,.45);
