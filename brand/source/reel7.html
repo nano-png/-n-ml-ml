@@ -48,8 +48,9 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 #s4b{top:1340px;font-size:54px;color:#5A4A35;font-weight:600;line-height:1.5}
 /* S5 modern */
 #s5t{top:250px;font-size:84px}
-#s5t .c{color:#2563EB}
-#phone{position:absolute;left:190px;top:520px;width:700px;height:1100px;background:#0B1226;border:7px solid #334155;border-radius:80px;overflow:hidden}
+#s5t .c{color:#D9412B}
+#phone{position:absolute;left:190px;top:520px;width:700px;height:1100px;background:#FBF7EE;border:10px solid #1A1410;border-radius:80px;overflow:hidden;box-shadow:0 26px 50px rgba(60,40,10,.3)}
+.rcard{border:3px solid #1A1410}
 #phoneMap{position:absolute;inset:0}
 #pin{position:absolute;left:310px;top:330px;font-size:90px}
 .rcard{position:absolute;left:36px;right:36px;background:#fff;color:#0F172A;border-radius:28px;padding:22px 26px}
@@ -71,6 +72,26 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 #s7art{position:absolute;left:0;right:0;top:470px;height:1000px}
 #s7b{top:1560px;font-size:56px}
 #s7ct{top:250px;font-size:84px}
+
+.stWrap{position:absolute;transform-origin:50% 100%}
+.st3d{position:absolute;left:0;top:0;width:400px;height:640px;perspective:1600px}
+.rig{position:absolute;left:30px;bottom:40px;width:340px;height:520px;transform-style:preserve-3d;transform:rotateX(-24deg) rotateY(-32deg)}
+.face{position:absolute;inset:0;transform-origin:50% 100%;transform:rotateX(12deg);transform-style:preserve-3d}
+.layer{position:absolute;inset:0;border-radius:26px}
+.print{background:#FFFFFF;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;align-items:center;box-shadow:inset 0 0 0 2px #E2E8F0}
+.print .ic{margin-top:44px}
+.print .t1{margin-top:26px;font-size:40px;font-weight:700;color:#0F172A}
+.print .t2{font-size:28px;font-weight:600;color:#2563EB}
+.print .nfc{margin-top:34px}
+.print .stars{margin-top:22px;font-size:44px;color:#F59E0B;letter-spacing:8px}
+.print .band{margin-top:auto;width:100%;height:70px;background:#2563EB;display:grid;place-items:center;color:#fff;font-family:Sora;font-weight:600;font-size:32px}
+.print .gloss{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 32%,rgba(255,255,255,0) 58%,rgba(255,255,255,.35) 64%,rgba(255,255,255,0) 72%);pointer-events:none}
+.edge{background:#D5DCE5}
+.base{position:absolute;left:-10px;bottom:0;width:360px;height:190px;transform-origin:50% 100%;transform:rotateX(90deg);transform-style:preserve-3d}
+.base .layer{border-radius:14px}
+.base .top{background:linear-gradient(#FFFFFF,#E9EEF4);box-shadow:inset 0 0 0 2px #D5DCE5}
+.base .edge{background:#C3CCD8}
+.shadow{position:absolute;left:30px;right:-70px;bottom:10px;height:130px;border-radius:50%;background:radial-gradient(closest-side,rgba(59,42,20,.45),rgba(59,42,20,0));filter:blur(4px)}
 /* S8 info */
 #s8t{top:220px;font-size:66px}
 #s8big{top:360px;font-size:84px}
@@ -102,7 +123,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 
 <!-- S1 HOOK -->
 <section class="scene" id="s1"><div class="cam" id="c1">
-  <div id="s1date"><span>~ 2000 سنة</span></div>
+  <div id="s1date"><span>قبل 2000 سنة</span></div>
   <div class="h" id="s1a">كان في <span class="hl" id="hl1">سرّ</span>…</div>
   <div class="h" id="s1b">بيخلّي التاجر <span class="hl" id="hl2">غني</span></div>
   <div class="h" id="s1c">وهو نفس السر اللي<br>بيملّي مطاعم عمّان <b style="color:#D9412B">اليوم</b></div>
@@ -181,12 +202,14 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 
 <!-- S5 MODERN -->
 <section class="scene" id="s5"><div class="cam" id="c5">
-  <div class="h" id="s5t">اليوم… <span class="c">القافلة</span> صارت هيك</div>
+  <div class="h" id="s5t">اليوم… <span class="c">الزباين</span> صاروا هيك</div>
   <div id="phone">
     <svg id="phoneMap" viewBox="0 0 700 1100" aria-hidden="true">
-      <rect width="700" height="1100" fill="#1E293B"/>
-      <g stroke="#334155" stroke-width="18"><path d="M0 300 H700"/><path d="M0 640 H700"/><path d="M220 0 V1100"/><path d="M520 0 V1100"/></g>
-      <g stroke="#475569" stroke-width="6"><path d="M0 470 H700"/><path d="M370 0 V1100"/></g>
+      <rect width="700" height="1100" fill="#E8DCC0"/>
+      <path d="M430 120 C520 100 640 160 660 260 C600 300 480 280 430 120 Z" fill="#C7D9A8"/>
+      <path d="M0 860 C140 820 260 900 360 1100 L0 1100 Z" fill="#9DC3C9"/>
+      <g stroke="#FBF7EE" stroke-width="22"><path d="M0 300 H700"/><path d="M0 640 H700"/><path d="M220 0 V1100"/><path d="M520 0 V1100"/></g>
+      <g stroke="#F3EAD6" stroke-width="8"><path d="M0 470 H700"/><path d="M370 0 V1100"/></g>
     </svg>
     <svg id="pin" width="90" height="120" viewBox="0 0 60 80"><use href="#pinSym"/></svg>
     <div class="rcard" id="rc1" style="top:600px"><b>مطعم الأفضل سمعة</b><span style="color:#E0A800">★★★★★</span> <span style="font-family:Sora">4.8</span> · <span style="font-family:Sora">512</span></div>
@@ -206,6 +229,7 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
 <!-- S7 SOLUTION -->
 <section class="scene" id="s7"><div class="cam" id="c7">
   <div class="h" id="s7t">عشان هيك عملنا<br><span class="c">ستاند نقرة</span></div>
+  <div class="stWrap" id="st7" style="left:340px;top:700px;width:400px;height:640px"><div class="st3d"><div class="shadow"></div><div class="rig"><div class="base"><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer top"></div></div><div class="face"><div class="layer edge" style="transform:translateZ(-16px)"></div><div class="layer edge" style="transform:translateZ(-14px)"></div><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer print"><svg class="ic" width="88" height="88" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2563EB"/><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/><path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></svg><div class="t1">قرّب تلفونك</div><div class="t2">وقيّمنا على Google</div><svg class="nfc" width="120" height="90" viewBox="-60 -50 120 90"><g fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/></g><circle cx="0" cy="16" r="10" fill="#0F172A"/></svg><div class="stars">★★★★★</div><div class="band">naqra</div><div class="gloss"></div></div></div></div></div></div>
   <svg id="s7art" viewBox="0 0 1080 1000" style="overflow:visible" aria-hidden="true">
     
     <defs>
@@ -239,13 +263,12 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
       <rect width="340" height="600" rx="24" transform="matrix(1,0.147,0,1,360,60)" fill="none" stroke="#E2E8F0" stroke-width="3"/>
       </g>
     </defs>
-    <g id="mock"><use href="#mockArt"/></g>
-    <g fill="none" stroke="#2563EB"><circle id="r1" cx="540" cy="360" r="0" stroke-width="7"/><circle id="r2" cx="540" cy="360" r="0" stroke-width="6"/><circle id="r3" cx="540" cy="360" r="0" stroke-width="5"/></g>
+    <g fill="none" stroke="#D9412B"><circle id="r1" cx="560" cy="440" r="0" stroke-width="7"/><circle id="r2" cx="560" cy="440" r="0" stroke-width="6"/><circle id="r3" cx="560" cy="440" r="0" stroke-width="5"/></g>
     <g id="ph">
-      <rect x="-100" y="-195" width="200" height="390" rx="32" fill="#0B1226" stroke="#22D3EE" stroke-width="6"/>
-      <rect x="-84" y="-160" width="168" height="320" rx="16" fill="#13224A"/>
-      <g id="phs" opacity="0"><text x="0" y="-20" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="24" fill="#CBD5E1">قيّم تجربتك</text>
-        <text x="0" y="30" text-anchor="middle" font-size="34" fill="#FBBF24" style="letter-spacing:4px">★★★★★</text></g>
+      <rect x="-100" y="-195" width="200" height="390" rx="32" fill="#1A1410"/>
+      <rect x="-86" y="-165" width="172" height="330" rx="16" fill="#FBF7EE"/>
+      <g id="phs" opacity="0"><text x="0" y="-20" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="24" fill="#1A1410">قيّم تجربتك</text>
+        <text x="0" y="30" text-anchor="middle" font-size="34" fill="#E0A800" style="letter-spacing:4px">★★★★★</text></g>
     </g>
     <g id="flyStars"></g>
   </svg>
@@ -286,11 +309,10 @@ body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;positio
     <!-- coffee cup -->
     <g transform="translate(270 430)"><path d="M0 0 L70 0 L62 90 L8 90 Z" fill="#FBF7EE" stroke="#1A1410" stroke-width="4"/><rect x="-4" y="-12" width="78" height="16" rx="6" fill="#8A5A2E" stroke="#1A1410" stroke-width="4"/></g>
     <!-- stand on counter -->
-    <g id="cStand"><use href="#mockArt" transform="translate(278 77) scale(.62)"/></g>
     <!-- marker circle -->
-    <ellipse id="cCircle" cx="545" cy="345" rx="170" ry="245" fill="none" stroke="#D9412B" stroke-width="9" stroke-linecap="round" transform="rotate(-6 545 345)"/>
-    <g id="cLabel" transform="translate(700 -10)"><text x="120" y="10" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="50" fill="#D9412B">هون بالزبط</text><path d="M60 40 C20 70 -20 100 -70 150" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/><path d="M-80 124 L-72 152 L-46 144" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/></g>
+    <g id="cLabel" transform="translate(690 110)"><text x="120" y="10" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="50" fill="#D9412B">هون بالزبط</text><path d="M60 40 C20 70 -20 100 -70 150" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/><path d="M-80 124 L-72 152 L-46 144" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/></g>
   </svg>
+  <div class="stWrap" id="stC" style="left:400px;top:1088px;transform-origin:50% 100%"><div style="transform:scale(.52);transform-origin:0 100%;position:absolute;left:0;bottom:0;width:400px;height:640px"><div class="st3d"><div class="shadow"></div><div class="rig"><div class="base"><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer top"></div></div><div class="face"><div class="layer edge" style="transform:translateZ(-16px)"></div><div class="layer edge" style="transform:translateZ(-14px)"></div><div class="layer edge" style="transform:translateZ(-12px)"></div><div class="layer edge" style="transform:translateZ(-10px)"></div><div class="layer edge" style="transform:translateZ(-8px)"></div><div class="layer edge" style="transform:translateZ(-6px)"></div><div class="layer edge" style="transform:translateZ(-4px)"></div><div class="layer edge" style="transform:translateZ(-2px)"></div><div class="layer print"><svg class="ic" width="88" height="88" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2563EB"/><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/><path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></svg><div class="t1">قرّب تلفونك</div><div class="t2">وقيّمنا على Google</div><svg class="nfc" width="120" height="90" viewBox="-60 -50 120 90"><g fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/></g><circle cx="0" cy="16" r="10" fill="#0F172A"/></svg><div class="stars">★★★★★</div><div class="band">naqra</div><div class="gloss"></div></div></div></div></div></div></div>
   <div class="h" id="s7cb" style="top:1690px;font-size:50px;line-height:1.45">الزبون بيدفع… وبيشوف الستاند <span class="hl" id="hlc2">قدّامه</span></div>
 </div></section>
 
@@ -406,12 +428,12 @@ window.renderBase=function(t){
   // S7
   $('c7').style.transform=`scale(${1+0.04*prog(t,33.6,40.4)})`;
   show($('s7t'),t,33.8,40.4,.35,.3,30);
-  const sk=prog(t,34.0,34.5); const sc=sk>0?back(sk):0.001; $('mock').setAttribute('transform',`translate(550 800) scale(${sc*1.15}) translate(-550 -800) translate(0 ${-8*Math.sin(t*1.6)})`); $('mock').setAttribute('opacity',sk>0?1:0);
-  const a=easeInOut(prog(t,35.3,36.4)); const px=940-(940-660)*a, py=40+(300-40)*a, rot=22-(22-12)*a;
+  const sk=prog(t,34.0,34.5); const sc=sk>0?back(sk):0.001; const W1=$('st7'); W1.style.transform=`scale(${sc*1.3}) translateY(${-8*Math.sin(t*1.6)}px)`; W1.style.opacity=sk>0?1:0;
+  const a=easeInOut(prog(t,35.3,36.4)); const px=1000-(1000-790)*a, py=20+(250-20)*a, rot=22-(22-14)*a;
   $('ph').setAttribute('transform',`translate(${px+40} ${py-20}) rotate(${rot}) scale(.78)`); $('ph').setAttribute('opacity',prog(t,35.0,35.3));
   $('phs').setAttribute('opacity',prog(t,36.5,36.8));
   [['r1',36.4],['r2',36.55],['r3',36.7]].forEach(([id,s0])=>{const k=prog(t,s0,s0+1);const c=$(id);c.setAttribute('r',40+460*easeOut(k));c.setAttribute('opacity',k>0&&k<1?(1-k)*.9:0);});
-  flys.forEach((s,i)=>{const s0=37.0+i*0.18,k=prog(t,s0,s0+1.1);const x=540+ (i%2?1:-1)*(220+i*45)*easeOut(k), y=360-230*easeOut(k);
+  flys.forEach((s,i)=>{const s0=37.0+i*0.18,k=prog(t,s0,s0+1.1);const x=560+ (i%2?1:-1)*(220+i*45)*easeOut(k), y=470-260*easeOut(k);
     s.setAttribute('x',x);s.setAttribute('y',y);s.setAttribute('opacity',k>0&&k<1?1-k*0.6:0);});
   show($('s7b'),t,37.6,40.4,.35,.3,30); hl('hl12',t,38.2,.5);
   $('flash').style.opacity=Math.max(0,1-Math.abs(t-33.65)/0.22)*0.85;
@@ -448,9 +470,7 @@ window.renderAt=function(t){
   const dk=easeOut(prog(t,CA+.3,CA+.9)); $('cDesk').setAttribute('transform',`translate(0 ${(1-dk)*500})`);
   const rk=prog(t,CA+.8,CA+1.15); $('cReg').setAttribute('transform',`translate(690 ${300+(1-easeOut(rk))*-200})`); $('cReg').setAttribute('opacity',rk>0?1:0);
   const pk=prog(t,CA+.95,CA+1.3); $('cPos').setAttribute('transform',`translate(120 ${330+(1-easeOut(pk))*-200})`); $('cPos').setAttribute('opacity',pk>0?1:0);
-  const sk=prog(t,CA+1.3,CA+1.65); $('cStand').setAttribute('transform',`translate(0 ${(1-easeOut(sk))*-420})`); $('cStand').setAttribute('opacity',sk>0?1:0);
-  const ce=$('cCircle'); if(!circLen) circLen=ce.getTotalLength();
-  const ck=easeInOut(prog(t,CA+2.0,CA+2.6)); ce.setAttribute('stroke-dasharray',circLen); ce.setAttribute('stroke-dashoffset',circLen*(1-ck)); ce.setAttribute('opacity',ck>0?1:0);
+  const sk=prog(t,CA+1.3,CA+1.65); const W2=$('stC'); W2.style.transform=`translateY(${(1-easeOut(sk))*-500}px)`; W2.style.opacity=sk>0?1:0;
   const lk=prog(t,CA+2.5,CA+2.8); $('cLabel').setAttribute('opacity',lk);
   show($('s7cb'),t,CA+2.9,CB,.35,.3,30); hl('hlc2',t,CA+3.4,.45);
 };

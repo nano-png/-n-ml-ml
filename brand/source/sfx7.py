@@ -88,7 +88,7 @@ def stamp():
     return np.sin(2*np.pi*90*t)*np.exp(-t*18)+rng.standard_normal(n)*np.exp(-t*60)*0.6
 def camelbell(f=780):
     n=int(1.4*SR); t=np.arange(n)/SR
-    s=sum(a*np.sin(2*np.pi*f*r*t) for r,a in [(1,1),(2.76,.5),(5.4,.25),(8.9,.12)])
+    s=sum(a*np.sin(2*np.pi*f*r*t) for r,a in [(1,1),(2,.35),(3,.15),(4.2,.06)])
     return s*np.exp(-t*3)*np.minimum(1,t/0.002)
 def tear(d=0.9):
     n=int(d*SR); x=rng.standard_normal(n); crack=(rng.random(n)<0.02)*rng.standard_normal(n)*4
@@ -122,11 +122,19 @@ for k in range(10): put(fx,tick(),0.3+k*0.4,0.35)
 for h in (0.8,1.8): put(fx,scribble(0.4),h,0.55)
 put(fx,impact(0.9),2.6,0.4)
 # map
-put(fx,rustle(0.6),4.35,0.7); put(amb,wind(6.2),4.4,0.6)
-put(fx,scribble(0.5),5.2,0.5)
-for k in range(5): put(fx,camelbell(760+k*20),5.4+k*0.7,0.3)
-put(fx,stamp(),6.6,0.8); put(fx,stamp(),6.9,0.5); put(fx,stamp(),8.2,0.6)
-put(fx,whoosh(0.6),8.6,0.35)
+put(fx,rustle(0.6),4.35,0.6); put(amb,wind(6.2),4.4,0.3)
+put(fx,scribble(0.5),5.2,0.45)
+def step():
+    n=int(0.16*SR); tt=np.arange(n)/SR
+    return (np.sin(2*np.pi*70*tt)*np.exp(-tt*28)+lp(rng.standard_normal(n),0.08)*np.exp(-tt*40)*0.6)
+for k in range(8):
+    tb=t0+k*0.72
+    if 5.0<=tb<=10.2:
+        put(fx,step(),tb,0.32); put(fx,step(),tb+0.36,0.22)
+    if 5.0<=tb<=10.2 and k%2==0:
+        put(fx,camelbell(880),tb,0.14)
+put(fx,stamp(),6.6,0.7); put(fx,stamp(),8.2,0.5)
+put(fx,whoosh(0.6),8.6,0.25)
 # khans
 put(fx,rustle(0.6),10.55,0.7)
 put(fx,scribble(0.45),11.3,0.5)
@@ -135,7 +143,7 @@ for b in (12.4,13.4,14.4): put(fx,pop(800,450,.09),b,0.45)
 put(fx,scribble(0.5),15.5,0.5)
 # proverb
 put(fx,rustle(0.5),17.35,0.6)
-put(fx,impact(1.6),18.1,0.7); put(fx,camelbell(520),18.15,0.4)
+put(fx,impact(1.6),18.1,0.7); put(fx,camelbell(440),18.15,0.3)
 put(fx,scribble(0.5),18.9,0.55)
 # tear transition
 put(fx,tear(0.95),21.65,0.9); put(fx,impact(1.0),22.55,0.6)
