@@ -1,0 +1,458 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>
+@font-face{font-family:PlexAr;src:url(plexar400.ttf);font-weight:400}
+@font-face{font-family:PlexAr;src:url(plexar600.ttf);font-weight:600}
+@font-face{font-family:PlexAr;src:url(plexar700.ttf);font-weight:700}
+@font-face{font-family:Sora;src:url(sora600.ttf);font-weight:600}
+@font-face{font-family:Sora;src:url(sora700.ttf);font-weight:700}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#EFE5CF;color:#1A1410;font-family:PlexAr,Sora,sans-serif;position:relative}
+:root{--paper:#EFE5CF;--ink:#1A1410;--hl:#FFD43B;--red:#D9412B;--navy:#0F172A;--blue:#2563EB;--cyan:#22D3EE}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.cam{position:absolute;inset:0;transform-origin:50% 45%}
+.h{position:absolute;left:80px;right:80px;text-align:center;font-weight:700;line-height:1.3}
+.hl{background-image:linear-gradient(transparent 52%,var(--hl) 52%,var(--hl) 92%,transparent 92%);background-repeat:no-repeat;background-size:0% 100%;background-position:right;padding:0 8px}
+.hlr{background-image:linear-gradient(transparent 52%,#F7A39A 52%,#F7A39A 92%,transparent 92%)}
+.tag{position:absolute;font-weight:700;font-size:34px;background:var(--ink);color:var(--paper);padding:6px 18px;border-radius:6px}
+.cut{position:absolute;background:#FBF7EE;box-shadow:0 18px 40px rgba(60,40,10,.25);border-radius:6px}
+.small{font-size:26px;color:#6B5B45}
+/* overlays */
+#paperTex{position:absolute;inset:0;z-index:30;mix-blend-mode:multiply;opacity:.55;pointer-events:none}
+#grain{position:absolute;inset:-40px;z-index:31;opacity:.10;pointer-events:none}
+#vig{position:absolute;inset:0;z-index:32;pointer-events:none;background:radial-gradient(120% 85% at 50% 45%,transparent 55%,rgba(60,35,10,.35) 100%)}
+#tear{position:absolute;left:0;right:0;height:2300px;top:-2300px;z-index:35;background:#1A1410;pointer-events:none}
+#tear svg{position:absolute;bottom:-60px;left:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:36;pointer-events:none}
+/* S1 hook */
+#s1a{top:520px;font-size:104px}
+#s1b{top:760px;font-size:84px}
+#s1c{top:1080px;font-size:56px;color:#5A4A35;font-weight:600;line-height:1.5}
+#s1date{position:absolute;top:300px;left:0;right:0;text-align:center}
+#s1date span{font-family:Sora;font-weight:700;font-size:44px;border:4px solid var(--ink);padding:6px 26px;border-radius:999px;letter-spacing:4px}
+/* S2 map */
+#map{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#s2t{top:200px;font-size:76px}
+#s2cap{position:absolute;left:80px;right:80px;bottom:260px;text-align:center}
+#s2cap span{display:inline-block;background:var(--ink);color:var(--paper);padding:16px 30px;font-size:46px;font-weight:700;border-radius:8px}
+/* S3 khans */
+#s3t{top:220px;font-size:70px}
+#khans{position:absolute;left:0;top:520px;width:1080px;height:900px}
+#s3cap{position:absolute;left:80px;right:80px;top:1460px;text-align:center;font-size:52px;font-weight:700;line-height:1.45}
+.bub{position:absolute;background:#FBF7EE;border:4px solid var(--ink);border-radius:30px;padding:14px 26px;font-size:36px;font-weight:700;opacity:0;white-space:nowrap}
+/* S4 proverb */
+#s4card{position:absolute;left:110px;right:110px;top:640px;padding:70px 50px;text-align:center;transform:rotate(-2deg)}
+#s4card .q{font-size:150px;line-height:.6;color:var(--red);font-family:Sora}
+#s4card b{display:block;font-size:110px;line-height:1.3;margin-top:20px}
+#s4card .src{font-size:34px;color:#6B5B45;margin-top:24px}
+#s4t{top:400px;font-size:62px}
+#s4b{top:1340px;font-size:54px;color:#5A4A35;font-weight:600;line-height:1.5}
+/* S5 modern */
+#s5t{top:250px;font-size:84px}
+#s5t .c{color:#2563EB}
+#phone{position:absolute;left:190px;top:520px;width:700px;height:1100px;background:#0B1226;border:7px solid #334155;border-radius:80px;overflow:hidden}
+#phoneMap{position:absolute;inset:0}
+#pin{position:absolute;left:310px;top:330px;font-size:90px}
+.rcard{position:absolute;left:36px;right:36px;background:#fff;color:#0F172A;border-radius:28px;padding:22px 26px}
+.rcard b{font-size:40px;display:block}
+.rcard span{font-size:34px}
+#s5b{top:1680px;font-size:60px}
+/* S6 problem */
+#s6t{top:250px;font-size:96px}
+#crowd{position:absolute;left:90px;right:90px;top:600px;display:grid;grid-template-columns:repeat(5,1fr);gap:30px 20px}
+.p{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0}
+.p .face{width:120px;height:120px;border-radius:50%;background:#F2C14E;border:5px solid var(--ink);display:grid;place-items:center;font-size:62px}
+.p .lbl{font-size:30px;font-weight:700;height:40px}
+#s6b{top:1180px;font-size:62px;line-height:1.45}
+#s6note{position:absolute;bottom:200px;left:0;right:0;text-align:center}
+/* S7 solution */
+#s7t{top:230px;font-size:80px}
+#s7t .c{color:#2563EB}
+#s7art{z-index:2}
+#s7art{position:absolute;left:0;right:0;top:470px;height:1000px}
+#s7b{top:1560px;font-size:56px}
+#s7ct{top:250px;font-size:84px}
+/* S8 info */
+#s8t{top:220px;font-size:66px}
+#s8big{top:360px;font-size:84px}
+.rv{position:absolute;left:110px;right:110px;padding:30px 36px;border-radius:24px;border:4px solid var(--ink);background:#FBF7EE}
+.rv .top{display:flex;justify-content:space-between;align-items:center}
+.rv .st{font-size:44px;color:#E0A800;letter-spacing:4px;direction:ltr}
+.rv .d{font-size:34px;font-weight:700;padding:4px 16px;border-radius:999px}
+.rv p{font-size:36px;margin-top:10px;font-weight:600}
+#rvOld{top:720px;opacity:0}
+#rvOld .d{background:#D6CDBA;color:#5A4A35}
+#rvNew{top:1010px;opacity:0}
+#rvNew{border-color:#16A34A}
+#rvNew .d{background:#16A34A;color:#fff}
+#s8b{top:1360px;font-size:56px;line-height:1.45}
+/* end */
+#end{background:transparent;color:#1A1410;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px}
+#end img{height:130px}
+#end .l1{font-size:70px;font-weight:700;text-align:center;line-height:1.35}
+#end .l1 .c{color:#2563EB}
+#end .cta{background:var(--blue);border-radius:36px;padding:28px 60px;font-size:60px;font-weight:700;box-shadow:0 24px 60px rgba(37,99,235,.45)}
+#end .save{font-size:46px;font-weight:700;color:#D9412B;border:4px solid #D9412B;border-radius:999px;padding:6px 28px;transform:rotate(-3deg)}
+#end .g{font-size:38px;color:#5A4A35;font-weight:600}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="paperF"><feTurbulence type="fractalNoise" baseFrequency=".012 .02" numOctaves="4" seed="3"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .3  0 0 0 .9 0"/></filter>
+  <filter id="noise"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="1"/></filter>
+  <symbol id="camel" viewBox="0 0 120 90"><g fill="#1A1410"><path d="M18 50 C20 34 34 30 44 34 C50 20 64 20 70 34 C78 30 86 34 88 44 L96 30 C98 24 104 20 110 22 L114 26 L108 30 L104 42 C100 52 94 56 86 58 L84 60 L84 84 L79 84 L78 62 L66 62 L64 84 L59 84 L58 60 L40 60 L38 84 L33 84 L32 60 L28 60 L26 84 L21 84 L22 58 C18 56 17 54 18 50 Z"/><path d="M18 50 C10 52 8 60 6 66" stroke="#1A1410" stroke-width="3" fill="none"/></g></symbol><symbol id="pinSym" viewBox="0 0 60 80"><path d="M30 2 C14 2 4 14 4 28 C4 48 30 78 30 78 C30 78 56 48 56 28 C56 14 46 2 30 2 Z" fill="#D9412B" stroke="#1A1410" stroke-width="3"/><circle cx="30" cy="28" r="10" fill="#FBF7EE"/></symbol><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+</svg>
+
+<!-- S1 HOOK -->
+<section class="scene" id="s1"><div class="cam" id="c1">
+  <div id="s1date"><span>~ 2000 سنة</span></div>
+  <div class="h" id="s1a">كان في <span class="hl" id="hl1">سرّ</span>…</div>
+  <div class="h" id="s1b">بيخلّي التاجر <span class="hl" id="hl2">غني</span></div>
+  <div class="h" id="s1c">وهو نفس السر اللي<br>بيملّي مطاعم عمّان <b style="color:#D9412B">اليوم</b></div>
+</div></section>
+
+<!-- S2 MAP -->
+<section class="scene" id="s2"><div class="cam" id="c2">
+  <svg id="map" viewBox="0 0 1080 1920" aria-hidden="true">
+    <!-- sea -->
+    <path d="M0 380 C120 420 160 520 120 640 C90 740 60 820 0 860 Z" fill="#9DC3C9" opacity=".7"/>
+    <text x="40" y="560" font-family="PlexAr" font-weight="600" font-size="34" fill="#3E6A70" transform="rotate(-70 70 600)">البحر المتوسط</text>
+    <!-- red sea -->
+    <path d="M330 980 C380 1100 470 1260 560 1420 C620 1530 700 1640 760 1760 L700 1780 C640 1660 560 1550 500 1440 C420 1290 340 1130 300 1000 Z" fill="#9DC3C9" opacity=".7"/>
+    <!-- dead sea -->
+    <path d="M520 560 C540 600 545 660 530 720 C515 680 505 610 520 560 Z" fill="#9DC3C9"/>
+    <!-- land texture lines -->
+    <g stroke="#B9A57E" stroke-width="2" fill="none" opacity=".6">
+      <path d="M700 300 C800 360 900 340 1060 420"/><path d="M640 900 C760 960 900 940 1060 1040"/><path d="M820 1300 C900 1340 980 1330 1060 1380"/>
+    </g>
+    <text x="820" y="1260" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="44" fill="#8A7550">شبه الجزيرة العربية</text>
+    <!-- route -->
+    <path id="route" d="M900 1780 C860 1600 760 1420 680 1240 C620 1100 580 980 560 860 C545 780 500 700 420 640 C330 580 220 560 130 520"
+          fill="none" stroke="#D9412B" stroke-width="10" stroke-linecap="round" stroke-dasharray="26 22"/>
+    <!-- petra -->
+    <g id="petra" transform="translate(560 860)">
+      <circle r="34" fill="#D9412B"/><circle r="14" fill="#FBF7EE"/>
+      <circle id="petraPulse" r="34" fill="none" stroke="#D9412B" stroke-width="6"/>
+    </g>
+    <g id="petraLbl" transform="translate(600 900)">
+      <rect x="0" y="-10" width="260" height="78" rx="8" fill="#1A1410"/>
+      <text x="130" y="44" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="46" fill="#EFE5CF">البتراء</text>
+    </g>
+    <g id="gazaLbl" transform="translate(150 470)"><circle r="16" fill="#1A1410"/><text x="30" y="-24" font-family="PlexAr" font-weight="700" font-size="36" fill="#1A1410">غزة</text></g>
+    <g id="routeLbl" transform="translate(700 1330) rotate(-62)"><text font-family="PlexAr" font-weight="700" font-size="40" fill="#D9412B">طريق البخور</text></g>
+    <use id="cam1" href="#camel" width="96" height="72"/><use id="cam2" href="#camel" width="96" height="72"/><use id="cam3" href="#camel" width="96" height="72"/>
+  </svg>
+  <div class="h" id="s2t">البتراء… <span class="hl" id="hl3">قلب طريق التجارة</span></div>
+  <div id="s2cap"><span>القوافل بتمرق من هون… محمّلة بخور وبهارات</span></div>
+</div></section>
+
+<!-- S3 KHANS -->
+<section class="scene" id="s3"><div class="cam" id="c3">
+  <div class="h" id="s3t">بس القافلة… <span class="hl" id="hl4">وين بتنزل؟</span></div>
+  <svg id="khans" viewBox="0 0 1080 900" aria-hidden="true">
+    <rect x="0" y="760" width="1080" height="140" fill="#D9C7A0"/>
+    <!-- busy khan (right) -->
+    <g transform="translate(580 260)">
+      <path d="M0 500 L0 140 Q200 -20 400 140 L400 500 Z" fill="#C98B55" stroke="#1A1410" stroke-width="6"/>
+      <path d="M140 500 L140 330 Q200 260 260 330 L260 500 Z" fill="#3A2416"/>
+      <ellipse cx="200" cy="470" rx="60" ry="22" fill="#FF9F1C" opacity=".9"/>
+      <path d="M180 470 Q200 400 220 470" fill="#FFD43B"/>
+      <g fill="#1A1410"><circle cx="-40" cy="430" r="26"/><rect x="-62" y="456" width="44" height="80" rx="16"/>
+        <circle cx="440" cy="430" r="26"/><rect x="418" y="456" width="44" height="80" rx="16"/>
+        <circle cx="60" cy="440" r="22"/><rect x="42" y="462" width="36" height="70" rx="14"/>
+        <circle cx="340" cy="440" r="22"/><rect x="322" y="462" width="36" height="70" rx="14"/></g>
+      <use href="#camel" x="-70" y="520" width="130" height="98"/><use href="#camel" x="320" y="520" width="130" height="98"/>
+    </g>
+    <!-- empty khan (left) -->
+    <g transform="translate(90 300)">
+      <path d="M0 460 L0 140 Q170 0 340 140 L340 460 Z" fill="#B6A68A" stroke="#1A1410" stroke-width="6"/>
+      <path d="M120 460 L120 310 Q170 250 220 310 L220 460 Z" fill="#5E5243"/>
+    </g>
+  </svg>
+  <div class="bub" id="b1">«أكلهم طيب»</div>
+  <div class="bub" id="b2">«وناسهم كرام»</div>
+  <div class="bub" id="b3">«انزلوا عندهم!»</div>
+  <div id="s3cap">القوافل كانت تختار<br>حسب <span class="hl" id="hl5">الكلمة اللي بتسمعها</span> من غيرها</div>
+</div></section>
+
+<!-- S4 PROVERB -->
+<section class="scene" id="s4"><div class="cam" id="c4">
+  <div class="h" id="s4t">ومن هون بنفهم المثل الأردني:</div>
+  <div class="cut" id="s4card"><div class="q">“</div><b>الصيت<br>ولا <span class="hl" id="hl6">الغنى</span></b><div class="src">مثل شعبي</div></div>
+  <div class="h" id="s4b">السمعة كانت أغلى<br>من <s style="text-decoration-color:#D9412B;text-decoration-thickness:6px">الذهب</s> والبخور</div>
+</div></section>
+
+<!-- S5 MODERN -->
+<section class="scene" id="s5"><div class="cam" id="c5">
+  <div class="h" id="s5t">اليوم… <span class="c">القافلة</span> صارت هيك</div>
+  <div id="phone">
+    <svg id="phoneMap" viewBox="0 0 700 1100" aria-hidden="true">
+      <rect width="700" height="1100" fill="#1E293B"/>
+      <g stroke="#334155" stroke-width="18"><path d="M0 300 H700"/><path d="M0 640 H700"/><path d="M220 0 V1100"/><path d="M520 0 V1100"/></g>
+      <g stroke="#475569" stroke-width="6"><path d="M0 470 H700"/><path d="M370 0 V1100"/></g>
+    </svg>
+    <svg id="pin" width="90" height="120" viewBox="0 0 60 80"><use href="#pinSym"/></svg>
+    <div class="rcard" id="rc1" style="top:600px"><b>مطعم الأفضل سمعة</b><span style="color:#E0A800">★★★★★</span> <span style="font-family:Sora">4.8</span> · <span style="font-family:Sora">512</span></div>
+    <div class="rcard" id="rc2" style="top:800px"><b>مطعم ثاني</b><span style="color:#E0A800">★★★★</span><span style="color:#CBD5E1">★</span> <span style="font-family:Sora">4.1</span> · <span style="font-family:Sora">14</span></div>
+  </div>
+  <div class="h" id="s5b">و«الكلمة» صارت… <span class="hl" id="hl7">تقييم</span> <span style="color:#E0A800">★</span></div>
+</div></section>
+
+<!-- S6 PROBLEM -->
+<section class="scene" id="s6"><div class="cam" id="c6">
+  <div class="h" id="s6t">بس <span class="hl hlr" id="hl11">المشكلة؟</span></div>
+  <div id="crowd"></div>
+  <div class="h" id="s6b">أغلب الزباين المبسوطين<br><span class="hl hlr" id="hl8">بيطلعوا من غير ما يقيّموا</span></div>
+  <div id="s6note" class="small">* رسم توضيحي</div>
+</div></section>
+
+<!-- S7 SOLUTION -->
+<section class="scene" id="s7"><div class="cam" id="c7">
+  <div class="h" id="s7t">عشان هيك عملنا<br><span class="c">ستاند نقرة</span></div>
+  <svg id="s7art" viewBox="0 0 1080 1000" style="overflow:visible" aria-hidden="true">
+    
+    <defs>
+      <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".35" stop-color="#fff" stop-opacity=".0"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".35"/><stop offset=".78" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="baseG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E2E8F0"/></linearGradient>
+      <radialGradient id="shadowG"><stop offset="0" stop-color="#3B2A14" stop-opacity=".45"/><stop offset="1" stop-color="#3B2A14" stop-opacity="0"/></radialGradient>
+      <clipPath id="faceClip"><rect width="340" height="600" rx="24" transform="matrix(1,0.147,0,1,360,60)"/></clipPath>
+    <g id="mockArt">
+      <ellipse cx="575" cy="800" rx="330" ry="52" fill="url(#shadowG)"/>
+      <!-- base plate: thickness then top -->
+      <path d="M360 672 L700 722 L740 802 L400 752 Z" fill="#CBD5E1" transform="translate(0 14)"/>
+      <path d="M400 752 L740 802 L740 816 L400 766 Z" fill="#94A3B8"/>
+      <path d="M360 660 L700 710 L740 802 L400 752 Z" fill="url(#baseG)" stroke="#CBD5E1" stroke-width="2"/>
+      <!-- face thickness (edge) -->
+      <rect width="340" height="600" rx="24" transform="matrix(1,0.147,0,1,374,66)" fill="#CBD5E1"/>
+      <!-- face print -->
+      <g transform="matrix(1,0.147,0,1,360,60)">
+        <rect width="340" height="600" rx="24" fill="#FFFFFF"/>
+        <g transform="translate(132 46)"><rect width="76" height="76" rx="19" fill="#2563EB"/>
+          <g transform="scale(1.1875)"><path d="M18 47 V19 L40 47 V27" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="17.5" r="3.8" fill="#22D3EE"/>
+          <path d="M41.2 10.6 A7 7 0 0 1 46.9 18.7" fill="none" stroke="#22D3EE" stroke-width="3.2" stroke-linecap="round"/></g></g>
+        <text x="170" y="200" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="40" fill="#0F172A">قرّب تلفونك</text>
+        <text x="170" y="250" text-anchor="middle" font-family="PlexAr" font-weight="600" font-size="28" fill="#2563EB">وقيّمنا على Google</text>
+        <g transform="translate(170 352)" fill="none" stroke="#0F172A" stroke-width="9" stroke-linecap="round"><path d="M-26 -12 A36 36 0 0 1 26 -12" opacity=".45"/><path d="M-50 -36 A70 70 0 0 1 50 -36" opacity=".7"/><circle cx="0" cy="16" r="10" fill="#0F172A" stroke="none"/></g>
+        <text x="170" y="460" text-anchor="middle" font-size="44" fill="#F59E0B" style="letter-spacing:8px">★★★★★</text>
+        <rect y="520" width="340" height="80" fill="#0F172A" clip-path="none"/>
+        <text x="170" y="572" text-anchor="middle" font-family="Sora" font-weight="600" font-size="34" fill="#FFFFFF">naqra</text>
+      </g>
+      <!-- rounded bottom fix + gloss -->
+      <g clip-path="url(#faceClip)"><rect x="300" y="0" width="500" height="900" fill="url(#gloss)" opacity=".7"/></g>
+      <rect width="340" height="600" rx="24" transform="matrix(1,0.147,0,1,360,60)" fill="none" stroke="#E2E8F0" stroke-width="3"/>
+      </g>
+    </defs>
+    <g id="mock"><use href="#mockArt"/></g>
+    <g fill="none" stroke="#2563EB"><circle id="r1" cx="540" cy="360" r="0" stroke-width="7"/><circle id="r2" cx="540" cy="360" r="0" stroke-width="6"/><circle id="r3" cx="540" cy="360" r="0" stroke-width="5"/></g>
+    <g id="ph">
+      <rect x="-100" y="-195" width="200" height="390" rx="32" fill="#0B1226" stroke="#22D3EE" stroke-width="6"/>
+      <rect x="-84" y="-160" width="168" height="320" rx="16" fill="#13224A"/>
+      <g id="phs" opacity="0"><text x="0" y="-20" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="24" fill="#CBD5E1">قيّم تجربتك</text>
+        <text x="0" y="30" text-anchor="middle" font-size="34" fill="#FBBF24" style="letter-spacing:4px">★★★★★</text></g>
+    </g>
+    <g id="flyStars"></g>
+  </svg>
+  <div class="h" id="s7b">الزبون بيقرّب تلفونه… وكلمته الحلوة <span class="hl" id="hl12">بتوصل بنقرة</span></div>
+</div></section>
+
+<!-- S7B CASHIER -->
+<section class="scene" id="s7c"><div class="cam" id="c7c">
+  <div class="h" id="s7ct">وأحسن مكان إله؟<br><span class="hl" id="hlc">جنب الكاشير</span></div>
+  <svg id="counter" viewBox="0 0 1080 1100" style="position:absolute;left:0;top:560px;width:1080px;height:1100px;overflow:visible" aria-hidden="true">
+    <!-- back wall shelf -->
+    <g opacity=".55"><rect x="60" y="40" width="960" height="14" fill="#8A6A44"/>
+      <g fill="#C98B55" stroke="#1A1410" stroke-width="3"><rect x="120" y="-40" width="60" height="80" rx="8"/><rect x="200" y="-60" width="60" height="100" rx="8"/><rect x="820" y="-50" width="70" height="90" rx="8"/><rect x="910" y="-30" width="60" height="70" rx="8"/></g></g>
+    <g id="cDesk">
+      <!-- counter top -->
+      <path d="M0 560 L1080 560 L1080 610 L0 610 Z" fill="#A8743F" stroke="#1A1410" stroke-width="4"/>
+      <path d="M0 520 L1080 520 L1080 560 L0 560 Z" fill="#D6A56A" stroke="#1A1410" stroke-width="4"/>
+      <!-- counter front -->
+      <rect x="0" y="610" width="1080" height="500" fill="#8A5A2E"/>
+      <g stroke="#6E4520" stroke-width="5" opacity=".7"><path d="M0 700 H1080"/><path d="M0 800 H1080"/><path d="M0 900 H1080"/><path d="M0 1000 H1080"/></g>
+      <g stroke="#1A1410" stroke-width="4"><path d="M270 610 V1110"/><path d="M540 610 V1110"/><path d="M810 610 V1110"/></g>
+    </g>
+    <!-- cash register (right) -->
+    <g id="cReg" transform="translate(690 300)">
+      <path d="M0 220 L300 220 L280 120 L20 120 Z" fill="#475569" stroke="#1A1410" stroke-width="5"/>
+      <rect x="40" y="-10" width="220" height="130" rx="14" fill="#1E293B" stroke="#1A1410" stroke-width="5"/>
+      <rect x="60" y="10" width="180" height="70" rx="8" fill="#22D3EE" opacity=".85"/>
+      <text x="150" y="58" text-anchor="middle" font-family="Sora" font-weight="700" font-size="34" fill="#0F172A">4.50</text>
+      <g fill="#CBD5E1"><rect x="50" y="150" width="40" height="22" rx="4"/><rect x="100" y="150" width="40" height="22" rx="4"/><rect x="150" y="150" width="40" height="22" rx="4"/><rect x="200" y="150" width="40" height="22" rx="4"/>
+        <rect x="45" y="182" width="42" height="22" rx="4"/><rect x="97" y="182" width="42" height="22" rx="4"/><rect x="149" y="182" width="42" height="22" rx="4"/><rect x="201" y="182" width="42" height="22" rx="4"/></g>
+    </g>
+    <!-- card machine (left) -->
+    <g id="cPos" transform="translate(120 330)">
+      <rect x="0" y="0" width="120" height="190" rx="18" fill="#0F172A" stroke="#1A1410" stroke-width="5"/>
+      <rect x="14" y="16" width="92" height="56" rx="6" fill="#94A3B8"/>
+      <g fill="#475569"><circle cx="30" cy="100" r="9"/><circle cx="60" cy="100" r="9"/><circle cx="90" cy="100" r="9"/><circle cx="30" cy="130" r="9"/><circle cx="60" cy="130" r="9"/><circle cx="90" cy="130" r="9"/><circle cx="60" cy="160" r="9"/></g>
+    </g>
+    <!-- coffee cup -->
+    <g transform="translate(270 430)"><path d="M0 0 L70 0 L62 90 L8 90 Z" fill="#FBF7EE" stroke="#1A1410" stroke-width="4"/><rect x="-4" y="-12" width="78" height="16" rx="6" fill="#8A5A2E" stroke="#1A1410" stroke-width="4"/></g>
+    <!-- stand on counter -->
+    <g id="cStand"><use href="#mockArt" transform="translate(278 77) scale(.62)"/></g>
+    <!-- marker circle -->
+    <ellipse id="cCircle" cx="545" cy="345" rx="170" ry="245" fill="none" stroke="#D9412B" stroke-width="9" stroke-linecap="round" transform="rotate(-6 545 345)"/>
+    <g id="cLabel" transform="translate(700 -10)"><text x="120" y="10" text-anchor="middle" font-family="PlexAr" font-weight="700" font-size="50" fill="#D9412B">هون بالزبط</text><path d="M60 40 C20 70 -20 100 -70 150" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/><path d="M-80 124 L-72 152 L-46 144" fill="none" stroke="#D9412B" stroke-width="6" stroke-linecap="round"/></g>
+  </svg>
+  <div class="h" id="s7cb" style="top:1690px;font-size:50px;line-height:1.45">الزبون بيدفع… وبيشوف الستاند <span class="hl" id="hlc2">قدّامه</span></div>
+</div></section>
+
+<!-- S8 IMPORTANT INFO -->
+<section class="scene" id="s8"><div class="cam" id="c8">
+  <div class="h" id="s8t">ومعلومة <span class="hl hlr" id="hl13">مهمة</span>…</div>
+  <div class="h" id="s8big">الناس ما بتعدّ التقييمات بس…<br><span class="hl" id="hl9">بتشوف قديش جديدة</span></div>
+  <div class="rv" id="rvOld"><div class="top"><span class="st">★★★★★</span><span class="d">قبل 3 سنين</span></div><p>«أكلهم طيب»</p></div>
+  <div class="rv" id="rvNew"><div class="top"><span class="st">★★★★★</span><span class="d">قبل ساعة</span></div><p>«أطيب مطعم جربته هالشهر!»</p></div>
+  <div class="h" id="s8b">خلّي الكلمة الحلوة<br><span class="hl" id="hl10">تيجيك كل يوم</span></div>
+</div></section>
+
+<!-- END -->
+<section class="scene" id="end">
+  <img src="logo-color.svg" alt="">
+  <div class="l1">الصيت ولا الغنى…<br><span class="c">وصيتك صار <span class="hl" id="hl14">بنقرة</span></span></div>
+  <div class="save">احفظ الفيديو</div>
+  <div class="cta">ابعتلنا «ستاند»</div>
+  <div class="g">ضمان استرجاع المال خلال شهر</div>
+</section>
+
+<svg id="paperTex" width="1080" height="1920"><rect width="100%" height="100%" filter="url(#paperF)"/></svg>
+<svg id="grain" width="1160" height="2000"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+<div id="vig"></div>
+<div id="tear"><svg width="1080" height="80" viewBox="0 0 1080 80"><path d="M0 0 H1080 V30 L1040 60 L990 25 L940 70 L880 30 L830 64 L770 22 L720 58 L660 28 L600 72 L540 26 L480 62 L420 24 L360 66 L300 30 L240 70 L180 22 L120 60 L60 28 L0 64 Z" fill="#1A1410"/></svg></div>
+<div id="flash"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const prog=(t,a,b)=>clamp((t-a)/(b-a));
+const easeOut=x=>1-Math.pow(1-x,3);
+const easeInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function show(el,t,a,b,fi=.35,fo=.3,dy=40){const i=easeOut(prog(t,a,a+fi)),o=1-prog(t,b-fo,b);el.style.opacity=Math.min(i,o);el.style.transform=`translateY(${(1-i)*dy}px)`;}
+function popIn(el,t,a,b,fo=.3,rot=0){const k=prog(t,a,a+.35);el.style.opacity=Math.min(k>0?1:0,1-prog(t,b-fo,b));el.style.transform=`rotate(${rot}deg) scale(${k>0?back(k):.001})`;}
+function hl(id,t,a,d=.5){$(id).style.backgroundSize=`${100*easeOut(prog(t,a,a+d))}% 100%`;}
+const SC={s1:[0,4.4],s2:[4.4,10.6],s3:[10.6,17.4],s4:[17.4,22.0],s5:[22.6,28.4],s6:[28.4,33.6],s7:[33.6,40.4],s8:[40.4,47.2],end:[47.2,51.5]};
+// crowd
+const crowd=$('crowd');
+for(let i=0;i<10;i++) crowd.insertAdjacentHTML('beforeend',`<div class="p"><div class="face"><svg viewBox="0 0 100 100" width="90" height="90"><circle cx="34" cy="40" r="7" fill="#1A1410"/><circle cx="66" cy="40" r="7" fill="#1A1410"/><path d="M28 60 Q50 82 72 60" fill="none" stroke="#1A1410" stroke-width="7" stroke-linecap="round"/></svg></div><div class="lbl"></div></div>`);
+const people=[...crowd.children];
+// flying stars
+const fs=$('flyStars');
+for(let i=0;i<6;i++) fs.insertAdjacentHTML('beforeend',`<text font-size="70" fill="#FBBF24" opacity="0">★</text>`);
+const flys=[...fs.children];
+const route=$('route'); const RL=route.getTotalLength(); route.style.strokeDasharray=`26 22`;
+function routeReveal(p){ // reveal via mask: use dashoffset trick on a copy
+  route.setAttribute('stroke-dasharray',`26 22`);
+  route.style.clipPath='none';
+}
+const routeMaskLen=RL;
+window.renderBase=function(t){
+  for(const id in SC){const [a,b]=SC[id];$(id).style.opacity=Math.min(prog(t,a,a+.3),id==='end'?1:1-prog(t,b-.3,b));}
+  $('turb').setAttribute('seed',Math.floor(t*24)%60);
+  // dark/navy scenes: lighten paper texture
+  const dark=(t>22.4&&t<33.4)?(t<28.4?1:0):0;
+  const navy = (t>=22.4&&t<28.4)||(t>=33.4&&t<40.4)||t>=47.2;
+  $('paperTex').style.opacity=0.5; $('vig').style.opacity=1;
+  // S1
+  $('c1').style.transform=`scale(${1+0.05*prog(t,0,4.4)})`;
+  popIn($('s1date'),t,0.1,4.4,.3,0);
+  show($('s1a'),t,0.3,4.4,.3,.3,30); hl('hl1',t,0.8,.4);
+  show($('s1b'),t,1.3,4.4,.3,.3,30); hl('hl2',t,1.8,.4);
+  show($('s1c'),t,2.6,4.4,.35,.3,30);
+  // S2 map
+  $('c2').style.transform=`scale(${1.06-0.06*easeInOut(prog(t,4.4,10.6))})`;
+  const rp=easeInOut(prog(t,5.0,8.4));
+  // draw route: emulate by dash pattern that ends at reveal point
+  const shown=RL*rp;
+  route.setAttribute('stroke-dasharray', shown<1?'0 99999':`26 22`);
+  route.style.clipPath='';
+  route.setAttribute('pathLength',RL);
+  // use mask by setting a second dasharray: visible length then gap
+  route.setAttribute('stroke-dasharray', `${dashSeq(shown)}`);
+  svgPop('petra','translate(560 860)',t,6.6,10.6); svgPop('petraLbl','translate(600 900)',t,6.9,10.6); svgPop('gazaLbl','translate(150 470)',t,8.2,10.6);
+  $('routeLbl').setAttribute('opacity',Math.min(prog(t,5.6,6.0),1-prog(t,10.3,10.6)));
+  const pul=prog(t,7.0,8.2)%1; $('petraPulse').setAttribute('r',34+60*pul); $('petraPulse').setAttribute('opacity',(1-pul)*(t>7&&t<10.6?1:0));
+  [['cam1',0],['cam2',.12],['cam3',.24]].forEach(([id,off])=>{const q=clamp(rp-off); const pt=route.getPointAtLength(RL*q); const el=$(id);
+    el.setAttribute('x',pt.x-48); el.setAttribute('y',pt.y-60); el.setAttribute('opacity', q>0.02 && rp>0 ? 1:0);});
+  show($('s2t'),t,4.6,10.6,.35,.3,30); hl('hl3',t,5.2,.5);
+  show($('s2cap'),t,8.6,10.6,.35,.3,30);
+  // S3 khans
+  $('c3').style.transform=`scale(${1+0.05*prog(t,10.6,17.4)})`;
+  show($('s3t'),t,10.8,17.4,.35,.3,30); hl('hl4',t,11.3,.45);
+  const bubs=[['b1',12.4,120,560],['b2',13.4,520,500],['b3',14.4,300,640]];
+  bubs.forEach(([id,a,x,y])=>{const el=$(id);const k=prog(t,a,a+.35);el.style.left=x+'px';el.style.top=y+'px';
+    el.style.opacity=Math.min(k>0?1:0,1-prog(t,17.0,17.3));el.style.transform=`scale(${k>0?back(k):.001}) translateX(${-40*prog(t,a,a+2.5)}px)`;});
+  show($('s3cap'),t,15.0,17.4,.35,.3,30); hl('hl5',t,15.5,.5);
+  // S4 proverb
+  $('c4').style.transform=`scale(${1+0.06*prog(t,17.4,22)})`;
+  show($('s4t'),t,17.6,22,.35,.3,30);
+  popIn($('s4card'),t,18.1,22,.3,-2); hl('hl6',t,18.9,.5);
+  show($('s4b'),t,19.8,22,.35,.3,30);
+  // tear transition 22.0-22.6
+  const tp=prog(t,21.7,22.6); $('tear').style.top = (-2300 + 4300*easeInOut(tp))+'px';
+  // S5
+  $('c5').style.transform=`scale(${1+0.04*prog(t,22.6,28.4)})`;
+  show($('s5t'),t,22.8,28.4,.35,.3,30);
+  const ph=$('phone'); const pk=easeOut(prog(t,23.2,23.8)); ph.style.transform=`translateY(${(1-pk)*200}px)`; ph.style.opacity=Math.min(pk,1-prog(t,28.1,28.4));
+  const pinK=prog(t,23.9,24.25); $('pin').style.transform=`translateY(${(1-easeOut(pinK))*-120}px)`; $('pin').style.opacity=pinK>0?1:0;
+  show($('rc1'),t,24.5,28.4,.3,.3,30); show($('rc2'),t,24.9,28.4,.3,.3,30);
+  show($('s5b'),t,25.8,28.4,.35,.3,30); hl('hl7',t,26.4,.45);
+  // S6
+  $('c6').style.transform=`scale(${1+0.04*prog(t,28.4,33.6)})`;
+  popIn($('s6t'),t,28.6,33.6,.3,0);
+  people.forEach((p,i)=>{const a=29.0+i*0.12;const k=prog(t,a,a+.3);p.style.opacity=Math.min(k,1-prog(t,33.3,33.6));p.style.transform=`scale(${k>0?back(k):.001})`;
+    const lbl=p.querySelector('.lbl'); const face=p.querySelector('.face');
+    if(t>30.6+i*0.1){ if(i===3){lbl.textContent='★ قيّم';lbl.style.color='#16A34A';face.style.borderColor='#16A34A';} else {lbl.textContent='طلع ←'; lbl.style.color='#9A8B73'; face.style.opacity=.45;} } else {lbl.textContent='';face.style.opacity=1;face.style.borderColor='';}});
+  show($('s6b'),t,31.4,33.6,.35,.3,30); hl('hl8',t,31.9,.5);
+  hl('hl11',t,28.9,.4);
+  show($('s6note'),t,29.2,33.6,.3,.3,0);
+  // S7
+  $('c7').style.transform=`scale(${1+0.04*prog(t,33.6,40.4)})`;
+  show($('s7t'),t,33.8,40.4,.35,.3,30);
+  const sk=prog(t,34.0,34.5); const sc=sk>0?back(sk):0.001; $('mock').setAttribute('transform',`translate(550 800) scale(${sc*1.15}) translate(-550 -800) translate(0 ${-8*Math.sin(t*1.6)})`); $('mock').setAttribute('opacity',sk>0?1:0);
+  const a=easeInOut(prog(t,35.3,36.4)); const px=940-(940-660)*a, py=40+(300-40)*a, rot=22-(22-12)*a;
+  $('ph').setAttribute('transform',`translate(${px+40} ${py-20}) rotate(${rot}) scale(.78)`); $('ph').setAttribute('opacity',prog(t,35.0,35.3));
+  $('phs').setAttribute('opacity',prog(t,36.5,36.8));
+  [['r1',36.4],['r2',36.55],['r3',36.7]].forEach(([id,s0])=>{const k=prog(t,s0,s0+1);const c=$(id);c.setAttribute('r',40+460*easeOut(k));c.setAttribute('opacity',k>0&&k<1?(1-k)*.9:0);});
+  flys.forEach((s,i)=>{const s0=37.0+i*0.18,k=prog(t,s0,s0+1.1);const x=540+ (i%2?1:-1)*(220+i*45)*easeOut(k), y=360-230*easeOut(k);
+    s.setAttribute('x',x);s.setAttribute('y',y);s.setAttribute('opacity',k>0&&k<1?1-k*0.6:0);});
+  show($('s7b'),t,37.6,40.4,.35,.3,30); hl('hl12',t,38.2,.5);
+  $('flash').style.opacity=Math.max(0,1-Math.abs(t-33.65)/0.22)*0.85;
+  // S8
+  $('c8').style.transform=`scale(${1+0.04*prog(t,40.4,47.2)})`;
+  popIn($('s8t'),t,40.6,47.2,.3,0); hl('hl13',t,40.9,.4);
+  show($('s8big'),t,41.2,47.2,.35,.3,30); hl('hl9',t,41.9,.5);
+  const o=prog(t,42.8,43.2); $('rvOld').style.opacity=Math.min(o,1-prog(t,46.9,47.2)); $('rvOld').style.transform=`rotate(-2deg) translateX(${(1-easeOut(o))*200}px)`;
+  const n=prog(t,43.6,44.0); $('rvNew').style.opacity=Math.min(n,1-prog(t,46.9,47.2)); $('rvNew').style.transform=`rotate(1.5deg) translateX(${(1-easeOut(n))*-200}px) scale(${1+0.04*Math.sin(Math.PI*prog(t,44,44.6))})`;
+  $('rvOld').style.filter = t>44.2 ? `grayscale(1) opacity(${1-0.4*prog(t,44.2,44.6)})` : 'none';
+  show($('s8b'),t,44.8,47.2,.35,.3,30); hl('hl10',t,45.3,.5);
+  // END
+  const ek=easeOut(prog(t,47.2,47.7)); $('end').style.transform=`scale(${0.94+0.06*ek})`; hl('hl14',t,47.9,.5);
+};
+function svgPop(id,base,t,a,b){const el=$(id);const k=prog(t,a,a+.35);const sc=k>0?back(k):0.001;el.setAttribute('transform',`${base} scale(${sc})`);el.setAttribute('opacity',Math.min(k>0?1:0,1-prog(t,b-.3,b)));}
+function dashSeq(shown){
+  // build "dash gap ... remaining-gap" so only the first `shown` px are visible with a dashed look
+  if(shown<=0) return '0 '+(RL+10);
+  let seq=[],acc=0; while(acc+26<shown){seq.push(26,22);acc+=48;}
+  const rest=Math.max(0,shown-acc); seq.push(Math.min(26,rest), RL+10);
+  return seq.join(' ');
+}
+const CA=40.4, CB=45.4, SHIFT=CB-CA;
+let circLen=0;
+window.renderAt=function(t){
+  const c=$('s7c');
+  if(t<CA){ renderBase(t); c.style.opacity=0; return; }
+  if(t>=CB){ renderBase(t-SHIFT); c.style.opacity=0; $('turb').setAttribute('seed',Math.floor(t*24)%60); return; }
+  renderBase(CA-0.01); $('s7').style.opacity=0; $('s8').style.opacity=0;
+  $('turb').setAttribute('seed',Math.floor(t*24)%60);
+  c.style.opacity=Math.min(prog(t,CA,CA+.3),1-prog(t,CB-.3,CB));
+  $('c7c').style.transform=`scale(${1+0.05*prog(t,CA,CB)})`;
+  show($('s7ct'),t,CA+.15,CB,.35,.3,30); hl('hlc',t,CA+.7,.5);
+  const dk=easeOut(prog(t,CA+.3,CA+.9)); $('cDesk').setAttribute('transform',`translate(0 ${(1-dk)*500})`);
+  const rk=prog(t,CA+.8,CA+1.15); $('cReg').setAttribute('transform',`translate(690 ${300+(1-easeOut(rk))*-200})`); $('cReg').setAttribute('opacity',rk>0?1:0);
+  const pk=prog(t,CA+.95,CA+1.3); $('cPos').setAttribute('transform',`translate(120 ${330+(1-easeOut(pk))*-200})`); $('cPos').setAttribute('opacity',pk>0?1:0);
+  const sk=prog(t,CA+1.3,CA+1.65); $('cStand').setAttribute('transform',`translate(0 ${(1-easeOut(sk))*-420})`); $('cStand').setAttribute('opacity',sk>0?1:0);
+  const ce=$('cCircle'); if(!circLen) circLen=ce.getTotalLength();
+  const ck=easeInOut(prog(t,CA+2.0,CA+2.6)); ce.setAttribute('stroke-dasharray',circLen); ce.setAttribute('stroke-dashoffset',circLen*(1-ck)); ce.setAttribute('opacity',ck>0?1:0);
+  const lk=prog(t,CA+2.5,CA+2.8); $('cLabel').setAttribute('opacity',lk);
+  show($('s7cb'),t,CA+2.9,CB,.35,.3,30); hl('hlc2',t,CA+3.4,.45);
+};
+renderAt(0);
+</script></body></html>
