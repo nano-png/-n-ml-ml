@@ -125,15 +125,7 @@ body{background:#fff;color:var(--ink);font-family:PlexAr,Sora,sans-serif;positio
 <section class="sc" id="s5"><div class="cam">
   <div class="abs m" style="top:250px"><div class="mi h" id="s5a">ستاند <span class="blue">نقرة</span></div></div>
   <div class="abs m" style="top:380px"><div class="mi p mute" id="s5b">قرّب تلفونك… وخلصت</div></div>
-  <div class="shadow" id="sh5" style="left:170px;width:740px;top:1270px;height:70px"></div>
-  <div id="prod5" style="position:absolute;left:130px;top:520px;width:820px;height:786px">
-    <svg width="820" height="786" viewBox="0 0 1100 1055">
-      <defs><mask id="mk5" style="mask-type:alpha"><image href="p_small_web.png" width="1100" height="1055"/></mask>
-        <linearGradient id="lg5" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
-      <image href="p_small_web.png" width="1100" height="1055"/>
-      <g mask="url(#mk5)"><rect id="sw5" x="-400" y="-200" width="260" height="1500" fill="url(#lg5)" transform="rotate(18)"/></g>
-    </svg>
-  </div>
+  <img id="prod5" src="p_small.jpg" style="position:absolute;left:70px;top:470px;width:940px;height:940px">
   <div id="rip" style="position:absolute;left:0;top:0"></div>
   <div class="phone" id="ph"><div class="scr">
     <div class="notch"></div>
@@ -155,15 +147,7 @@ body{background:#fff;color:var(--ink);font-family:PlexAr,Sora,sans-serif;positio
 
 <!-- ============ S6 OFFER 21-25 ============ -->
 <section class="sc" id="s6"><div class="cam">
-  <div class="shadow" id="sh6" style="left:250px;width:600px;top:780px;height:50px"></div>
-  <div id="prod6" style="position:absolute;left:190px;top:250px;width:700px;height:540px">
-    <svg width="700" height="540" viewBox="0 0 1000 772">
-      <defs><mask id="mk6" style="mask-type:alpha"><image href="p_large_web.png" width="1000" height="772"/></mask>
-        <linearGradient id="lg6" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
-      <image href="p_large_web.png" width="1000" height="772"/>
-      <g mask="url(#mk6)"><rect id="sw6" x="-400" y="-200" width="240" height="1300" fill="url(#lg6)" transform="rotate(18)"/></g>
-    </svg>
-  </div>
+  <img id="prod6" src="p_large.jpg" style="position:absolute;left:160px;top:100px;width:760px;height:760px">
   <div class="feat" id="f1" style="top:880px"><div class="ck">CK</div><span>بيشتغل على أي تلفون، من غير تطبيق</span></div>
   <div class="feat" id="f2" style="top:985px"><div class="ck">CK</div><span>منبرمجه على صفحة مطعمك ومنوصّله</span></div>
   <div class="feat" id="f3" style="top:1090px"><div class="ck">CK</div><span>بيشتغل من غير كهربا ولا إنترنت</span></div>
@@ -269,23 +253,21 @@ window.renderAt=function(t){
   // S5
   rev('s5a',t,15.02); rev('s5b',t,15.3);
   {const p=ex(prog(t,15.0,15.8));const pr=$('prod5');pr.style.opacity=p;pr.style.transform=`translateY(${(1-p)*90}px) scale(${.92+.08*p})`;
-   $('sh5').style.opacity=p;
-   $('sw5').setAttribute('x',-500+1900*eio(prog(t,15.7,16.6)));}
+}
   // phone: enters 16.4 -> contact 17.2, exits 18.9-19.3
   {const ph=$('ph');const pin=eio(prog(t,16.35,17.15)),pout=eio(prog(t,18.85,19.3));
-   const x=-400+470*pin-650*pout, y=700-120*pin, r=-25+15*pin;
+   const x=-400+470*pin-650*pout, y=770-120*pin, r=-25+15*pin;
    ph.style.left=x+'px';ph.style.top=y+'px';ph.style.transform=`rotate(${r}deg) scale(.8)`;ph.style.opacity=t<16.35||t>19.3?0:1;
    const on=t>=17.3;$('scrB').style.opacity=on?1:0;$('scrA').style.opacity=on?0:1;
    for(let i=0;i<5;i++)$('ps'+i).setAttribute('opacity',t>=17.65+i*.13?1:0);
    const txt='أكل طيب وخدمة ممتازة';const n=Math.floor(clamp((t-18.35)/.45)*txt.length);$('ptxt').textContent=txt.slice(0,n);}
   for(let i=0;i<3;i++){const rp=$('rp'+i),a=17.2+i*.14,p=prog(t,a,a+.7);const s=40+260*eo3(p);
-    rp.style.width=rp.style.height=s+'px';rp.style.left=(325-s/2)+'px';rp.style.top=(620-s/2)+'px';rp.style.opacity=p>0&&p<1?(1-p)*.9:0;}
+    rp.style.width=rp.style.height=s+'px';rp.style.left=(334-s/2)+'px';rp.style.top=(690-s/2)+'px';rp.style.opacity=p>0&&p<1?(1-p)*.9:0;}
   {const c=$('s5c');rev('s5c',t,17.35,.5);const o=1-prog(t,19.0,19.2);c.parentNode.style.opacity=o;}
   {const r=$('s5r');const p=ex(prog(t,19.15,19.6));r.style.opacity=p;r.style.transform=`translateY(${(1-p)*40}px)`;setOd($('od3'),V3(t),'#2563EB');
    $('s5g').style.opacity=ex(prog(t,19.5,19.9));}
   // S6
-  {const p=ex(prog(t,21.0,21.8));const pr=$('prod6');pr.style.opacity=p;pr.style.transform=`translateX(${(1-p)*-120}px) scale(${.94+.06*p})`;$('sh6').style.opacity=p;
-   $('sw6').setAttribute('x',-500+1700*eio(prog(t,21.6,22.5)));}
+  {const p=ex(prog(t,21.0,21.8));const pr=$('prod6');pr.style.opacity=p;pr.style.transform=`translateX(${(1-p)*-120}px) scale(${.94+.06*p})`;}
   rise($('f1'),t,21.45,.5,40);rise($('f2'),t,21.75,.5,40);rise($('f3'),t,22.05,.5,40);
   {const a=$('t1'),b=$('t2');const pa=ex(prog(t,22.7,23.1)),pb=ex(prog(t,23.0,23.4));
    a.style.opacity=pa;a.style.transform=`scale(${.85+.15*pa})`;b.style.opacity=pb;b.style.transform=`scale(${.85+.15*pb})`;}
