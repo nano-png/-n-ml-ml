@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:PlexAr;src:url(plexar400.ttf);font-weight:400}
+@font-face{font-family:PlexAr;src:url(plexar600.ttf);font-weight:600}
+@font-face{font-family:PlexAr;src:url(plexar700.ttf);font-weight:700}
+@font-face{font-family:Sora;src:url(sora400.ttf);font-weight:400}
+@font-face{font-family:Sora;src:url(sora600.ttf);font-weight:600}
+@font-face{font-family:Sora;src:url(sora700.ttf);font-weight:700}
+:root{--ink:#0B0B0F;--mute:#6B7280;--line:#E6E8EC;--panel:#F5F6F8;--blue:#2563EB;--cyan:#22D3EE;--red:#E5484D;--gold:#F5B400}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#fff;color:var(--ink);font-family:PlexAr,Sora,sans-serif;position:relative}
+.sc{position:absolute;inset:0;display:none}
+.cam{position:absolute;inset:0;transform-origin:50% 45%}
+.abs{position:absolute;left:0;right:0;text-align:center}
+.m{overflow:hidden;padding:6px 0 14px}
+.mi{will-change:transform}
+.h{font-weight:700;font-size:92px;line-height:1.3;letter-spacing:-.5px}
+.h2{font-weight:700;font-size:70px;line-height:1.35}
+.p{font-weight:600;font-size:54px;line-height:1.4;color:var(--ink)}
+.mute{color:var(--mute)}
+.blue{color:var(--blue)}
+.red{color:var(--red)}
+.en{font-family:Sora;font-weight:600}
+.idx{position:absolute;top:210px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-family:Sora;font-weight:600;font-size:26px;color:#A1A7B3;letter-spacing:3px}
+.idx i{flex:1;height:2px;background:var(--line);margin:0 24px;transform-origin:right}
+.tag{font-size:30px;font-weight:600;color:#9AA1AD}
+/* cards */
+.card{position:absolute;left:110px;right:110px;background:#fff;border:2px solid var(--line);border-radius:40px;padding:40px 48px;box-shadow:0 30px 70px rgba(15,20,30,.10);direction:rtl}
+.ch{display:flex;align-items:center;gap:30px}
+.pin{width:110px;height:110px;border-radius:30px;background:var(--panel);display:flex;align-items:center;justify-content:center;flex:none}
+.cn{font-size:52px;font-weight:700;line-height:1.3}
+.cr{display:flex;align-items:center;gap:16px;font-size:40px;margin-top:6px}
+.rv{font-family:Sora;font-weight:700;font-size:46px}
+.cc{color:var(--mute);font-weight:600;font-size:36px}
+.stars{position:relative;display:inline-block;width:250px;height:46px;direction:ltr}
+.stars .g,.stars .y{position:absolute;left:0;top:0;height:46px;overflow:hidden;white-space:nowrap;display:flex;gap:5px}
+.stars svg{width:46px;height:46px;flex:none}
+.badge{display:inline-block;margin-top:30px;padding:14px 30px;border-radius:22px;font-size:38px;font-weight:700}
+.badge.r{background:#FDECEC;color:var(--red)}
+/* odometer */
+.od{display:flex;justify-content:center;direction:ltr;font-family:Sora;font-weight:700}
+.dg{overflow:hidden;position:relative}
+.dg .st{position:absolute;left:0;right:0;top:0}
+.dg .st div{text-align:center}
+/* list */
+.row{position:absolute;left:110px;right:110px;display:flex;align-items:center;gap:28px;font-size:48px;font-weight:600;direction:rtl}
+.num{width:76px;height:76px;border-radius:50%;background:var(--panel);display:flex;align-items:center;justify-content:center;font-family:Sora;font-weight:700;font-size:36px;color:var(--mute);flex:none}
+.strike{position:absolute;height:6px;background:var(--red);border-radius:3px;top:50%;right:0;transform-origin:right;transform:scaleX(0)}
+.bar{height:22px;border-radius:11px;background:var(--panel);margin-top:22px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:11px;transform-origin:right}
+/* phone */
+.phone{position:absolute;width:300px;height:610px;border-radius:52px;background:#0B0B0F;padding:14px;box-shadow:0 40px 80px rgba(0,0,0,.28)}
+.scr{width:100%;height:100%;border-radius:40px;background:#fff;overflow:hidden;position:relative;direction:rtl;text-align:center}
+.notch{position:absolute;top:14px;left:50%;width:90px;height:26px;margin-left:-45px;border-radius:13px;background:#0B0B0F}
+.ripple{position:absolute;border:5px solid var(--blue);border-radius:50%;opacity:0}
+.feat{position:absolute;left:110px;right:110px;display:flex;align-items:center;gap:28px;font-size:46px;font-weight:600;direction:rtl}
+.ck{width:70px;height:70px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex:none}
+.tile{position:absolute;width:420px;height:210px;border-radius:36px;background:var(--panel);text-align:center;padding-top:30px}
+.tile .a{font-size:40px;font-weight:600;color:var(--mute)}
+.tile .b{font-family:Sora;font-weight:700;font-size:84px;line-height:1.3;direction:rtl}
+.tile .b small{font-family:PlexAr;font-size:44px;font-weight:700}
+.pill{display:inline-block;border:3px solid var(--blue);color:var(--blue);border-radius:40px;padding:16px 40px;font-size:44px;font-weight:700}
+.cta{display:inline-block;background:var(--blue);color:#fff;border-radius:48px;padding:26px 70px;font-family:Sora;font-weight:700;font-size:84px;letter-spacing:2px;box-shadow:0 26px 60px rgba(37,99,235,.35)}
+#wipe{position:absolute;inset:0;background:var(--blue);transform:translateY(100%);z-index:50}
+.shadow{position:absolute;border-radius:50%;background:rgba(15,20,30,.22);filter:blur(28px)}
+</style></head><body>
+
+<!-- ============ S1 HOOK 0-3 ============ -->
+<section class="sc" id="s1"><div class="cam">
+  <div class="abs m" style="top:600px"><div class="mi h" id="h1a">مطعمك مليان زباين…</div></div>
+  <div class="abs m" style="top:730px"><div class="mi h" id="h1b">بس على <span class="en blue">Google</span>؟</div></div>
+  <div class="card" id="c1" style="top:980px">
+    <div class="ch">
+      <div class="pin"><svg width="54" height="70" viewBox="0 0 24 32"><path d="M12 1C6 1 1.5 5.6 1.5 11.4 1.5 19 12 31 12 31s10.5-12 10.5-19.6C22.5 5.6 18 1 12 1z" fill="#E5484D"/><circle cx="12" cy="11.5" r="4.2" fill="#fff"/></svg></div>
+      <div><div class="cn">مطعمك</div>
+        <div class="cr"><span class="rv">4.1</span><span class="stars" data-r="4.1"></span><span class="cc">(23 تقييم)</span></div></div>
+    </div>
+    <div class="badge r" id="b1">تقييمات قليلة… والزبون بيلاحظ</div>
+  </div>
+</div></section>
+
+<!-- ============ S2 COUNTER 3-8 ============ -->
+<section class="sc" id="s2"><div class="cam">
+  <div class="idx"><span>01</span><i id="i2"></i><span>اليوم</span></div>
+  <div class="abs m" style="top:380px"><div class="mi h2" id="s2l">خلّينا نعدّ زباين اليوم</div></div>
+  <div class="abs" style="top:540px"><div class="od" id="od1"></div></div>
+  <div class="abs m" style="top:840px"><div class="mi p mute" id="s2c">زبون أكلوا عندك وانبسطوا</div></div>
+  <div class="abs" style="top:1010px;height:2px;background:var(--line);left:180px;right:180px;transform-origin:center" id="s2d"></div>
+  <div class="abs" style="top:1060px;display:flex;justify-content:center;align-items:center;gap:30px" id="s2r">
+    <span class="p">قيّموا على <span class="en">Google</span>:</span><div class="od" id="od2"></div>
+  </div>
+  <div class="abs m" style="top:1250px"><div class="mi h2" id="s2t">والباقي؟ طلعوا… وما حدا عرف.</div></div>
+  <div class="abs tag" style="top:1400px" id="s2g">مثال توضيحي</div>
+</div></section>
+
+<!-- ============ S3 WHY 8-12 ============ -->
+<section class="sc" id="s3"><div class="cam">
+  <div class="idx"><span>02</span><i id="i3"></i><span>ليش؟</span></div>
+  <div class="abs m" style="top:300px"><div class="mi h2" id="s3a">مش لأنهم زعلانين…</div></div>
+  <div class="abs m" style="top:400px"><div class="mi h2" id="s3b">لأنه التقييم بدّه <span class="blue">6 خطوات</span></div></div>
+  <div id="list"></div>
+  <div class="abs m" style="top:1330px"><div class="mi h2 red" id="s3c">…وبيكون طلع من الباب</div></div>
+</div></section>
+
+<!-- ============ S4 NEIGHBOUR 12-15 ============ -->
+<section class="sc" id="s4"><div class="cam">
+  <div class="idx"><span>03</span><i id="i4"></i><span>جارك</span></div>
+  <div class="abs m" style="top:430px"><div class="mi h2" id="s4a">وبنفس الشارع… جارك</div></div>
+  <div class="card" id="c4a" style="top:620px;padding:34px 44px">
+    <div class="cn" style="font-size:46px">مطعمك</div>
+    <div class="cr"><span class="rv">4.1</span><span class="stars" data-r="4.1"></span><span class="cc"><span class="en" id="n4a">23</span> تقييم</span></div>
+    <div class="bar"><i id="bar4a" style="background:#C4C9D2;width:4%"></i></div>
+  </div>
+  <div class="card" id="c4b" style="top:920px;padding:34px 44px">
+    <div class="cn" style="font-size:46px">المطعم اللي جنبك</div>
+    <div class="cr"><span class="rv">4.7</span><span class="stars" data-r="4.7"></span><span class="cc"><span class="en" id="n4b">1,240</span> تقييم</span></div>
+    <div class="bar"><i id="bar4b" style="background:var(--blue);width:100%"></i></div>
+  </div>
+  <div class="abs m" style="top:1250px"><div class="mi h2" id="s4b">الزبون الجديد… بيروح عند مين؟</div></div>
+</div></section>
+
+<!-- ============ S5 REVEAL 15-21 ============ -->
+<section class="sc" id="s5"><div class="cam">
+  <div class="abs m" style="top:250px"><div class="mi h" id="s5a">ستاند <span class="blue">نقرة</span></div></div>
+  <div class="abs m" style="top:380px"><div class="mi p mute" id="s5b">قرّب تلفونك… وخلصت</div></div>
+  <div class="shadow" id="sh5" style="left:170px;width:740px;top:1270px;height:70px"></div>
+  <div id="prod5" style="position:absolute;left:130px;top:520px;width:820px;height:786px">
+    <svg width="820" height="786" viewBox="0 0 1100 1055">
+      <defs><mask id="mk5" style="mask-type:alpha"><image href="p_small_web.png" width="1100" height="1055"/></mask>
+        <linearGradient id="lg5" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+      <image href="p_small_web.png" width="1100" height="1055"/>
+      <g mask="url(#mk5)"><rect id="sw5" x="-400" y="-200" width="260" height="1500" fill="url(#lg5)" transform="rotate(18)"/></g>
+    </svg>
+  </div>
+  <div id="rip" style="position:absolute;left:0;top:0"></div>
+  <div class="phone" id="ph"><div class="scr">
+    <div class="notch"></div>
+    <div id="scrA" style="position:absolute;inset:0;background:#F5F6F8"></div>
+    <div id="scrB" style="position:absolute;inset:0;opacity:0;padding-top:90px">
+      <div style="font-size:30px;font-weight:700">مطعمك</div>
+      <div style="font-size:24px;color:#6B7280;margin-top:6px">قيّم تجربتك</div>
+      <div id="pst" style="display:flex;justify-content:center;gap:6px;margin-top:34px;direction:ltr"></div>
+      <div style="margin:36px 26px 0;height:150px;border-radius:18px;border:2px solid #E6E8EC;text-align:right;padding:16px;font-size:22px;color:#6B7280" id="ptxt"></div>
+      <div style="margin:30px auto 0;width:150px;height:60px;border-radius:30px;background:#2563EB;color:#fff;font-size:26px;font-weight:700;line-height:60px">نشر</div>
+    </div>
+  </div></div>
+  <div class="abs m" style="top:1350px"><div class="mi p" id="s5c">بنقرة وحدة… صفحة التقييم بتفتح عنده</div></div>
+  <div class="abs" style="top:1350px;display:flex;justify-content:center;align-items:center;gap:26px;opacity:0" id="s5r">
+    <span class="p">قيّموا على <span class="en">Google</span>:</span><div class="od" id="od3"></div>
+  </div>
+  <div class="abs tag" style="top:1500px;opacity:0" id="s5g">مثال توضيحي</div>
+</div></section>
+
+<!-- ============ S6 OFFER 21-25 ============ -->
+<section class="sc" id="s6"><div class="cam">
+  <div class="shadow" id="sh6" style="left:250px;width:600px;top:780px;height:50px"></div>
+  <div id="prod6" style="position:absolute;left:190px;top:250px;width:700px;height:540px">
+    <svg width="700" height="540" viewBox="0 0 1000 772">
+      <defs><mask id="mk6" style="mask-type:alpha"><image href="p_large_web.png" width="1000" height="772"/></mask>
+        <linearGradient id="lg6" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+      <image href="p_large_web.png" width="1000" height="772"/>
+      <g mask="url(#mk6)"><rect id="sw6" x="-400" y="-200" width="240" height="1300" fill="url(#lg6)" transform="rotate(18)"/></g>
+    </svg>
+  </div>
+  <div class="feat" id="f1" style="top:880px"><div class="ck">CK</div><span>بيشتغل على أي تلفون، من غير تطبيق</span></div>
+  <div class="feat" id="f2" style="top:985px"><div class="ck">CK</div><span>منبرمجه على صفحة مطعمك ومنوصّله</span></div>
+  <div class="feat" id="f3" style="top:1090px"><div class="ck">CK</div><span>بيشتغل من غير كهربا ولا إنترنت</span></div>
+  <div class="tile" id="t1" style="right:110px;top:1220px"><div class="a">ستاند واحد</div><div class="b">15 <small>دينار</small></div></div>
+  <div class="tile" id="t2" style="left:110px;top:1220px;background:#EEF3FE"><div class="a">10 ستاندات</div><div class="b blue">120 <small>دينار</small></div></div>
+  <div class="abs" style="top:1470px" id="s6g"><span class="pill">ضمان استرجاع المال خلال شهر</span></div>
+</div></section>
+
+<!-- ============ S7 END 25-28.5 ============ -->
+<section class="sc" id="s7"><div class="cam">
+  <div class="abs" style="top:640px" id="e1"><img src="logo-color.svg" style="height:150px"></div>
+  <div class="abs m" style="top:900px"><div class="mi h2" id="e2">ابعتلنا «ستاند» على واتساب</div></div>
+  <div class="abs" style="top:1050px" id="e3"><span class="cta">0775603978</span></div>
+  <div class="abs m" style="top:1270px"><div class="mi p mute" id="e4">قرّب تلفونك… وخلصت</div></div>
+</div></section>
+
+<div id="wipe"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const prog=(t,a,b)=>clamp((t-a)/(b-a));
+const ex=x=>x>=1?1:1-Math.pow(2,-10*x);            // expo out
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eo3=x=>1-Math.pow(1-x,3);
+const STAR="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z";
+const CHECK='<svg width="38" height="38" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+document.querySelectorAll('.ck').forEach(e=>e.innerHTML=CHECK);
+// star rows
+document.querySelectorAll('.stars').forEach(s=>{
+  const r=+s.dataset.r, one=c=>`<svg viewBox="0 0 24 24"><path d="${STAR}" fill="${c}"/></svg>`;
+  s.innerHTML=`<div class="g">${one('#E3E6EB').repeat(5)}</div><div class="y" style="width:${(Math.floor(r)*51)+(r%1)*46}px">${one('#F5B400').repeat(5)}</div>`;
+});
+// odometers
+function mkOd(el,n,H,size){
+  el.innerHTML='';el._H=H;el._d=[];
+  for(let k=n-1;k>=0;k--){
+    const d=document.createElement('div');d.className='dg';d.style.height=H+'px';d.style.width=(size*.66)+'px';
+    const st=document.createElement('div');st.className='st';
+    for(let i=0;i<=10;i++){const q=document.createElement('div');q.textContent=i%10;q.style.height=H+'px';q.style.lineHeight=H+'px';q.style.fontSize=size+'px';st.appendChild(q);}
+    d.appendChild(st);el.appendChild(d);el._d[k]=d;
+  }
+}
+function setOd(el,V,col){
+  el._d.forEach((d,k)=>{
+    const p=Math.pow(10,k);let pos;
+    if(k===0)pos=V%10;else{const base=Math.floor(V/p),rem=V%p;pos=base+(rem>p-1?rem-(p-1):0);}
+    pos=pos%10; d.firstChild.style.transform=`translateY(${-pos*el._H}px)`;
+    d.style.color=col; d.style.display=(V<p&&k>0)?'none':'block';
+  });
+}
+mkOd($('od1'),3,280,250); mkOd($('od2'),1,130,110); mkOd($('od3'),2,120,100);
+// list
+const steps=['يفتح Google Maps','يدوّر على اسم مطعمك','يفتح صفحتك','ينزل لتحت…','يلاقي «اكتب تقييم»','يكتب ويبعت'];
+$('list').innerHTML=steps.map((s,i)=>`<div class="row" id="L${i}" style="top:${580+i*118}px"><div class="num">${i+1}</div><span style="position:relative">${s.replace('Google Maps','<span class="en">Google Maps</span>')}<i class="strike" id="K${i}" style="width:100%"></i></span></div>`).join('');
+// phone stars
+$('pst').innerHTML=Array.from({length:5},(_,i)=>`<svg width="40" height="40" viewBox="0 0 24 24"><path d="${STAR}" fill="#E3E6EB"/><path id="ps${i}" d="${STAR}" fill="#F5B400" opacity="0"/></svg>`).join('');
+// ripples
+$('rip').innerHTML=[0,1,2].map(i=>`<div class="ripple" id="rp${i}"></div>`).join('');
+
+function rev(id,t,a,d=.6){const el=$(id),p=ex(prog(t,a,a+d));el.style.transform=`translateY(${(1-p)*110}%)`;el.style.opacity=p>0?1:0;}
+function rise(el,t,a,d=.6,dy=60){const p=ex(prog(t,a,a+d));el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`;return p;}
+const SC=[['s1',0,3],['s2',3,8],['s3',8,12],['s4',12,15],['s5',15,21],['s6',21,25],['s7',25,28.5]];
+const V1=t=>Math.round(120*eo3(prog(t,3.5,5.6)));
+const V2=t=>t<6.15?0:(t<6.45?1:2);
+const V3=t=>Math.round(2+62*eo3(prog(t,19.3,20.7)));
+
+window.renderAt=function(t){
+  SC.forEach(([id,a,b])=>{const s=$(id);const on=t>=a&&t<b;s.style.display=on?'block':'none';
+    if(on)s.querySelector('.cam').style.transform=`scale(${1+.03*prog(t,a,b)})`;});
+  // S1
+  rev('h1a',t,.05,.55); rev('h1b',t,.85,.55);
+  {const p=rise($('c1'),t,1.55,.6,140);}
+  {const b=$('b1'),p=ex(prog(t,2.15,2.45));b.style.opacity=p>0?1:0;
+   const g=t>2.15&&t<2.45?Math.sin(t*180)*10*(1-prog(t,2.15,2.45)):0;b.style.transform=`translateX(${g}px) scale(${.9+.1*p})`;}
+  // S2
+  $('i2').style.transform=`scaleX(${ex(prog(t,3.05,3.7))})`;
+  rev('s2l',t,3.05); {const o=$('od1');o.style.opacity=ex(prog(t,3.3,3.6));setOd(o,V1(t),'#0B0B0F');}
+  rev('s2c',t,3.6);
+  $('s2d').style.transform=`scaleX(${ex(prog(t,5.75,6.2))})`;
+  {const r=$('s2r');rise(r,t,5.85,.5,40);setOd($('od2'),V2(t),'#E5484D');}
+  rev('s2t',t,6.85); $('s2g').style.opacity=ex(prog(t,7.1,7.5));
+  // S3
+  $('i3').style.transform=`scaleX(${ex(prog(t,8.05,8.7))})`;
+  rev('s3a',t,8.05); rev('s3b',t,8.55);
+  steps.forEach((_,i)=>{const a=9.0+i*.3,L=$('L'+i);const p=rise(L,t,a,.4,30);
+    const dim=1-.6*prog(t,10.95,11.2);L.style.opacity=p*dim;
+    $('K'+i).style.transform=`scaleX(${eo3(prog(t,10.85+i*.035,11.05+i*.035))})`;});
+  {const g=t>10.85&&t<11.1;$('list').style.transform=g?`translateX(${Math.round(Math.sin(t*240)*12)}px)`:'none';}
+  rev('s3c',t,11.2,.5);
+  // S4
+  $('i4').style.transform=`scaleX(${ex(prog(t,12.05,12.7))})`;
+  rev('s4a',t,12.05);
+  rise($('c4a'),t,12.35,.5,80); rise($('c4b'),t,12.6,.5,80);
+  {const pa=eo3(prog(t,12.7,13.5)),pb=eo3(prog(t,12.9,13.7));
+   $('bar4a').style.transform=`scaleX(${pa})`;$('bar4b').style.transform=`scaleX(${pb})`;
+   $('n4a').textContent=Math.round(23*pa);$('n4b').textContent=Math.round(1240*pb).toLocaleString('en-US');}
+  rev('s4b',t,13.7,.5);
+  {const f=prog(t,13.75,14.1);$('c4a').style.opacity=Math.min(+$('c4a').style.opacity,1-.55*f);
+   $('c4b').style.borderColor=f>0?`rgba(37,99,235,${f})`:'';$('c4b').style.boxShadow=`0 30px 70px rgba(37,99,235,${.08+.14*f})`;}
+  // wipe 14.72-15.28
+  {const w=$('wipe');let y=100;if(t>=14.72&&t<15)y=100*(1-eio(prog(t,14.72,15)));else if(t>=15&&t<15.3)y=-100*ex(prog(t,15,15.3));else if(t>=15.3)y=-100;w.style.transform=`translateY(${y}%)`;}
+  // S5
+  rev('s5a',t,15.02); rev('s5b',t,15.3);
+  {const p=ex(prog(t,15.0,15.8));const pr=$('prod5');pr.style.opacity=p;pr.style.transform=`translateY(${(1-p)*90}px) scale(${.92+.08*p})`;
+   $('sh5').style.opacity=p;
+   $('sw5').setAttribute('x',-500+1900*eio(prog(t,15.7,16.6)));}
+  // phone: enters 16.4 -> contact 17.2, exits 18.9-19.3
+  {const ph=$('ph');const pin=eio(prog(t,16.35,17.15)),pout=eio(prog(t,18.85,19.3));
+   const x=-400+470*pin-650*pout, y=700-120*pin, r=-25+15*pin;
+   ph.style.left=x+'px';ph.style.top=y+'px';ph.style.transform=`rotate(${r}deg) scale(.8)`;ph.style.opacity=t<16.35||t>19.3?0:1;
+   const on=t>=17.3;$('scrB').style.opacity=on?1:0;$('scrA').style.opacity=on?0:1;
+   for(let i=0;i<5;i++)$('ps'+i).setAttribute('opacity',t>=17.65+i*.13?1:0);
+   const txt='أكل طيب وخدمة ممتازة';const n=Math.floor(clamp((t-18.35)/.45)*txt.length);$('ptxt').textContent=txt.slice(0,n);}
+  for(let i=0;i<3;i++){const rp=$('rp'+i),a=17.2+i*.14,p=prog(t,a,a+.7);const s=40+260*eo3(p);
+    rp.style.width=rp.style.height=s+'px';rp.style.left=(325-s/2)+'px';rp.style.top=(620-s/2)+'px';rp.style.opacity=p>0&&p<1?(1-p)*.9:0;}
+  {const c=$('s5c');rev('s5c',t,17.35,.5);const o=1-prog(t,19.0,19.2);c.parentNode.style.opacity=o;}
+  {const r=$('s5r');const p=ex(prog(t,19.15,19.6));r.style.opacity=p;r.style.transform=`translateY(${(1-p)*40}px)`;setOd($('od3'),V3(t),'#2563EB');
+   $('s5g').style.opacity=ex(prog(t,19.5,19.9));}
+  // S6
+  {const p=ex(prog(t,21.0,21.8));const pr=$('prod6');pr.style.opacity=p;pr.style.transform=`translateX(${(1-p)*-120}px) scale(${.94+.06*p})`;$('sh6').style.opacity=p;
+   $('sw6').setAttribute('x',-500+1700*eio(prog(t,21.6,22.5)));}
+  rise($('f1'),t,21.45,.5,40);rise($('f2'),t,21.75,.5,40);rise($('f3'),t,22.05,.5,40);
+  {const a=$('t1'),b=$('t2');const pa=ex(prog(t,22.7,23.1)),pb=ex(prog(t,23.0,23.4));
+   a.style.opacity=pa;a.style.transform=`scale(${.85+.15*pa})`;b.style.opacity=pb;b.style.transform=`scale(${.85+.15*pb})`;}
+  rise($('s6g'),t,23.6,.5,30);
+  // S7
+  {const e=$('e1'),p=ex(prog(t,25.05,25.7));e.style.opacity=p;e.style.transform=`scale(${.9+.1*p})`;}
+  rev('e2',t,25.4); {const e=$('e3'),p=ex(prog(t,25.75,26.25));e.style.opacity=p;const pu=t>26.6?1+.025*Math.sin((t-26.6)*Math.PI*1.6)**2:1;e.style.transform=`translateY(${(1-p)*40}px) scale(${(.92+.08*p)*pu})`;}
+  rev('e4',t,26.15);
+};
+renderAt(0);
+</script>
+</body></html>
