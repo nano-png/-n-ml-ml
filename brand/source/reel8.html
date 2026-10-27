@@ -215,7 +215,7 @@ const V1=t=>Math.round(120*eo3(prog(t,3.5,5.6)));
 const V2=t=>t<6.15?0:(t<6.45?1:2);
 const V3=t=>Math.round(2+62*eo3(prog(t,19.3,20.7)));
 
-window.renderAt=function(t){
+function R(t){
   SC.forEach(([id,a,b])=>{const s=$(id);const on=t>=a&&t<b;s.style.display=on?'block':'none';
     if(on)s.querySelector('.cam').style.transform=`scale(${1+.03*prog(t,a,b)})`;});
   // S1
@@ -276,6 +276,17 @@ window.renderAt=function(t){
   {const e=$('e1'),p=ex(prog(t,25.05,25.7));e.style.opacity=p;e.style.transform=`scale(${.9+.1*p})`;}
   rev('e2',t,25.4); {const e=$('e3'),p=ex(prog(t,25.75,26.25));e.style.opacity=p;const pu=t>26.6?1+.025*Math.sin((t-26.6)*Math.PI*1.6)**2:1;e.style.transform=`translateY(${(1-p)*40}px) scale(${(.92+.08*p)*pu})`;}
   rev('e4',t,26.15);
+};
+const WARP={"k": 1.15, "scenes": [{"a": 0, "b": 3, "f": 3, "N": 0, "L": 3.6}, {"a": 3, "b": 8, "f": 8, "N": 3.6, "L": 6.6}, {"a": 8, "b": 12, "f": 12, "N": 10.2, "L": 5.4}, {"a": 12, "b": 15, "f": 14.6, "N": 15.6, "L": 4.221}, {"a": 15, "b": 21, "f": 21, "N": 19.821, "L": 7.6}, {"a": 21, "b": 25, "f": 25, "N": 27.421, "L": 5.8}, {"a": 25, "b": 28.5, "f": 28.5, "N": 33.221, "L": 4.3}]};
+window.renderAt=function(T){
+  const K=WARP.k; let sc=WARP.scenes[WARP.scenes.length-1];
+  for(const q of WARP.scenes){if(T>=q.N&&T<q.N+q.L){sc=q;break;}}
+  const D=sc.b-sc.a,H=sc.L-D*K,u=T-sc.N,fa=sc.f-sc.a;let o;
+  if(u<fa*K)o=u/K;else if(u<fa*K+H)o=fa;else o=(u-H)/K;
+  o=Math.min(o,D-0.001);
+  R(sc.a+o);
+  const id=SC.find(x=>x[1]===sc.a)[0];
+  $(id).querySelector('.cam').style.transform=`scale(${1+.03*clamp(u/sc.L)})`;
 };
 renderAt(0);
 </script>

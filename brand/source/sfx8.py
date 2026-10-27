@@ -1,14 +1,23 @@
 # Reel 08 sound design: new palette (no whoosh/pop/tap/ding/chime/tick/cash/stamp/tear from earlier reels)
 import numpy as np, wave
 SR = 44100
-DUR = 28.5
+import json
+WP = json.load(open('warp.json'))
+DUR = WP['scenes'][-1]['N'] + WP['scenes'][-1]['L']
+def M(t):
+    K = WP['k']
+    for q in WP['scenes']:
+        if q['a'] <= t < q['b'] or q is WP['scenes'][-1]:
+            D = q['b'] - q['a']; H = q['L'] - D * K; o = t - q['a']; fa = q['f'] - q['a']
+            return q['N'] + (o * K if o < fa else fa * K + H + (o - fa) * K)
 rng = np.random.default_rng(88)
 
 def T(d): return np.arange(int(d * SR)) / SR
 from scipy.signal import lfilter
 def lp(x, a): return lfilter([a], [1, a - 1], x)
 def hp(x, a): return x - lp(x, a)
-def put(buf, sig, t, g=1.0):
+def put(buf, sig, t, g=1.0, raw=False):
+    if not raw: t = M(t)
     i = int(t * SR)
     if i >= len(buf): return
     j = min(len(buf), i + len(sig)); buf[i:j] += sig[:j - i] * g
@@ -132,8 +141,8 @@ mus = np.zeros(int(SR * DUR)); drum = np.zeros_like(mus); kicks = []
 CH = [(53, 56, 60), (49, 53, 56), (56, 60, 63), (51, 55, 58)]   # Fm Db Ab Eb
 ROOT = [41, 37, 44, 39]
 def chord_at(t): return int(t // BAR) % 4
-def in_(t, a, b): return a <= t < b
-MUTE = [(10.85, 11.15), (14.75, 15.0)]
+def in_(t, a, b): return M(a) <= t < M(b)
+MUTE = [(M(10.85), M(11.15)), (M(14.75), M(15.0))]
 def muted(t): return any(a <= t < b for a, b in MUTE)
 
 # pad bed
@@ -141,18 +150,18 @@ for bi in range(int(DUR / BAR) + 1):
     t0 = bi * BAR
     if t0 >= DUR: break
     d = min(BAR + 0.3, DUR - t0)
-    g = 0.35 if t0 < 15 else 0.45
-    put(mus, pad(CH[bi % 4], d, g), t0)
+    g = 0.35 if t0 < M(15) else 0.45
+    put(mus, pad(CH[bi % 4], d, g), t0, raw=True)
 # arp (KS plucks), 8ths
 arp_pat = [0, 1, 2, 1, 2, 0, 1, 2]
 for k in range(int(DUR / (B / 2))):
     t = k * B / 2
-    if muted(t) or t >= 27.6: continue
-    if t < 3.0 and k % 4 != 0: continue
+    if muted(t) or t >= M(27.6): continue
+    if t < M(3.0) and k % 4 != 0: continue
     c = CH[chord_at(t)]; m = c[arp_pat[k % 8]] + 12
-    g = 0.22 if t < 15 else 0.3
-    if 25 <= t: g = 0.2
-    put(mus, ks(mid(m), 0.9, 0.45 + 0.1 * (k % 2)), t, g)
+    g = 0.22 if t < M(15) else 0.3
+    if M(25) <= t: g = 0.2
+    put(mus, ks(mid(m), 0.9, 0.45 + 0.1 * (k % 2)), t, g, raw=True)
 # drums
 for k in range(int(DUR / (B / 4))):
     t = k * B / 4; beat = k // 4; sub = k % 4; bb = beat % 4
@@ -162,16 +171,16 @@ for k in range(int(DUR / (B / 4))):
     if in_(t, 8.0, 12.0) and sub == 0: kick = True
     if in_(t, 15.0, 25.0) and sub == 0: kick = True
     if in_(t, 25.0, 27.0) and sub == 0 and bb == 0: kick = True
-    if kick: put(drum, k808(0.9), t); kicks.append(t)
-    if (in_(t, 3.0, 12.0) or in_(t, 15.0, 25.0)) and sub == 0 and bb in (1, 3): put(drum, rim(), t, 0.45)
-    if in_(t, 3.0, 12.0) and sub in (0, 2): put(drum, shaker(1.0 if sub == 2 else 0.6), t)
-    if (in_(t, 12.0, 14.75) or in_(t, 15.0, 25.0)) : put(drum, shaker(1.0 if sub == 2 else 0.55), t)
+    if kick: put(drum, k808(0.9), t, raw=True); kicks.append(t)
+    if (in_(t, 3.0, 12.0) or in_(t, 15.0, 25.0)) and sub == 0 and bb in (1, 3): put(drum, rim(), t, 0.45, raw=True)
+    if in_(t, 3.0, 12.0) and sub in (0, 2): put(drum, shaker(1.0 if sub == 2 else 0.6), t, raw=True)
+    if (in_(t, 12.0, 14.75) or in_(t, 15.0, 25.0)) : put(drum, shaker(1.0 if sub == 2 else 0.55), t, raw=True)
 # bass
 for k in range(int(DUR / (B / 2))):
     t = k * B / 2
     if muted(t): continue
     if (in_(t, 8.0, 12.0) or in_(t, 15.0, 25.0)) and (k % 8 in (0, 3, 4, 6)):
-        put(mus, bass(mid(ROOT[chord_at(t)]), B * 0.9), t, 0.55)
+        put(mus, bass(mid(ROOT[chord_at(t)]), B * 0.9), t, 0.55, raw=True)
 # sidechain duck
 duck = np.ones_like(mus)
 for kt in kicks:
@@ -244,4 +253,4 @@ fo = int(0.7 * SR); mix[-fo:] *= np.linspace(1, 0, fo)
 with wave.open("reel8_sfx.wav", "wb") as w:
     w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((mix * 32767).astype(np.int16).tobytes())
-print("ok", len(mix) / SR)
+print("ok", len(mix) / SR, M(14.6), M(14.75), M(15.0), M(25.0), 37*B)
