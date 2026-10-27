@@ -119,6 +119,7 @@ body{background:#fff;color:var(--ink);font-family:PlexAr,Sora,sans-serif;positio
     <div class="bar"><i id="bar4b" style="background:var(--blue);width:100%"></i></div>
   </div>
   <div class="abs m" style="top:1250px"><div class="mi h2" id="s4b">الزبون الجديد… بيروح عند مين؟</div></div>
+  <div class="abs tag" style="top:1400px;opacity:0" id="s4g">مثال توضيحي</div>
 </div></section>
 
 <!-- ============ S5 REVEAL 15-21 ============ -->
@@ -213,7 +214,7 @@ function rise(el,t,a,d=.6,dy=60){const p=ex(prog(t,a,a+d));el.style.opacity=p;el
 const SC=[['s1',0,3],['s2',3,8],['s3',8,12],['s4',12,15],['s5',15,21],['s6',21,25],['s7',25,28.5]];
 const V1=t=>Math.round(120*eo3(prog(t,3.5,5.6)));
 const V2=t=>t<6.15?0:(t<6.45?1:2);
-const V3=t=>Math.round(2+62*eo3(prog(t,19.3,20.7)));
+const V3=t=>Math.round(2+16*eo3(prog(t,19.3,20.7)));
 
 function R(t){
   SC.forEach(([id,a,b])=>{const s=$(id);const on=t>=a&&t<b;s.style.display=on?'block':'none';
@@ -245,7 +246,7 @@ function R(t){
   {const pa=eo3(prog(t,12.7,13.5)),pb=eo3(prog(t,12.9,13.7));
    $('bar4a').style.transform=`scaleX(${pa})`;$('bar4b').style.transform=`scaleX(${pb})`;
    $('n4a').textContent=Math.round(23*pa);$('n4b').textContent=Math.round(1240*pb).toLocaleString('en-US');}
-  rev('s4b',t,13.7,.5);
+  rev('s4b',t,13.7,.5); $('s4g').style.opacity=ex(prog(t,13.9,14.3));
   {const f=prog(t,13.75,14.1);$('c4a').style.opacity=Math.min(+$('c4a').style.opacity,1-.55*f);
    $('c4b').style.borderColor=f>0?`rgba(37,99,235,${f})`:'';$('c4b').style.boxShadow=`0 30px 70px rgba(37,99,235,${.08+.14*f})`;}
   // wipe 14.72-15.28
@@ -263,8 +264,8 @@ function R(t){
    const txt='أكل طيب وخدمة ممتازة';const n=Math.floor(clamp((t-18.35)/.45)*txt.length);$('ptxt').textContent=txt.slice(0,n);}
   for(let i=0;i<3;i++){const rp=$('rp'+i),a=17.2+i*.14,p=prog(t,a,a+.7);const s=40+260*eo3(p);
     rp.style.width=rp.style.height=s+'px';rp.style.left=(334-s/2)+'px';rp.style.top=(690-s/2)+'px';rp.style.opacity=p>0&&p<1?(1-p)*.9:0;}
-  {const c=$('s5c');rev('s5c',t,17.35,.5);const o=1-prog(t,19.0,19.2);c.parentNode.style.opacity=o;}
-  {const r=$('s5r');const p=ex(prog(t,19.15,19.6));r.style.opacity=p;r.style.transform=`translateY(${(1-p)*40}px)`;setOd($('od3'),V3(t),'#2563EB');
+  {const c=$('s5c');rev('s5c',t,17.35,.5);const o=1-prog(t,18.95,19.12);c.parentNode.style.opacity=o;}
+  {const r=$('s5r');const p=ex(prog(t,19.18,19.6));r.style.opacity=t<19.18?0:p;r.style.transform=`translateY(${(1-p)*40}px)`;setOd($('od3'),V3(t),'#2563EB');
    $('s5g').style.opacity=ex(prog(t,19.5,19.9));}
   // S6
   {const p=ex(prog(t,21.0,21.8));const pr=$('prod6');pr.style.opacity=p;pr.style.transform=`translateX(${(1-p)*-120}px) scale(${.94+.06*p})`;}
@@ -277,10 +278,11 @@ function R(t){
   rev('e2',t,25.4); {const e=$('e3'),p=ex(prog(t,25.75,26.25));e.style.opacity=p;const pu=t>26.6?1+.025*Math.sin((t-26.6)*Math.PI*1.6)**2:1;e.style.transform=`translateY(${(1-p)*40}px) scale(${(.92+.08*p)*pu})`;}
   rev('e4',t,26.15);
 };
-const WARP={"k": 1.15, "scenes": [{"a": 0, "b": 3, "f": 3, "N": 0, "L": 3.6}, {"a": 3, "b": 8, "f": 8, "N": 3.6, "L": 6.6}, {"a": 8, "b": 12, "f": 12, "N": 10.2, "L": 5.4}, {"a": 12, "b": 15, "f": 14.6, "N": 15.6, "L": 4.221}, {"a": 15, "b": 21, "f": 21, "N": 19.821, "L": 7.6}, {"a": 21, "b": 25, "f": 25, "N": 27.421, "L": 5.8}, {"a": 25, "b": 28.5, "f": 28.5, "N": 33.221, "L": 4.3}]};
+const WARP={"k": 1.15, "scenes": [{"a": 0, "b": 3, "f": 3, "N": 0, "L": 3.6}, {"a": 3, "b": 8, "f": 8, "N": 3.6, "L": 6.6}, {"a": 8, "b": 12, "f": 10.84, "N": 10.2, "L": 7.543, "k": 1.6}, {"a": 12, "b": 15, "f": 14.6, "N": 17.743, "L": 4.221}, {"a": 15, "b": 21, "f": 21, "N": 21.964, "L": 7.6}, {"a": 21, "b": 25, "f": 25, "N": 29.564, "L": 5.8}, {"a": 25, "b": 28.5, "f": 28.5, "N": 35.364, "L": 4.3}]};
 window.renderAt=function(T){
-  const K=WARP.k; let sc=WARP.scenes[WARP.scenes.length-1];
+  let sc=WARP.scenes[WARP.scenes.length-1];
   for(const q of WARP.scenes){if(T>=q.N&&T<q.N+q.L){sc=q;break;}}
+  const K=sc.k||WARP.k;
   const D=sc.b-sc.a,H=sc.L-D*K,u=T-sc.N,fa=sc.f-sc.a;let o;
   if(u<fa*K)o=u/K;else if(u<fa*K+H)o=fa;else o=(u-H)/K;
   o=Math.min(o,D-0.001);

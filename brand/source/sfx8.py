@@ -5,9 +5,9 @@ import json
 WP = json.load(open('warp.json'))
 DUR = WP['scenes'][-1]['N'] + WP['scenes'][-1]['L']
 def M(t):
-    K = WP['k']
     for q in WP['scenes']:
         if q['a'] <= t < q['b'] or q is WP['scenes'][-1]:
+            K = q.get('k', WP['k'])
             D = q['b'] - q['a']; H = q['L'] - D * K; o = t - q['a']; fa = q['f'] - q['a']
             return q['N'] + (o * K if o < fa else fa * K + H + (o - fa) * K)
 rng = np.random.default_rng(88)
@@ -233,7 +233,7 @@ for i, m in enumerate((77, 80, 82, 84, 87)): put(fx, marimba(mid(m)), 17.65 + i 
 for i in range(6): put(fx, keyclick(1.4), 18.37 + i * 0.07, 0.25)
 put(fx, zip_(0.3, 900, 250, 0.3), 18.85)
 put(fx, keyclick(), 19.15, 0.6)
-counter_clicks(19.3, 20.7, 2, 64, 1.25, 0.45)
+counter_clicks(19.3, 20.7, 2, 18, 1.25, 0.5)
 put(fx, lockin(), 20.72, 0.45)
 # S6 offer
 put(fx, zip_(0.3, 300, 1500, 0.5), 20.95); put(fx, wood(420), 21.0, 0.6)
@@ -253,4 +253,4 @@ fo = int(0.7 * SR); mix[-fo:] *= np.linspace(1, 0, fo)
 with wave.open("reel8_sfx.wav", "wb") as w:
     w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((mix * 32767).astype(np.int16).tobytes())
-print("ok", len(mix) / SR, M(14.6), M(14.75), M(15.0), M(25.0), 37*B)
+print("ok", len(mix) / SR, M(14.6), M(14.75), M(15.0), M(25.0), 41*B)
